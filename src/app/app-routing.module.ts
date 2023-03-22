@@ -23,7 +23,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'panel',
+    path: '',
     component: PanelLayoutComponent,
     children: [
       {

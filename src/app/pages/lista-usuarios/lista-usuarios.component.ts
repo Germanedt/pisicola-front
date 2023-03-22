@@ -16,24 +16,24 @@ export class ListaUsuariosComponent {
   }
   listOfData = [
     {
-      id: 1,
+      id: 1094726234,
       name: 'John Brown',
       email: 'jhon.brown@user.com',
-      description: 'Más información del usuario',
+      cargo: 'Administrador',
       expand: false,
     },
     {
-      id: 2,
+      id: 7652431,
       name: 'Jim Green',
       email: 'jim.green@user.com',
-      description: 'Más información del usuario',
+      cargo: 'Productor',
       expand: false,
     },
     {
-      id: 3,
+      id: 98235412,
       name: 'Joe Black',
       email: 'joe.black@user.com',
-      description: 'Más información del usuario',
+      cargo: 'Investigador',
       expand: false,
     }
   ];

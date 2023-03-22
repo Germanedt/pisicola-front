@@ -2,23 +2,20 @@
 <nz-table #nzTable [nzData]="listOfData" nzTableLayout="fixed">
   <thead>
     <tr>
-      <th nzWidth="60px"></th>
-      <th>Item</th>
+      <th>Documento</th>
       <th>Nombre</th>
       <th>Correo</th>
-      <th>Acciones</th>
+      <th>Cargo</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <ng-container *ngFor="let data of nzTable.data">
       <tr>
-        <td
-          [nzExpand]="expandSet.has(data.id)"
-          (nzExpandChange)="onExpandChange(data.id, $event)"
-        ></td>
         <td>{{ data.id }}</td>
         <td>{{ data.name }}</td>
         <td>{{ data.email }}</td>
+        <td>{{ data.cargo }}</td>
         <td class="actions-container">
           <button nz-button nzType="primary" nzSize="default" class="edit-action">
             <span nz-icon nzType="eye"></span>
@@ -28,9 +25,6 @@
           </button>
 
         </td>
-      </tr>
-      <tr [nzExpand]="expandSet.has(data.id)">
-        <span>{{ data.description }}</span>
       </tr>
     </ng-container>
   </tbody>

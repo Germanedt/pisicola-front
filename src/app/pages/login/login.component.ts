@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit{
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
+      location.href = "listaUsuarios";
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {

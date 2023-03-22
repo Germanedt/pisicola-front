@@ -6,6 +6,16 @@
   (ngSubmit)="submitForm()"
 >
   <nz-form-item style="gap: 1rem;">
+    <nz-form-control nzErrorTip="Por favor ingrese el número de documento">
+      <nz-input-group>
+        <input
+          type="number"
+          nz-input
+          formControlName="document"
+          placeholder="Número de documento"
+        />
+      </nz-input-group>
+    </nz-form-control>
     <nz-form-control nzErrorTip="Por favor ingrese el nombre del usuario">
       <nz-input-group>
         <input
