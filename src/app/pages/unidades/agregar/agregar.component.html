@@ -1,0 +1,45 @@
+<h1>Agregar Unidad productiva</h1>
+<form
+  nz-form
+  [formGroup]="validateForm"
+  class="login-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item style="gap: 1rem;">
+    <nz-form-control nzErrorTip="Por favor ingrese el nombre de la unidad productiva">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="nombre"
+          placeholder="Nombre de la unidad productiva"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control nzErrorTip="Por favor ingrese la dirección de la unidad productiva">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="direccion"
+          placeholder="dirección de la unidad productiva"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item style="gap: 1rem;">
+    <nz-form-control nzErrorTip="Por favor ingrese la descripción de la unidad productiva">
+      <nz-input-group>
+        <textarea 
+          nz-input 
+          formControlName="descripcion"
+          rows="8"
+          placeholder="Descripción de la unidad productiva"></textarea>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button nz-button nzType="primary" nzSize="large" nzShape="round" style="float: right;">
+    Agregar
+    <span nz-icon nzType="save"></span>
+  </button>
+</form>

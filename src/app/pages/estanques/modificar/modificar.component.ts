@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-agregar-usuario',
-  templateUrl: './agregar-usuario.component.html',
-  styleUrls: ['./agregar-usuario.component.less']
+  selector: 'app-modificar-estanque',
+  templateUrl: './modificar.component.html',
+  styleUrls: ['./modificar.component.less']
 })
-export class AgregarUsuarioComponent implements OnInit {
+export class ModificarEstanqueComponent implements OnInit {
   validateForm!: UntypedFormGroup;
 
   submitForm(): void {

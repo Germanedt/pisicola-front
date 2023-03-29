@@ -1,0 +1,38 @@
+<h1>Listado de estanques</h1>
+<nz-table #nzTable [nzData]="listOfData" nzTableLayout="fixed">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Nombre</th>
+      <th>Dirección</th>
+      <th>Descripción</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let data of nzTable.data">
+      <tr>
+        <td>{{ data.id }}</td>
+        <td>{{ data.nombre }}</td>
+        <td>{{ data.direccion }}</td>
+        <td>{{ data.descripcion }}</td>
+        <td class="actions-container">
+          <a nz-button nzType="primary" nzSize="default" class="edit-action" href="/modificarEstanque">
+            <span nz-icon nzType="edit"></span>
+          </a>
+          <!--(nzOnConfirm)=""
+            (nzOnCancel)=""-->
+          <a nz-button nzType="primary" nzSize="default" class="delete-action"
+            nz-popconfirm
+            nzPopconfirmTitle="¿Seguro desea eliminar el estanque?"
+            nzOkText="Si, eliminar"
+            nzCancelText="Cancelar"
+          >
+            <span nz-icon nzType="delete"></span>
+          </a>
+
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</nz-table>

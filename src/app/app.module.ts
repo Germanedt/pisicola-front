@@ -19,15 +19,23 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 //Componentes y modulos propios
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginLayoutComponent } from './layouts/login/login-layout.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RecuperarClaveComponent } from './pages/recuperar-clave/recuperar-clave.component';
 import { PanelLayoutComponent } from './layouts/panel/panel-layout.component';
-import { ListaUsuariosComponent } from './pages/lista-usuarios/lista-usuarios.component';
-import { AgregarUsuarioComponent } from './pages/agregar-usuario/agregar-usuario.component';
+import { AgregarUsuarioComponent } from './pages/usuarios/agregar/agregar.component';
+import { ListaUsuariosComponent } from './pages/usuarios/lista/lista.component';
+import { LoginComponent } from './pages/usuarios/login/login.component';
+import { RecuperarClaveComponent } from './pages/usuarios/recuperar-clave/recuperar-clave.component';
+import { ModificarUsuarioComponent } from './pages/usuarios/modificar/modificar.component';
+import { ListaUnidadesComponent } from './pages/unidades/lista/lista.component';
+import { AgregarUnidadComponent } from './pages/unidades/agregar/agregar.component';
+import { ModificarUnidadComponent } from './pages/unidades/modificar/modificar.component';
+import { ListaEstanquesComponent } from './pages/estanques/lista/lista.component';
+import { AgregarEstanqueComponent } from './pages/estanques/agregar/agregar.component';
+import { ModificarEstanqueComponent } from './pages/estanques/modificar/modificar.component';
 
 registerLocaleData(es);
 
@@ -40,6 +48,13 @@ registerLocaleData(es);
     PanelLayoutComponent,
     ListaUsuariosComponent,
     AgregarUsuarioComponent,
+    ModificarUsuarioComponent,
+    ListaUnidadesComponent,
+    AgregarUnidadComponent,
+    ModificarUnidadComponent,
+    ListaEstanquesComponent,
+    AgregarEstanqueComponent,
+    ModificarEstanqueComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -58,6 +73,7 @@ registerLocaleData(es);
     NzTableModule,
     NzSelectModule,
     NzDividerModule,
+    NzPopconfirmModule,
     AppRoutingModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }],

@@ -17,12 +17,19 @@
         <td>{{ data.email }}</td>
         <td>{{ data.cargo }}</td>
         <td class="actions-container">
-          <button nz-button nzType="primary" nzSize="default" class="edit-action">
-            <span nz-icon nzType="eye"></span>
-          </button>
-          <button nz-button nzType="primary" nzSize="default" class="delete-action">
+          <a nz-button nzType="primary" nzSize="default" class="edit-action" href="/modificarUsuario">
+            <span nz-icon nzType="edit"></span>
+          </a>
+          <!--(nzOnConfirm)=""
+            (nzOnCancel)=""-->
+          <a nz-button nzType="primary" nzSize="default" class="delete-action"
+            nz-popconfirm
+            nzPopconfirmTitle="¿Seguro desea eliminar el usuario?"
+            nzOkText="Si, eliminar"
+            nzCancelText="Cancelar"
+          >
             <span nz-icon nzType="delete"></span>
-          </button>
+          </a>
 
         </td>
       </tr>

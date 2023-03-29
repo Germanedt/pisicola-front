@@ -2,10 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginLayoutComponent } from './layouts/login/login-layout.component';
 import { PanelLayoutComponent } from './layouts/panel/panel-layout.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RecuperarClaveComponent } from './pages/recuperar-clave/recuperar-clave.component';
-import { ListaUsuariosComponent } from './pages/lista-usuarios/lista-usuarios.component';
-import { AgregarUsuarioComponent } from './pages/agregar-usuario/agregar-usuario.component';
+import { AgregarUsuarioComponent } from './pages/usuarios/agregar/agregar.component';
+import { ListaUsuariosComponent } from './pages/usuarios/lista/lista.component';
+import { LoginComponent } from './pages/usuarios/login/login.component';
+import { RecuperarClaveComponent } from './pages/usuarios/recuperar-clave/recuperar-clave.component';
+import { ModificarUsuarioComponent } from './pages/usuarios/modificar/modificar.component';
+import { ListaUnidadesComponent } from './pages/unidades/lista/lista.component';
+import { AgregarUnidadComponent } from './pages/unidades/agregar/agregar.component';
+import { ModificarUnidadComponent } from './pages/unidades/modificar/modificar.component';
+import { ListaEstanquesComponent } from './pages/estanques/lista/lista.component';
+import { AgregarEstanqueComponent } from './pages/estanques/agregar/agregar.component';
+import { ModificarEstanqueComponent } from './pages/estanques/modificar/modificar.component';
 
 const routes: Routes = [
   {
@@ -33,7 +40,35 @@ const routes: Routes = [
       {
         path: 'agregarUsuario',
         component: AgregarUsuarioComponent
-      }
+      },
+      {
+        path: 'modificarUsuario',
+        component: ModificarUsuarioComponent
+      },
+      {
+        path: 'listaUnidades',
+        component: ListaUnidadesComponent
+      },
+      {
+        path: 'agregarUnidad',
+        component: AgregarUnidadComponent
+      },
+      {
+        path: 'modificarUnidad',
+        component: ModificarUnidadComponent
+      },
+      {
+        path: 'listaEstanques',
+        component: ListaEstanquesComponent
+      },
+      {
+        path: 'agregarEstanque',
+        component: AgregarEstanqueComponent
+      },
+      {
+        path: 'modificarEstanque',
+        component: ModificarEstanqueComponent
+      },
     ]
   },
   { path: '**', redirectTo: '' }

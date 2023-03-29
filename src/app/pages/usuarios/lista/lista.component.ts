@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-lista-usuarios',
-  templateUrl: './lista-usuarios.component.html',
-  styleUrls: ['./lista-usuarios.component.less']
+  templateUrl: './lista.component.html',
+  styleUrls: ['./lista.component.less']
 })
 export class ListaUsuariosComponent {
   expandSet = new Set<number>();
