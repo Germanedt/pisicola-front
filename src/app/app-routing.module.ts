@@ -15,6 +15,7 @@ import { AgregarEstanqueComponent } from './pages/estanques/agregar/agregar.comp
 import { ModificarEstanqueComponent } from './pages/estanques/modificar/modificar.component';
 import { AgregarTipoProductoComponent } from './pages/tipoProducto/agregar/agregar.component';
 import { ModificarTipoProductoComponent } from './pages/tipoProducto/modificar/modificar.component';
+import { ListaTipoProductoComponent } from './pages/tipoProducto/lista/lista.component';
 
 const routes: Routes = [
   {
@@ -73,7 +74,7 @@ const routes: Routes = [
       },
       {
         path: 'listaTipoProducto',
-        component: ListaEstanquesComponent
+        component: ListaTipoProductoComponent
       },
       {
         path: 'agregarTipoProducto',

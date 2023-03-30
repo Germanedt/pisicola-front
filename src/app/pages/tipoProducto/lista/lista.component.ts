@@ -17,23 +17,20 @@ export class ListaTipoProductoComponent {
   listOfData = [
     {
       id: 1,
-      nombre: 'Estanque 1',
-      unidad: 'Circacia',
-      descripcion: 'hay 6 lagos',
+      nombre: 'Tipo 1',
+      descripcion: 'tipo de producto desc',
       expand: false,
     },
     {
       id: 2,
-      nombre: 'Estanque 2',
-      unidad: 'Genova',
-      descripcion: 'cultivan solo x pez',
+      nombre: 'Tipo 2',
+      descripcion: 'tipo de producto desc',
       expand: false,
     },
     {
       id: 3,
-      nombre: 'Estanque 3',
-      unidad: 'Filandia',
-      descripcion: 'hay de todo',
+      nombre: 'Tipo 3',
+      descripcion: 'tipo de producto desc',
       expand: false,
     }
   ];

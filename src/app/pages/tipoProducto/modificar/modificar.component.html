@@ -1,26 +1,17 @@
 <h1>Modificar Tipo producto</h1>
 <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
   <nz-form-item style="gap: 1rem;">
-    <nz-form-control nzErrorTip="Por favor ingrese el nombre o identificación del estanque">
+    <nz-form-control nzErrorTip="Por favor ingrese el nombre del tipo de producto">
       <nz-input-group>
-        <input type="text" nz-input formControlName="nombre" placeholder="Nombre o identificación del estanque" />
-      </nz-input-group>
-    </nz-form-control>
-    <nz-form-control nzErrorTip="Por seleccione la unidad productiva a la que pertenece">
-      <nz-input-group>
-        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Unidad productiva" formControlName="unidad">
-          <nz-option nzLabel="Filandia" nzValue="1"></nz-option>
-          <nz-option nzLabel="Circacia" nzValue="2"></nz-option>
-          <nz-option nzLabel="Genova" nzValue="3"></nz-option>
-        </nz-select>
+        <input type="text" nz-input formControlName="nombre" placeholder="Nombre o identificación del tipo de producto" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item style="gap: 1rem;">
-    <nz-form-control nzErrorTip="Por favor ingrese la descripción de la unidad productiva">
+    <nz-form-control nzErrorTip="Por favor ingrese la descripción del tipo de producto">
       <nz-input-group>
         <textarea nz-input formControlName="descripcion" rows="8"
-          placeholder="Descripción de la unidad productiva"></textarea>
+          placeholder="Descripción del tipo de producto"></textarea>
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
