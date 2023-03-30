@@ -1,57 +1,30 @@
 <h1>Modificar estanque</h1>
-<form
-  nz-form
-  [formGroup]="validateForm"
-  class="login-form"
-  (ngSubmit)="submitForm()"
->
-  <nz-form-item style="gap: 1rem">
-    <nz-form-control
-      nzErrorTip="Por favor ingrese el nombre de la unidad productiva"
-    >
+<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+  <nz-form-item style="gap: 1rem;">
+    <nz-form-control nzErrorTip="Por favor ingrese el nombre o identificación del estanque">
       <nz-input-group>
-        <input
-          type="text"
-          nz-input
-          formControlName="nombre"
-          placeholder="Nombre de la unidad productiva"
-        />
+        <input type="text" nz-input formControlName="nombre" placeholder="Nombre o identificación del estanque" />
       </nz-input-group>
     </nz-form-control>
-    <nz-form-control
-      nzErrorTip="Por favor ingrese la dirección de la unidad productiva"
-    >
+    <nz-form-control nzErrorTip="Por seleccione la unidad productiva a la que pertenece">
       <nz-input-group>
-        <input
-          type="text"
-          nz-input
-          formControlName="direccion"
-          placeholder="dirección de la unidad productiva"
-        />
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Unidad productiva" formControlName="unidad">
+          <nz-option nzLabel="Filandia" nzValue="1"></nz-option>
+          <nz-option nzLabel="Circacia" nzValue="2"></nz-option>
+          <nz-option nzLabel="Genova" nzValue="3"></nz-option>
+        </nz-select>
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item style="gap: 1rem">
-    <nz-form-control
-      nzErrorTip="Por favor ingrese la descripción de la unidad productiva"
-    >
+  <nz-form-item style="gap: 1rem;">
+    <nz-form-control nzErrorTip="Por favor ingrese la descripción de la unidad productiva">
       <nz-input-group>
-        <textarea
-          nz-input
-          formControlName="descripcion"
-          rows="8"
-          placeholder="Descripción de la unidad productiva"
-        ></textarea>
+        <textarea nz-input formControlName="descripcion" rows="8"
+          placeholder="Descripción de la unidad productiva"></textarea>
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
-  <button
-    nz-button
-    nzType="primary"
-    nzSize="large"
-    nzShape="round"
-    style="float: right"
-  >
+  <button nz-button nzType="primary" nzSize="large" nzShape="round" style="float: right">
     Guardar Cambios
     <span nz-icon nzType="save"></span>
   </button>
