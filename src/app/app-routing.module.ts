@@ -13,6 +13,8 @@ import { ModificarUnidadComponent } from './pages/unidades/modificar/modificar.c
 import { ListaEstanquesComponent } from './pages/estanques/lista/lista.component';
 import { AgregarEstanqueComponent } from './pages/estanques/agregar/agregar.component';
 import { ModificarEstanqueComponent } from './pages/estanques/modificar/modificar.component';
+import { AgregarTipoProductoComponent } from './pages/tipoProducto/agregar/agregar.component';
+import { ModificarTipoProductoComponent } from './pages/tipoProducto/modificar/modificar.component';
 
 const routes: Routes = [
   {
@@ -68,6 +70,18 @@ const routes: Routes = [
       {
         path: 'modificarEstanque',
         component: ModificarEstanqueComponent
+      },
+      {
+        path: 'listaTipoProducto',
+        component: ListaEstanquesComponent
+      },
+      {
+        path: 'agregarTipoProducto',
+        component: AgregarTipoProductoComponent
+      },
+      {
+        path: 'modificarTipoProducto',
+        component: ModificarTipoProductoComponent
       },
     ]
   },

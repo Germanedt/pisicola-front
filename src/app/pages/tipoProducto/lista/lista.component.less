@@ -1,0 +1,21 @@
+@import '../../../../theme.less';
+h1{
+    font-family: PassionOneRegular;
+    color: @text-primary-color;
+    font-size: 2rem;
+}
+.actions-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+
+    .edit-action {
+        background: @secondary-color;
+        border-color: @secondary-color;
+    }
+    .delete-action {
+        background: @error-color;
+        border-color: @error-color;
+    }
+}

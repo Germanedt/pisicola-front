@@ -36,6 +36,9 @@ import { ModificarUnidadComponent } from './pages/unidades/modificar/modificar.c
 import { ListaEstanquesComponent } from './pages/estanques/lista/lista.component';
 import { AgregarEstanqueComponent } from './pages/estanques/agregar/agregar.component';
 import { ModificarEstanqueComponent } from './pages/estanques/modificar/modificar.component';
+import { AgregarTipoProductoComponent } from './pages/tipoProducto/agregar/agregar.component';
+import { ListaTipoProductoComponent } from './pages/tipoProducto/lista/lista.component';
+import { ModificarTipoProductoComponent } from './pages/tipoProducto/modificar/modificar.component';
 
 registerLocaleData(es);
 
@@ -54,7 +57,10 @@ registerLocaleData(es);
     ModificarUnidadComponent,
     ListaEstanquesComponent,
     AgregarEstanqueComponent,
-    ModificarEstanqueComponent
+    ModificarEstanqueComponent,
+    ListaTipoProductoComponent,
+    AgregarTipoProductoComponent,
+    ModificarTipoProductoComponent
   ],
   imports: [
     ReactiveFormsModule,
