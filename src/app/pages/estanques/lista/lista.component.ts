@@ -17,22 +17,22 @@ export class ListaEstanquesComponent {
   listOfData = [
     {
       id: 1,
-      nombre: 'Filandia',
-      direccion: 'Vereda xyz km 6',
+      nombre: 'Estanque 1',
+      unidad: 'Circacia',
       descripcion: 'hay 6 lagos',
       expand: false,
     },
     {
       id: 2,
-      nombre: 'Circacia',
-      direccion: 'K6 via pereira',
+      nombre: 'Estanque 2',
+      unidad: 'Genova',
       descripcion: 'cultivan solo x pez',
       expand: false,
     },
     {
       id: 3,
-      nombre: 'Genova',
-      direccion: 'vereda zyx finca abc',
+      nombre: 'Estanque 3',
+      unidad: 'Filandia',
       descripcion: 'hay de todo',
       expand: false,
     }
