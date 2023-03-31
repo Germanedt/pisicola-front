@@ -2,17 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less']
+  selector: 'app-agregar',
+  templateUrl: './agregar.component.html',
+  styleUrls: ['./agregar.component.less']
 })
-export class LoginComponent implements OnInit{
+export class AgregarInsumoComponent {
   validateForm!: UntypedFormGroup;
 
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
-      location.href = "Dashboard";
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {

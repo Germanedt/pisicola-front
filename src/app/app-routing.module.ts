@@ -17,6 +17,13 @@ import { AgregarTipoProductoComponent } from './pages/tipoProducto/agregar/agreg
 import { ModificarTipoProductoComponent } from './pages/tipoProducto/modificar/modificar.component';
 import { ListaTipoProductoComponent } from './pages/tipoProducto/lista/lista.component';
 import { AgregarAlimentoComponent } from './pages/alimentos/agregar/agregar.component';
+import { ListaAlimentosComponent } from './pages/alimentos/lista/lista.component';
+import { AgregarMedicamentoComponent } from './pages/medicamentos/agregar/agregar.component';
+import { ListaMedicamentosComponent } from './pages/medicamentos/lista/lista.component';
+import { AgregarInsumoComponent } from './pages/insumos/agregar/agregar.component';
+import { ListaInsumosComponent } from './pages/insumos/lista/lista.component';
+import { AgregarEquipoComponent } from './pages/equipos/agregar/agregar.component';
+import { ListaEquiposComponent } from './pages/equipos/lista/lista.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -93,6 +100,34 @@ const routes: Routes = [
       {
         path: 'agregarAlimento',
         component: AgregarAlimentoComponent
+      },
+      {
+        path: 'listaAlimento',
+        component: ListaAlimentosComponent
+      },
+      {
+        path: 'agregarMedicamento',
+        component: AgregarMedicamentoComponent
+      },
+      {
+        path: 'listaMedicamentos',
+        component: ListaMedicamentosComponent
+      },
+      {
+        path: 'agregarInsumo',
+        component: AgregarInsumoComponent
+      },
+      {
+        path: 'listaInsumos',
+        component: ListaInsumosComponent
+      },
+      {
+        path: 'agregarEquipo',
+        component: AgregarEquipoComponent
+      },
+      {
+        path: 'listaEquipos',
+        component: ListaEquiposComponent
       },
     ]
   },

@@ -1,0 +1,38 @@
+<h1>Listado de medicamentos</h1>
+<nz-table #nzTable [nzData]="listOfData" [nzBordered]="true" nzTableLayout="fixed">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Unidad de medida</th>
+      <th>Fecha de compra</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let data of nzTable.data">
+      <tr>
+        <td>{{ data.id }}</td>
+        <td>{{ data.nombre }}</td>
+        <td>{{ data.precio }}</td>
+        <td>{{ data.cantidad }}</td>
+        <td>{{ data.unidad }}</td>
+        <td>{{ data.fecha_compra }}</td>
+        <td class="actions-container">
+          <a nz-button nzType="primary" nzSize="default" class="edit-action">
+            <span nz-icon nzType="edit"></span>
+          </a>
+          <!--(nzOnConfirm)=""
+            (nzOnCancel)=""-->
+          <a nz-button nzType="primary" nzSize="default" class="delete-action" nz-popconfirm
+            nzPopconfirmTitle="¿Seguro desea eliminar el medicamento?" nzOkText="Si, eliminar" nzCancelText="Cancelar">
+            <span nz-icon nzType="delete"></span>
+          </a>
+
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</nz-table>

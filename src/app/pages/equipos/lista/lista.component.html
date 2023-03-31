@@ -1,0 +1,60 @@
+<h1>Listado de equipos</h1>
+<nz-table #nzTable [nzData]="listOfData" [nzBordered]="true" nzTableLayout="fixed">
+  <thead>
+    <tr>
+      <th>Referencia</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Vida Útil</th>
+      <th>Fecha de compra</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let data of nzTable.data">
+      <tr>
+        <td>{{ data.referencia }}</td>
+        <td>{{ data.nombre }}</td>
+        <td>${{ data.precio }}</td>
+        <td>{{ data.vida_util }} Días</td>
+        <td>{{ data.fecha_compra }}</td>
+        <td class="actions-container">
+        <a nz-button nzType="primary" (click)="showModal()"  nzSize="default" class="view-action">
+            <span nz-icon nzType="eye"></span>
+            </a>
+          <a nz-button nzType="primary" nzSize="default" class="edit-action">
+            <span nz-icon nzType="edit"></span>
+          </a>
+          <!--(nzOnConfirm)=""
+            (nzOnCancel)=""-->
+          <a nz-button nzType="primary" nzSize="default" class="delete-action" nz-popconfirm
+            nzPopconfirmTitle="¿Seguro desea eliminar el EQUIPO?" nzOkText="Si, eliminar" nzCancelText="Cancelar">
+            <span nz-icon nzType="delete"></span>
+          </a>
+
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</nz-table>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Información del equipo" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+      <h5>Referencia</h5>
+      <p>GHDGD43</p>
+      <h5>Nombre</h5>
+      <p>Equipo 1</p>
+      <h5>Precio</h5>
+      <p>$2.000.000</p>
+      <h5>Vida Útil</h5>
+      <p>180</p>
+      <h5>Valor día</h5>
+      <p>$11.111</p>
+      <h5>Estado</h5>
+      <p>Activo</p>
+      <h5>Fecha de compra</h5>
+      <p>20/02/2022</p>
+      <h5>Último mantenimiento</h5>
+      <p>20/02/2023</p>
+    </ng-container>
+</nz-modal>

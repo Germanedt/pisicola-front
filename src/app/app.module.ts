@@ -20,6 +20,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 //Componentes y modulos propios
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +42,13 @@ import { ListaTipoProductoComponent } from './pages/tipoProducto/lista/lista.com
 import { ModificarTipoProductoComponent } from './pages/tipoProducto/modificar/modificar.component';
 import { AgregarAlimentoComponent } from './pages/alimentos/agregar/agregar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ListaAlimentosComponent } from './pages/alimentos/lista/lista.component';
+import { AgregarMedicamentoComponent } from './pages/medicamentos/agregar/agregar.component';
+import { ListaMedicamentosComponent } from './pages/medicamentos/lista/lista.component';
+import { AgregarInsumoComponent } from './pages/insumos/agregar/agregar.component';
+import { ListaInsumosComponent } from './pages/insumos/lista/lista.component';
+import { AgregarEquipoComponent } from './pages/equipos/agregar/agregar.component';
+import { ListaEquiposComponent } from './pages/equipos/lista/lista.component';
 
 registerLocaleData(es);
 
@@ -64,7 +72,14 @@ registerLocaleData(es);
     AgregarTipoProductoComponent,
     ModificarTipoProductoComponent,
     AgregarAlimentoComponent,
-    DashboardComponent
+    DashboardComponent,
+    ListaAlimentosComponent,
+    AgregarMedicamentoComponent,
+    ListaMedicamentosComponent,
+    AgregarInsumoComponent,
+    ListaInsumosComponent,
+    AgregarEquipoComponent,
+    ListaEquiposComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -84,6 +99,7 @@ registerLocaleData(es);
     NzSelectModule,
     NzDividerModule,
     NzPopconfirmModule,
+    NzModalModule,
     AppRoutingModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }],
