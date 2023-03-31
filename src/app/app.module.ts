@@ -39,6 +39,8 @@ import { ModificarEstanqueComponent } from './pages/estanques/modificar/modifica
 import { AgregarTipoProductoComponent } from './pages/tipoProducto/agregar/agregar.component';
 import { ListaTipoProductoComponent } from './pages/tipoProducto/lista/lista.component';
 import { ModificarTipoProductoComponent } from './pages/tipoProducto/modificar/modificar.component';
+import { AgregarAlimentoComponent } from './pages/alimentos/agregar/agregar.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 registerLocaleData(es);
 
@@ -60,7 +62,9 @@ registerLocaleData(es);
     ModificarEstanqueComponent,
     ListaTipoProductoComponent,
     AgregarTipoProductoComponent,
-    ModificarTipoProductoComponent
+    ModificarTipoProductoComponent,
+    AgregarAlimentoComponent,
+    DashboardComponent
   ],
   imports: [
     ReactiveFormsModule,

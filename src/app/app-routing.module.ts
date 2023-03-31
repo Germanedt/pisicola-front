@@ -16,6 +16,8 @@ import { ModificarEstanqueComponent } from './pages/estanques/modificar/modifica
 import { AgregarTipoProductoComponent } from './pages/tipoProducto/agregar/agregar.component';
 import { ModificarTipoProductoComponent } from './pages/tipoProducto/modificar/modificar.component';
 import { ListaTipoProductoComponent } from './pages/tipoProducto/lista/lista.component';
+import { AgregarAlimentoComponent } from './pages/alimentos/agregar/agregar.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,10 @@ const routes: Routes = [
     path: '',
     component: PanelLayoutComponent,
     children: [
+      {
+        path: 'Dashboard',
+        component: DashboardComponent
+      },
       {
         path: 'listaUsuarios',
         component: ListaUsuariosComponent
@@ -83,6 +89,10 @@ const routes: Routes = [
       {
         path: 'modificarTipoProducto',
         component: ModificarTipoProductoComponent
+      },
+      {
+        path: 'agregarAlimento',
+        component: AgregarAlimentoComponent
       },
     ]
   },

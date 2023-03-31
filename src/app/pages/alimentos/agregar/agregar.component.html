@@ -1,0 +1,87 @@
+<h1>Agregar Alimento</h1>
+<form
+  nz-form
+  [formGroup]="validateForm"
+  class="login-form"
+  (ngSubmit)="submitForm()"
+>
+ 
+    <nz-row nzXs="24" [nzGutter]="16">
+      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" class="nz-mb-2">
+        <nz-form-control nzErrorTip="Por favor ingrese el nombre del alimento">
+          <nz-input-group>
+            <label for="">Nombre</label>
+            <input
+              type="text"
+              nz-input
+              formControlName="nombre"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-col>
+      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" class="nz-mb-2">
+        <nz-form-control nzErrorTip="Por favor ingrese el precio del alimento">
+          <nz-input-group>
+            <label>Precio</label>
+            <input
+              type="number"
+              nz-input
+              formControlName="precio"
+              placeholder="$0"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-col>
+      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" class="nz-mb-2">
+        <nz-form-control nzErrorTip="Por favor ingrese la cantidad del alimento">
+          <nz-input-group>
+            <label>Cantidad</label>
+            <input
+              type="number"
+              nz-input
+              formControlName="cantidad"
+              placeholder="10"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-col>
+      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" class="nz-mb-2">
+        <nz-form-control nzErrorTip="Por favor ingrese la del alimento">
+          <nz-input-group>
+            <label>Unidad de medida</label>
+            <nz-select [ngModel]="'unidadMedida'">
+              <nz-option [nzLabel]="'Kg'" [nzValue]="'kg'"></nz-option>
+              <nz-option [nzLabel]="'Litro'" [nzValue]="'L'"></nz-option>
+            </nz-select>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-col>
+      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" class="nz-mb-2">
+        <nz-form-control nzErrorTip="Por favor ingrese la fecha de compra">
+          <nz-input-group>
+            <label>Fecha de compra</label>
+            <input
+              type="date"
+              nz-input
+              formControlName="fecha"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-col>
+    </nz-row >
+    <nz-divider></nz-divider>
+    <nz-row nzJustify="end" [nzGutter]="16">
+      <nz-col>
+        <button nz-button  nzSize="large" nzShape="round">
+          Cancelar
+          <span nz-icon nzType="close"></span>
+        </button>
+      </nz-col>
+      <nz-col>
+        <button nz-button nzType="primary" nzSize="large" nzShape="round">
+          Guardar
+          <span nz-icon nzType="save"></span>
+        </button>
+      </nz-col>
+    </nz-row>
+</form>

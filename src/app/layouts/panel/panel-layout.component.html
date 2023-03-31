@@ -2,6 +2,12 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <a href="Dashboard">
+          <span nz-icon nzType="dashboard"></span>
+          <span>Inicio</span>
+        </a>
+      </li>
       <li nz-submenu nzTitle="Usuarios" nzIcon="user">
         <ul>
           <li nz-menu-item>
@@ -122,7 +128,7 @@
             </a>
           </li>
           <li nz-menu-item>
-            <a href="agregarUsuario">
+            <a href="agregarAlimento">
               Agregar
             </a>
           </li>
@@ -184,12 +190,19 @@
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <span
-        class="trigger"
-        nz-icon
-        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-        (click)="isCollapsed = !isCollapsed"
-      ></span>
+      <nz-row nzJustify="space-between">
+        <nz-col>
+            <span
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            (click)="isCollapsed = !isCollapsed"
+          ></span>
+        </nz-col>
+        <nz-col>
+          <h5 class="trigger">Hola, Nikollai    </h5>
+        </nz-col>
+      </nz-row>
     </nz-header>
     <nz-content>
       <!--<nz-breadcrumb>
