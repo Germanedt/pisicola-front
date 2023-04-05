@@ -1,0 +1,66 @@
+<h1>Listado de gastos</h1>
+<nz-row nzGutter="16" class="nz-mb-2">
+  <nz-col >
+    <nz-form-control>
+      <nz-input-group>
+        <label for="">Desde</label>
+        <input
+          type="date"
+          nz-input
+          formControlName="concepto"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-col>
+  <nz-col>
+    <nz-form-control>
+      <nz-input-group>
+        <label for="">Hasta</label>
+        <input
+          type="date"
+          nz-input
+          formControlName="concepto"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-col>
+  <nz-col class="align-bottom">
+    <button nz-button nzType="primary" nzSize="large" nzShape="round">
+      Filtrar
+      <span nz-icon nzType="filter"></span>
+    </button>
+  </nz-col>
+</nz-row>
+<nz-table #nzTable [nzData]="listOfData" [nzBordered]="true" nzTableLayout="fixed">
+  <thead>
+    <tr>
+      <th>Concepto</th>
+      <th>Valor</th>
+      <th>Descripción</th>
+      <th>Fecha de gasto</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let data of nzTable.data">
+      <tr>
+        <td>{{ data.nombre }}</td>
+        <td>{{ data.precio }}</td>
+        <td>{{ data.descripcion }}</td>
+        <td>{{ data.fecha_compra }}</td>
+        <td class="actions-container">
+          <a nz-button nzType="primary" nzSize="default" class="edit-action">
+            <span nz-icon nzType="edit"></span>
+          </a>
+          <!--(nzOnConfirm)=""
+            (nzOnCancel)=""-->
+          <a nz-button nzType="primary" nzSize="default" class="delete-action" nz-popconfirm
+            nzPopconfirmTitle="¿Seguro desea eliminar el insumo?" nzOkText="Si, eliminar" nzCancelText="Cancelar">
+            <span nz-icon nzType="delete"></span>
+          </a>
+
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</nz-table>

@@ -24,6 +24,8 @@ import { AgregarInsumoComponent } from './pages/insumos/agregar/agregar.componen
 import { ListaInsumosComponent } from './pages/insumos/lista/lista.component';
 import { AgregarEquipoComponent } from './pages/equipos/agregar/agregar.component';
 import { ListaEquiposComponent } from './pages/equipos/lista/lista.component';
+import { ListaGastosComponent } from './pages/gastos/lista/lista.component';
+import { AgregarGastoComponent } from './pages/gastos/agregar/agregar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -128,6 +130,14 @@ const routes: Routes = [
       {
         path: 'listaEquipos',
         component: ListaEquiposComponent
+      },
+      {
+        path: 'listaGastos',
+        component: ListaGastosComponent
+      },
+      {
+        path: 'agregarGasto',
+        component: AgregarGastoComponent
       },
     ]
   },

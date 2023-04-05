@@ -21,6 +21,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 //Componentes y modulos propios
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +50,8 @@ import { AgregarInsumoComponent } from './pages/insumos/agregar/agregar.componen
 import { ListaInsumosComponent } from './pages/insumos/lista/lista.component';
 import { AgregarEquipoComponent } from './pages/equipos/agregar/agregar.component';
 import { ListaEquiposComponent } from './pages/equipos/lista/lista.component';
+import { ListaGastosComponent } from './pages/gastos/lista/lista.component';
+import { AgregarGastoComponent } from './pages/gastos/agregar/agregar.component';
 
 registerLocaleData(es);
 
@@ -79,7 +82,9 @@ registerLocaleData(es);
     AgregarInsumoComponent,
     ListaInsumosComponent,
     AgregarEquipoComponent,
-    ListaEquiposComponent
+    ListaEquiposComponent,
+    ListaGastosComponent,
+    AgregarGastoComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -100,6 +105,7 @@ registerLocaleData(es);
     NzDividerModule,
     NzPopconfirmModule,
     NzModalModule,
+    NzTabsModule,
     AppRoutingModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }],

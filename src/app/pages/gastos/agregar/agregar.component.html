@@ -1,0 +1,74 @@
+<h1>Agregar Gasto</h1>
+<form
+  nz-form
+  [formGroup]="validateForm"
+  class="login-form"
+  (ngSubmit)="submitForm()"
+>
+ 
+    <nz-row nzXs="24" [nzGutter]="16">
+      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" class="nz-mb-2">
+        <nz-form-control nzErrorTip="Por favor ingrese el concepto del gasto">
+          <nz-input-group>
+            <label for="">Concepto</label>
+            <input
+              type="text"
+              nz-input
+              formControlName="concepto"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-col>
+      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" class="nz-mb-2">
+        <nz-form-control nzErrorTip="Por favor ingrese el precio del gasto">
+          <nz-input-group>
+            <label>Valor</label>
+            <input
+              type="number"
+              nz-input
+              formControlName="precio"
+              placeholder="$0"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-col>
+      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" class="nz-mb-2">
+        <nz-form-control nzErrorTip="Por favor ingrese la fecha de compra">
+          <nz-input-group>
+            <label>Fecha de compra</label>
+            <input
+              type="date"
+              nz-input
+              formControlName="fecha"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-col>
+      <nz-col nzXs="24" class="nz-mb-2">
+          <nz-form-control nzErrorTip="Por favor ingrese la descripción del gasto">
+            <nz-input-group>
+              <textarea 
+                nz-input 
+                formControlName="descripcion"
+                rows="8"
+                placeholder="Descripción del gasto"></textarea>
+            </nz-input-group>
+          </nz-form-control>
+      </nz-col>
+    </nz-row >
+    <nz-divider></nz-divider>
+    <nz-row nzJustify="end" [nzGutter]="16">
+      <nz-col>
+        <button nz-button  nzSize="large" nzShape="round">
+          Cancelar
+          <span nz-icon nzType="close"></span>
+        </button>
+      </nz-col>
+      <nz-col>
+        <button nz-button nzType="primary" nzSize="large" nzShape="round">
+          Guardar
+          <span nz-icon nzType="save"></span>
+        </button>
+      </nz-col>
+    </nz-row>
+</form>
