@@ -27,6 +27,8 @@ import { ListaEquiposComponent } from './pages/equipos/lista/lista.component';
 import { ListaGastosComponent } from './pages/gastos/lista/lista.component';
 import { AgregarGastoComponent } from './pages/gastos/agregar/agregar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DetallesCosechaComponent } from './pages/cosechas/detalles/detalles.component';
+import { HistorialCosechaComponent } from './pages/cosechas/historial/historial.component';
 
 const routes: Routes = [
   {
@@ -138,6 +140,14 @@ const routes: Routes = [
       {
         path: 'agregarGasto',
         component: AgregarGastoComponent
+      },
+      {
+        path: 'detallesCosecha',
+        component: DetallesCosechaComponent
+      },
+      {
+        path: 'historialCosecha',
+        component: HistorialCosechaComponent
       },
     ]
   },

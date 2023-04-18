@@ -52,6 +52,8 @@ import { AgregarEquipoComponent } from './pages/equipos/agregar/agregar.componen
 import { ListaEquiposComponent } from './pages/equipos/lista/lista.component';
 import { ListaGastosComponent } from './pages/gastos/lista/lista.component';
 import { AgregarGastoComponent } from './pages/gastos/agregar/agregar.component';
+import { DetallesCosechaComponent } from './pages/cosechas/detalles/detalles.component';
+import { HistorialCosechaComponent } from './pages/cosechas/historial/historial.component';
 
 registerLocaleData(es);
 
@@ -84,7 +86,9 @@ registerLocaleData(es);
     AgregarEquipoComponent,
     ListaEquiposComponent,
     ListaGastosComponent,
-    AgregarGastoComponent
+    AgregarGastoComponent,
+    DetallesCosechaComponent,
+    HistorialCosechaComponent
   ],
   imports: [
     ReactiveFormsModule,

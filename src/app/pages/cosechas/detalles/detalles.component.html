@@ -1,0 +1,88 @@
+<h1>Mojarra Roja</h1>
+<nz-row nzGutter="16">
+    <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="8" class="nz-mb-2">
+        <nz-card nzTitle="Información general" class="card-header-light" >
+            <nz-row nzJustify="space-between">
+                <nz-col>Estanque</nz-col>
+                <nz-col class="ctm-separator"></nz-col>
+                <nz-col>Estanque 1</nz-col>
+            </nz-row>
+            <nz-row nzJustify="space-between">
+                <nz-col>Etapa</nz-col>
+                <nz-col class="ctm-separator"></nz-col>
+                <nz-col>Alevinaje</nz-col>
+            </nz-row>
+            <nz-row nzJustify="space-between">
+                <nz-col>Fecha</nz-col>
+                <nz-col class="ctm-separator"></nz-col>
+                <nz-col>23/03/2023</nz-col>
+            </nz-row>
+            <nz-row nzJustify="space-between" class="nz-mb-2">
+                <nz-col>N° de peces</nz-col>
+                <nz-col class="ctm-separator"></nz-col>
+                <nz-col>1000</nz-col>
+            </nz-row>
+            <nz-row nzJustify="end">
+                <a href="detallesCosecha">
+                    <button nz-button nzSize="small" nzType="primary">Alimento</button>
+                </a>
+                <a href="detallesCosecha">
+                    <button nz-button nzSize="small" nzType="primary">Medicamento</button>
+                </a>
+            </nz-row>
+        </nz-card>
+    </nz-col>
+    <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="16" class="nz-mb-2">
+        <nz-card nzTitle="Mediciónes" class="card-header-light" >
+            <nz-row nzJustify="center">
+                <nz-col class="container-update nz-mb-2">
+                    <p>Última actualización: 23/03/2023 12:45 pm</p>
+                    <label class="nz-mr-1">
+                        <a href="">Actualizar</a>
+                    </label>
+                    <label class="nz-ml-1">
+                        <a href="historialCosecha">Ver Historico</a>
+                    </label>
+                </nz-col>
+            </nz-row>
+            <nz-row [nzGutter]="16">
+                <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="8" class="nz-mb-2">
+                    <div class="container-chart">
+                        <h2>Temperatura - 34</h2>
+                        <div class="chartdiv" id="chartdiv" style="width: 100%;"></div>
+                    </div>
+                </nz-col>
+                <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="8" class="nz-mb-2">
+                    <div class="container-chart">
+                        <h2>Oxigeno - 34</h2>
+                        <div class="chartdiv" id="chartdiv1" style="width: 100%;"></div>
+                    </div>
+                </nz-col>
+                <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="8" class="nz-mb-2">
+                    <div class="container-chart">
+                        <h2>Acidos - 34</h2>
+                        <div class="chartdiv" id="chartdiv2" style="width: 100%;"></div>
+                    </div>
+                </nz-col>
+                <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="8" class="nz-mb-2">
+                    <div class="container-chart">
+                        <h2>Temperatura - 34</h2>
+                        <div class="chartdiv" id="chartdiv3" style="width: 100%;"></div>
+                    </div>
+                </nz-col>
+                <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="8" class="nz-mb-2">
+                    <div class="container-chart">
+                        <h2>Oxigeno - 34</h2>
+                        <div class="chartdiv" id="chartdiv4" style="width: 100%;"></div>
+                    </div>
+                </nz-col>
+                <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="8" class="nz-mb-2">
+                    <div class="container-chart">
+                        <h2>Acidos - 34</h2>
+                        <div class="chartdiv" id="chartdiv5" style="width: 100%;"></div>
+                    </div>
+                </nz-col>
+            </nz-row>
+        </nz-card>
+    </nz-col>
+</nz-row>
