@@ -3,7 +3,7 @@
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item>
-        <a href="Dashboard">
+        <a href="dashboard">
           <span nz-icon nzType="dashboard"></span>
           <span>Inicio</span>
         </a>
@@ -176,11 +176,9 @@
           </li>
         </ul>
       </li>
-      <li nz-menu-item>
-        <a href="">
+      <li nz-menu-item (click)="logout();">
         <span nz-icon nzType="logout"></span>
         <span>Cerrar Sesión</span>
-      </a>
       </li>
       <!--<li nz-menu-item>
         <span nz-icon nzType="file"></span>
@@ -200,7 +198,7 @@
           ></span>
         </nz-col>
         <nz-col>
-          <h5 class="trigger">Hola, Nikollai    </h5>
+          <h5 class="trigger">Hola, {{this.dataService.getUserData().full_name}}    </h5>
         </nz-col>
       </nz-row>
     </nz-header>

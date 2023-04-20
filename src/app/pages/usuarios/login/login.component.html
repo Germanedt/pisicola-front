@@ -7,11 +7,11 @@
       <h1>Bienvenido</h1>
       <small>Ingrese sus datos para continuar</small>
     </span>
-    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+    <form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()">
       <nz-form-item>
         <nz-form-control nzErrorTip="Por favor ingrese su usuario">
           <nz-input-group nzPrefixIcon="user">
-            <input type="text" nz-input formControlName="userName" placeholder="usuario" />
+            <input type="email" nz-input formControlName="userName" placeholder="usuario" />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>

@@ -50,7 +50,7 @@ const routes: Routes = [
     component: PanelLayoutComponent,
     children: [
       {
-        path: 'Dashboard',
+        path: 'dashboard',
         component: DashboardComponent
       },
       {

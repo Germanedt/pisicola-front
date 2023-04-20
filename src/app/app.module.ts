@@ -54,6 +54,7 @@ import { ListaGastosComponent } from './pages/gastos/lista/lista.component';
 import { AgregarGastoComponent } from './pages/gastos/agregar/agregar.component';
 import { DetallesCosechaComponent } from './pages/cosechas/detalles/detalles.component';
 import { HistorialCosechaComponent } from './pages/cosechas/historial/historial.component';
+import { SessionDataService } from './services/session-data.service';
 
 registerLocaleData(es);
 
@@ -112,7 +113,7 @@ registerLocaleData(es);
     NzTabsModule,
     AppRoutingModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: es_ES }],
+  providers: [{ provide: NZ_I18N, useValue: es_ES }, SessionDataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
