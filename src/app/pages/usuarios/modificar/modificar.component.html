@@ -1,27 +1,17 @@
 <h1>Modificar usuario</h1>
 <form
   nz-form
-  [formGroup]="validateForm"
+  [formGroup]="form"
   class="login-form"
   (ngSubmit)="submitForm()"
 >
   <nz-form-item style="gap: 1rem;">
-    <nz-form-control nzErrorTip="Por favor ingrese el número de documento">
-      <nz-input-group>
-        <input
-          type="number"
-          nz-input
-          formControlName="document"
-          placeholder="Número de documento"
-        />
-      </nz-input-group>
-    </nz-form-control>
     <nz-form-control nzErrorTip="Por favor ingrese el nombre del usuario">
       <nz-input-group>
         <input
           type="text"
           nz-input
-          formControlName="name"
+          formControlName="fullName"
           placeholder="Nombre del usuario"
         />
       </nz-input-group>
@@ -42,34 +32,12 @@
           nzShowSearch
           nzAllowClear
           nzPlaceHolder="Rol del usuario"
-          formControlName="role"
+          formControlName="userTypeId"
         >
-          <nz-option nzLabel="Administrador" nzValue="1"></nz-option>
-          <nz-option nzLabel="Productor" nzValue="2"></nz-option>
-          <nz-option nzLabel="Por defecto" nzValue="3"></nz-option>
+          <nz-option nzLabel="Administrador" nzValue=1></nz-option>
+          <nz-option nzLabel="Productor" nzValue=2></nz-option>
+          <nz-option nzLabel="Por defecto" nzValue=3></nz-option>
         </nz-select>
-      </nz-input-group>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item style="gap: 1rem;">
-    <nz-form-control nzErrorTip="Por favor ingrese la contraseña del usuario">
-      <nz-input-group>
-        <input
-          type="password"
-          nz-input
-          formControlName="password"
-          placeholder="Contraseña del usuario"
-        />
-      </nz-input-group>
-    </nz-form-control>
-    <nz-form-control nzErrorTip="Por favor ingrese de nuevo la contraseña">
-      <nz-input-group>
-        <input
-          type="password"
-          nz-input
-          formControlName="confirmPassword"
-          placeholder="Confirmar la contraseña"
-        />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>

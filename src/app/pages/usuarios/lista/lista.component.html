@@ -17,7 +17,7 @@
         <td>{{ data.email }}</td>
         <td>{{ data.user_type.key }}</td>
         <td class="actions-container">
-          <a nz-button nzType="primary" nzSize="default" class="edit-action" href="/modificarUsuario">
+          <a nz-button nzType="primary" nzSize="default" class="edit-action" [routerLink]="['/modificarUsuario',data.id]">
             <span nz-icon nzType="edit"></span>
           </a>
           <!--(nzOnConfirm)=""
