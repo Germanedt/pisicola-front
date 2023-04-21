@@ -1,40 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IListUsersRequest, IListUsersResponse, IUser } from 'src/app/models/User.model';
+import { SessionDataService } from 'src/app/services/session-data.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-lista-usuarios',
   templateUrl: './lista.component.html',
   styleUrls: ['./lista.component.less']
 })
-export class ListaUsuariosComponent {
-  expandSet = new Set<number>();
-  onExpandChange(id: number, checked: boolean): void {
-    if (checked) {
-      this.expandSet.add(id);
-    } else {
-      this.expandSet.delete(id);
-    }
+export class ListaUsuariosComponent implements OnInit{
+  listOfData: IUser[] = [];
+  constructor(
+    public dataService: SessionDataService,
+    private usersService: UsersService
+  ){
   }
-  listOfData = [
-    {
-      id: 1094726234,
-      name: 'John Brown',
-      email: 'jhon.brown@user.com',
-      cargo: 'Administrador',
-      expand: false,
-    },
-    {
-      id: 7652431,
-      name: 'Jim Green',
-      email: 'jim.green@user.com',
-      cargo: 'Productor',
-      expand: false,
-    },
-    {
-      id: 98235412,
-      name: 'Joe Black',
-      email: 'joe.black@user.com',
-      cargo: 'Investigador',
-      expand: false,
+  ngOnInit(): void {
+    const params: IListUsersRequest = {
+      page: 1,
+      perPage: 10
     }
-  ];
+    this.usersService.listUsers(params).subscribe((response: IListUsersResponse) =>{
+      this.listOfData = response.data;
+    });
+    
+  }
 }

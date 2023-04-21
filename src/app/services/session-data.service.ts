@@ -27,12 +27,9 @@ const initTokenInfo = {
   providedIn: 'root',
 })
 export class SessionDataService {
-  userData: IUser;
-  tokenInfo: ITokenData;
-  constructor() {
-    this.userData = initUserData;
-    this.tokenInfo = initTokenInfo;
-  }
+  userData: IUser = initUserData;
+  tokenInfo: ITokenData =  initTokenInfo;
+  constructor() {}
 
   public setLoginData(response: ILoginResponse){
     this.tokenInfo = {

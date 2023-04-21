@@ -5,7 +5,7 @@
       <th>Documento</th>
       <th>Nombre</th>
       <th>Correo</th>
-      <th>Cargo</th>
+      <th>Rol</th>
       <th></th>
     </tr>
   </thead>
@@ -13,9 +13,9 @@
     <ng-container *ngFor="let data of nzTable.data">
       <tr>
         <td>{{ data.id }}</td>
-        <td>{{ data.name }}</td>
+        <td>{{ data.full_name }}</td>
         <td>{{ data.email }}</td>
-        <td>{{ data.cargo }}</td>
+        <td>{{ data.user_type.key }}</td>
         <td class="actions-container">
           <a nz-button nzType="primary" nzSize="default" class="edit-action" href="/modificarUsuario">
             <span nz-icon nzType="edit"></span>
