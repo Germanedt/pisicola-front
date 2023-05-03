@@ -74,7 +74,7 @@ const routes: Routes = [
         component: AgregarUnidadComponent
       },
       {
-        path: 'modificarUnidad',
+        path: 'modificarUnidad/:id',
         component: ModificarUnidadComponent
       },
       {

@@ -4,5 +4,8 @@ export const environment = {
   AUTH_LOGOUT_SERVICE: 'http://3.15.1.206:8080/logout',
   USERS_LIST_SERVICE: 'http://3.15.1.206:8080/users/list',
   USERS_CREATE_SERVICE: 'http://3.15.1.206:8080/users',
-  USERS_DELETE_SERVICE: 'http://3.15.1.206:8080/users'
+  USERS_DELETE_SERVICE: 'http://3.15.1.206:8080/users',
+  PRODUCTIVE_UNIT_LIST_SERVICE: 'http://3.15.1.206:8080/productive_units/list',
+  PRODUCTIVE_UNIT_CREATE_SERVICE: 'http://3.15.1.206:8080/productive_units',
+  PRODUCTIVE_UNIT_DELETE_SERVICE: 'http://3.15.1.206:8080/productive_units'
 };

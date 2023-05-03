@@ -1,19 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IProductiveUnitCreateRequest } from 'src/app/models/ProductiveUnit.model';
+import { ProductiveUnitService } from 'src/app/services/productiveUnits.service';
+import { SessionDataService } from 'src/app/services/session-data.service';
 
 @Component({
   selector: 'app-agregar-unidad',
   templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.less']
+  styleUrls: ['./agregar.component.less'],
 })
 export class AgregarUnidadComponent implements OnInit {
-  validateForm!: UntypedFormGroup;
+  form: FormGroup = this.fb.group({
+    name: ['', [Validators.required]],
+    address: ['', [Validators.required]],
+    description: ['', [Validators.required]],
+  });
 
   submitForm(): void {
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+    if (this.form.valid) {
+      const payload: IProductiveUnitCreateRequest = {
+        manager_id: this.userData.getUserData().id,
+        name: this.form.get('name')?.value,
+        description: this.form.get('description')?.value,
+        address: this.form.get('address')?.value,
+      };
+      this.service.createProductiveUnit(payload).subscribe((response) => {
+        if (response) {
+          this.router.navigate(['listaUnidades']);
+        }
+      });
     } else {
-      Object.values(this.validateForm.controls).forEach(control => {
+      Object.values(this.form.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
@@ -22,13 +40,12 @@ export class AgregarUnidadComponent implements OnInit {
     }
   }
 
-  constructor(private fb: UntypedFormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private userData: SessionDataService,
+    private service: ProductiveUnitService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
-      password: [null, [Validators.required]],
-      remember: [true]
-    });
-  }
+  ngOnInit(): void {}
 }
