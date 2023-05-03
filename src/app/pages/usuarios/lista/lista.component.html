@@ -27,6 +27,7 @@
             nzPopconfirmTitle="¿Seguro desea eliminar el usuario?"
             nzOkText="Si, eliminar"
             nzCancelText="Cancelar"
+            (nzOnConfirm)="handlerConfirmDelete(data.id)"
           >
             <span nz-icon nzType="delete"></span>
           </a>

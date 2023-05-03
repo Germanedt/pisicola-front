@@ -19,7 +19,7 @@ export class AgregarUsuarioComponent implements OnInit {
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ],
     ],
-    userTypeId: ['', [Validators.required]],
+    userTypeId: [0, [Validators.required]],
     password: ['', [Validators.required]],
     passwordConfirmation: ['', [Validators.required]],
   });
@@ -29,7 +29,7 @@ export class AgregarUsuarioComponent implements OnInit {
       const payload: IUsersCreateRequest = {
         full_name: this.form.get('fullName')?.value,
         email: this.form.get('email')?.value,
-        user_type_id: this.form.get('userTypeId')?.value,
+        user_type_id: parseInt(this.form.get('userTypeId')?.value),
         password: this.form.get('password')?.value,
         password_confirmation: this.form.get('passwordConfirmation')?.value,
       };

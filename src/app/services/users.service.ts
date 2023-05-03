@@ -42,6 +42,10 @@ export class UsersService {
     });
   }
 
+  public deleteUser(payload: number) {
+    return this.http.delete(environment.USERS_DELETE_SERVICE+'/'+payload)
+  }
+
   private getHeaders() {
     return new HttpHeaders({
       Accept: 'application/json',

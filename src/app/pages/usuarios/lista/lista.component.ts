@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IListUsersRequest, IListUsersResponse, IUser } from 'src/app/models/User.model';
 import { SessionDataService } from 'src/app/services/session-data.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -12,8 +13,16 @@ export class ListaUsuariosComponent implements OnInit{
   listOfData: IUser[] = [];
   constructor(
     public dataService: SessionDataService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private router: Router
   ){
+  }
+  public handlerConfirmDelete(userId: number){
+    this.usersService.deleteUser(userId).subscribe((response: any) =>{
+      if (response) {
+        window.location.reload;
+      }
+    });
   }
   ngOnInit(): void {
     const params: IListUsersRequest = {
