@@ -1,135 +1,35 @@
 <h1>Agregar Tipo de producto</h1>
 <form
   nz-form
-  [formGroup]="validateForm"
-  class="login-form"
+  [formGroup]="form"
+  class="product-type-form"
   (ngSubmit)="submitForm()"
 >
-    <nz-row nzXs="24" [nzGutter]="16">
-      <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="8" class="nz-mb-2">
-        <nz-card class="card-header-light" nzTitle="Información del tipo de producto">
-          <nz-row>
-            <nz-col nzXs="24" class="nz-mb-2">
-              <nz-form-control nzErrorTip="Por favor ingrese nombre del tipo de producto">
-                <nz-input-group>
-                  <label for="">Nombre del tipo de producto</label>
-                  <input
-                    type="text"
-                    nz-input
-                    formControlName="concepto"
-                  />
-                </nz-input-group>
-              </nz-form-control>
-            </nz-col>
-            <nz-col nzXs="24" class="nz-mb-2">
-                <nz-form-control nzErrorTip="Por favor ingrese la descripción del gasto">
-                  <nz-input-group>
-                    <label for="">Descripción</label>
-                    <textarea 
-                      nz-input 
-                      formControlName="descripcion"
-                      rows="4"
-                      placeholder="Descripción del producto"></textarea>
-                  </nz-input-group>
-                </nz-form-control>
-            </nz-col>
-          </nz-row>
-        </nz-card>
-        
-      </nz-col>
-      <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="16" class="nz-mb-2">
-        <nz-card class="card-header-light" nzTitle="Configuración de parametros">
-          <nz-row>
-            <nz-col nzXs="24" class="nz-mb-2">
-              <nz-tabset>
-                <nz-tab nzTitle="Temperatura">
-                  <nz-row>
-                    <nz-col>
-                      <nz-form-control class="nz-mb-2" nzErrorTip="Por favor ingrese nombre del tipo de producto">
-                        <nz-input-group>
-                          <label for="">Minimo</label>
-                          <input
-                            type="text"
-                            nz-input
-                            formControlName="concepto"
-                          />
-                        </nz-input-group>
-                      </nz-form-control>
-                      <nz-form-control nzErrorTip="Por favor ingrese nombre del tipo de producto">
-                        <nz-input-group>
-                          <label for="">Maximo</label>
-                          <input
-                            type="text"
-                            nz-input
-                            formControlName="concepto"
-                          />
-                        </nz-input-group>
-                      </nz-form-control>
-                    </nz-col>
-                  </nz-row>
-                </nz-tab>
-                <nz-tab nzTitle="Oxigeno">
-                  <nz-row>
-                    <nz-col>
-                      <nz-form-control class="nz-mb-2" nzErrorTip="Por favor ingrese nombre del tipo de producto">
-                        <nz-input-group>
-                          <label for="">Minimo</label>
-                          <input
-                            type="text"
-                            nz-input
-                            formControlName="concepto"
-                          />
-                        </nz-input-group>
-                      </nz-form-control>
-                      <nz-form-control nzErrorTip="Por favor ingrese nombre del tipo de producto">
-                        <nz-input-group>
-                          <label for="">Maximo</label>
-                          <input
-                            type="text"
-                            nz-input
-                            formControlName="concepto"
-                          />
-                        </nz-input-group>
-                      </nz-form-control>
-                    </nz-col>
-                  </nz-row>
-                </nz-tab>
-                <nz-tab nzTitle="Ácidos">
-                  <nz-row>
-                    <nz-col>
-                      <nz-form-control class="nz-mb-2" nzErrorTip="Por favor ingrese nombre del tipo de producto">
-                        <nz-input-group>
-                          <label for="">Minimo</label>
-                          <input
-                            type="text"
-                            nz-input
-                            formControlName="concepto"
-                          />
-                        </nz-input-group>
-                      </nz-form-control>
-                      
-                    </nz-col>
-                  </nz-row>
-                </nz-tab>
-              </nz-tabset>
-            </nz-col>
-          </nz-row>
-        </nz-card>
-      </nz-col>
-    </nz-row >
-    <nz-divider></nz-divider>
-    <nz-row nzJustify="end" [nzGutter]="16">
-      <nz-col>
-        <button nz-button  nzSize="large" nzShape="round">
-          Cancelar
-          <span nz-icon nzType="close"></span>
-        </button>
-      </nz-col>
-      <nz-col>
-        <button nz-button nzType="primary" nzSize="large" nzShape="round">
-          Guardar
-          <span nz-icon nzType="save"></span>
-        </button>
-      </nz-col>
-    </nz-row>
+  <nz-form-item style="gap: 1rem;">
+    <nz-form-control nzErrorTip="Por favor ingrese el nombre del tipo de producto">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="name"
+          placeholder="Nombre del tipo de producto"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item style="gap: 1rem;">
+    <nz-form-control nzErrorTip="Por favor ingrese la descripción del tipo de producto">
+      <nz-input-group>
+        <textarea 
+          nz-input 
+          formControlName="description"
+          rows="8"
+          placeholder="Descripción del tipo de producto"></textarea>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button nz-button nzType="primary" nzSize="large" nzShape="round" style="float: right;">
+    Agregar
+    <span nz-icon nzType="save"></span>
+  </button>
 </form>

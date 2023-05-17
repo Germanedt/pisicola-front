@@ -1,5 +1,10 @@
 <h1>Listado tipos de producto</h1>
-<nz-table #nzTable [nzData]="listOfData" [nzBordered]="true" nzTableLayout="fixed">
+<nz-table
+  #nzTable
+  [nzData]="listOfData"
+  [nzBordered]="true"
+  nzTableLayout="fixed"
+>
   <thead>
     <tr>
       <th>id</th>
@@ -12,42 +17,35 @@
     <ng-container *ngFor="let data of nzTable.data">
       <tr>
         <td>{{ data.id }}</td>
-        <td>{{ data.nombre }}</td>
-        <td>{{ data.descripcion }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.description }}</td>
         <td class="actions-container">
-          <a nz-button nzType="primary" (click)="showModal()"  nzSize="default" class="view-action">
-            <span nz-icon nzType="eye"></span>
-            </a>
-          <a nz-button nzType="primary" nzSize="default" class="edit-action" href="/agregarTipoProducto">
+          <a
+            nz-button
+            nzType="primary"
+            nzSize="default"
+            class="edit-action"
+            (click)="goToEdit(data)"
+          >
             <span nz-icon nzType="edit"></span>
           </a>
-          <!--(nzOnConfirm)=""
+          <!--
             (nzOnCancel)=""-->
-          <a nz-button nzType="primary" nzSize="default" class="delete-action" nz-popconfirm
-            nzPopconfirmTitle="¿Seguro desea eliminar el tipo de producto?" nzOkText="Si, eliminar" nzCancelText="Cancelar">
+          <a
+            nz-button
+            nzType="primary"
+            nzSize="default"
+            class="delete-action"
+            nz-popconfirm
+            (nzOnConfirm)="handlerConfirmDelete(data.id)"
+            nzPopconfirmTitle="¿Seguro desea eliminar el tipo de producto?"
+            nzOkText="Si, eliminar"
+            nzCancelText="Cancelar"
+          >
             <span nz-icon nzType="delete"></span>
           </a>
-
         </td>
       </tr>
     </ng-container>
   </tbody>
 </nz-table>
-
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Información del tipo de producto" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-  <ng-container *nzModalContent>
-    <h5>Nombre</h5>
-    <p>Mojarra Roja</p>
-    <h5>Descripción</h5>
-    <p>Lorem ipsun dolor sit amet</p>
-    <h5>Temperatura</h5>
-    <p class="nz-mb-0">Minimo: 16</p>
-    <p>Maximo: 34</p>
-    <h5>Oxigeno</h5>
-    <p class="nz-mb-0">Minimo: 16</p>
-    <p>Maximo: 34</p>
-    <h5>Ácidos</h5>
-    <p class="nz-mb-0">Minimo: 16</p>
-    <p>Maximo: 34</p>
-  </ng-container>
-</nz-modal>

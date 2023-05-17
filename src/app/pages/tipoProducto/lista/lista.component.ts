@@ -1,53 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {
+  IListProductTypeRequest,
+  IListProductTypeResponse,
+  IProductType,
+} from 'src/app/models/ProductType.model';
+import { ProductTypeService } from 'src/app/services/productType.service';
 
 @Component({
   selector: 'app-lista-tproducto',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.less']
+  styleUrls: ['./lista.component.less'],
 })
-export class ListaTipoProductoComponent {
-  isVisible = false;
-  expandSet = new Set<number>();
+export class ListaTipoProductoComponent implements OnInit {
+  listOfData: IProductType[] = [];
 
-  showModal(): void {
-    this.isVisible = true;
+  constructor(
+    public router: Router,
+    public productTypeService: ProductTypeService
+  ) {}
+
+  public goToEdit(productType: IProductType) {
+    const state = { productType };
+    this.router.navigate(['/modificarTipoProducto'], { state });
   }
 
-  handleOk(): void {
-    console.log('Button ok clicked!');
-    this.isVisible = false;
+  public handlerConfirmDelete(id: number) {
+    this.productTypeService.deleteProductType(id).subscribe( (response) => {
+      if (response) {
+        window.location.reload;
+      }
+    })
   }
 
-  handleCancel(): void {
-    console.log('Button cancel clicked!');
-    this.isVisible = false;
+  ngOnInit(): void {
+    const params: IListProductTypeRequest = {
+      page: 1,
+      perPage: 10,
+    };
+    this.productTypeService
+      .listProductTypes(params)
+      .subscribe((response: IListProductTypeResponse) => {
+        this.listOfData = response.data;
+      });
   }
-  
-  onExpandChange(id: number, checked: boolean): void {
-    if (checked) {
-      this.expandSet.add(id);
-    } else {
-      this.expandSet.delete(id);
-    }
-  }
-  listOfData = [
-    {
-      id: 1,
-      nombre: 'Tipo 1',
-      descripcion: 'tipo de producto desc',
-      expand: false,
-    },
-    {
-      id: 2,
-      nombre: 'Tipo 2',
-      descripcion: 'tipo de producto desc',
-      expand: false,
-    },
-    {
-      id: 3,
-      nombre: 'Tipo 3',
-      descripcion: 'tipo de producto desc',
-      expand: false,
-    }
-  ];
 }
