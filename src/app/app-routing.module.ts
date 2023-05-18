@@ -29,6 +29,9 @@ import { AgregarGastoComponent } from './pages/gastos/agregar/agregar.component'
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DetallesCosechaComponent } from './pages/cosechas/detalles/detalles.component';
 import { HistorialCosechaComponent } from './pages/cosechas/historial/historial.component';
+import { ListaProductoComponent } from './pages/producto/lista/lista.component';
+import { AgregarProductoComponent } from './pages/producto/agregar/agregar.component';
+import { ModificarProductoComponent } from './pages/producto/modificar/modificar.component';
 
 const routes: Routes = [
   {
@@ -100,6 +103,18 @@ const routes: Routes = [
       {
         path: 'modificarTipoProducto',
         component: ModificarTipoProductoComponent
+      },
+      {
+        path: 'listaProductos',
+        component: ListaProductoComponent
+      },
+      {
+        path: 'agregarProducto',
+        component: AgregarProductoComponent
+      },
+      {
+        path: 'modificarProducto',
+        component: ModificarProductoComponent
       },
       {
         path: 'agregarAlimento',

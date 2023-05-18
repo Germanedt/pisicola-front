@@ -55,6 +55,9 @@ import { AgregarGastoComponent } from './pages/gastos/agregar/agregar.component'
 import { DetallesCosechaComponent } from './pages/cosechas/detalles/detalles.component';
 import { HistorialCosechaComponent } from './pages/cosechas/historial/historial.component';
 import { SessionDataService } from './services/session-data.service';
+import { ModificarProductoComponent } from './pages/producto/modificar/modificar.component';
+import { AgregarProductoComponent } from './pages/producto/agregar/agregar.component';
+import { ListaProductoComponent } from './pages/producto/lista/lista.component';
 
 registerLocaleData(es);
 
@@ -77,6 +80,9 @@ registerLocaleData(es);
     ListaTipoProductoComponent,
     AgregarTipoProductoComponent,
     ModificarTipoProductoComponent,
+    ListaProductoComponent,
+    AgregarProductoComponent,
+    ModificarProductoComponent,
     AgregarAlimentoComponent,
     DashboardComponent,
     ListaAlimentosComponent,
