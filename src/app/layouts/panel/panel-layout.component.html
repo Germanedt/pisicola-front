@@ -8,20 +8,6 @@
           <span>Inicio</span>
         </a>
       </li>
-      <li nz-submenu nzTitle="Usuarios" nzIcon="user">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaUsuarios">
-              Lista de usuarios
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarUsuario">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>
       <li nz-submenu nzTitle="Estanques" nzIcon="folder">
         <ul>
           <li nz-menu-item>
@@ -36,7 +22,21 @@
           </li>
         </ul>
       </li>-->
-      <li nz-submenu nzTitle="Unidades productivas" nzIcon="user">
+      <li nz-submenu nzTitle="Usuarios" nzIcon="user">
+        <ul>
+          <li nz-menu-item>
+            <a (click)="goToListUsersAll()">
+              Lista de usuarios
+            </a>
+          </li>
+          <li nz-menu-item>
+            <a routerLink="/agregarUsuario">
+              Agregar
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Unidades productivas" nzIcon="build">
         <ul>
           <li nz-menu-item>
             <a routerLink="/listaUnidades">

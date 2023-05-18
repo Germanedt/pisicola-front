@@ -10,7 +10,7 @@ import { ModificarUsuarioComponent } from './pages/usuarios/modificar/modificar.
 import { ListaUnidadesComponent } from './pages/unidades/lista/lista.component';
 import { AgregarUnidadComponent } from './pages/unidades/agregar/agregar.component';
 import { ModificarUnidadComponent } from './pages/unidades/modificar/modificar.component';
-import { ListaEstanquesComponent } from './pages/estanques/lista/lista.component';
+import { ListaEstanqueComponent } from './pages/estanques/lista/lista.component';
 import { AgregarEstanqueComponent } from './pages/estanques/agregar/agregar.component';
 import { ModificarEstanqueComponent } from './pages/estanques/modificar/modificar.component';
 import { AgregarTipoProductoComponent } from './pages/tipoProducto/agregar/agregar.component';
@@ -87,7 +87,7 @@ const routes: Routes = [
       },
       {
         path: 'listaEstanques',
-        component: ListaEstanquesComponent
+        component: ListaEstanqueComponent
       },
       {
         path: 'agregarEstanque',

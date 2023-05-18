@@ -1,19 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ICreatePondRequest } from 'src/app/models/Pond.model';
+import { PondService } from 'src/app/services/pond.service';
 
 @Component({
-  selector: 'app-agregar-estanque',
+  selector: 'app-agregar-estanques',
   templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.less']
+  styleUrls: ['./agregar.component.less'],
 })
 export class AgregarEstanqueComponent implements OnInit {
-  validateForm!: UntypedFormGroup;
+  form: FormGroup = this.fb.group({
+    name: ['', [Validators.required]],
+    sensor_id: ['', [Validators.required]],
+    description: ['', [Validators.required]],
+  });
 
   submitForm(): void {
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+    if (this.form.valid) {
+      const payload: ICreatePondRequest = {
+        name: this.form.get('name')?.value,
+        sensor_id: this.form.get('sensor_id')?.value,
+        description: this.form.get('description')?.value
+      };
+      this.pondService.createPond(payload).subscribe((response) => {
+        if (response) {
+          this.router.navigate(['listaEstanques']);
+        }
+      });
     } else {
-      Object.values(this.validateForm.controls).forEach(control => {
+      Object.values(this.form.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
@@ -22,13 +38,11 @@ export class AgregarEstanqueComponent implements OnInit {
     }
   }
 
-  constructor(private fb: UntypedFormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private pondService: PondService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
-      password: [null, [Validators.required]],
-      remember: [true]
-    });
-  }
+  ngOnInit(): void {}
 }

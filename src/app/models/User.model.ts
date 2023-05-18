@@ -3,6 +3,10 @@ import { IUserType } from './UserType.model';
 interface IListUsersRequest {
   page: number;
   perPage: number;
+  includeDeletes?: boolean;
+  userTypeId?: number;
+  productiveUnitId?: number;
+  includeAdmins?: boolean;
 }
 interface IMetaListUsersResponse {
   current_page: number;

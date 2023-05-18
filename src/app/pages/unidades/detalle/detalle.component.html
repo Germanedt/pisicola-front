@@ -1,16 +1,24 @@
-<h1>{{productiveUnit.name}}</h1>
-<div class="action-bar">
-    <button nz-button nzType="default">Asignar usuarios</button>
-    <button nz-button nzType="default" disabled>Lista de cosechas</button>
-    <button nz-button nzType="default">Lista de estanques</button>
-    <button nz-button nzType="default">Lista de productos</button>
-
-</div>
+<h1>{{ productiveUnit.name }}</h1>
+<button nz-button nzType="default">Asignar usuarios</button>
+<button nz-button nzType="default" disabled>Lista de cosechas</button>
+<button nz-button nz-dropdown [nzDropdownMenu]="menu">
+  Estanques
+  <span nz-icon nzType="down"></span>
+</button>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item>
+      <a (click)="goToListPonds()">Lista</a>
+    </li>
+    <li nz-menu-item>
+      <a (click)="goToCreatePond()">Agregar</a>
+    </li>
+  </ul>
+</nz-dropdown-menu>
+<button nz-button nzType="default">Lista de productos</button>
 <nz-divider></nz-divider>
 <h4>Dirección de la unidad productiva</h4>
-<p>{{productiveUnit.address}}</p>
+<p>{{ productiveUnit.address }}</p>
 <h4>Descripción de la unidad productiva</h4>
-<p>{{productiveUnit.description}}</p>
-<div class="space-flag">
-    Estadisticas
-</div>
+<p>{{ productiveUnit.description }}</p>
+<div class="space-flag">Estadisticas</div>

@@ -11,6 +11,8 @@ export const environment = {
   PRODUCT_TYPE_LIST_SERVICE: 'http://3.15.1.206:8080/fishes/list',
   PRODUCT_TYPE_CREATE_MODIFY_DELETE_SERVICE: 'http://3.15.1.206:8080/fishes',
   PRODUCT_LIST_SERVICE: 'http://3.15.1.206:8080/fish_steps/list/all',
-  PRODUCT_CREATE_MODIFY_DELETE_SERVICE: 'http://3.15.1.206:8080/fish_steps'
+  PRODUCT_CREATE_MODIFY_DELETE_SERVICE: 'http://3.15.1.206:8080/fish_steps',
+  POND_LIST_SERVICE: 'http://3.15.1.206:8080/ponds/list_by_productive_unit',
+  POND_CREATE_MODIFY_DELETE_SERVICE: 'http://3.15.1.206:8080/ponds'
   
 };

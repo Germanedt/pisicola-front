@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IProductiveUnitCreateRequest } from 'src/app/models/ProductiveUnit.model';
+import { IProductiveUnit, IProductiveUnitCreateRequest } from 'src/app/models/ProductiveUnit.model';
 import { ProductiveUnitService } from 'src/app/services/productiveUnits.service';
 import { SessionDataService } from 'src/app/services/session-data.service';
 
@@ -11,6 +11,14 @@ import { SessionDataService } from 'src/app/services/session-data.service';
   styleUrls: ['./agregar.component.less'],
 })
 export class AgregarUnidadComponent implements OnInit {
+  productiveUnit: IProductiveUnit = {
+    id: 0,
+    name: '',
+    description: '',
+    address: '',
+    is_active: false,
+    deleted_at: ''
+  };
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
     address: ['', [Validators.required]],
@@ -45,7 +53,12 @@ export class AgregarUnidadComponent implements OnInit {
     private userData: SessionDataService,
     private service: ProductiveUnitService,
     private router: Router
-  ) {}
+  ) {
+    const data = this.router.getCurrentNavigation()?.extras.state;
+    if (data) {
+      this.productiveUnit = data['productiveUnit'];
+    }
+  }
 
   ngOnInit(): void {}
 }

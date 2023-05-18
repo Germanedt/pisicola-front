@@ -22,6 +22,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 //Componentes y modulos propios
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,7 +36,7 @@ import { ModificarUsuarioComponent } from './pages/usuarios/modificar/modificar.
 import { ListaUnidadesComponent } from './pages/unidades/lista/lista.component';
 import { AgregarUnidadComponent } from './pages/unidades/agregar/agregar.component';
 import { ModificarUnidadComponent } from './pages/unidades/modificar/modificar.component';
-import { ListaEstanquesComponent } from './pages/estanques/lista/lista.component';
+import { ListaEstanqueComponent } from './pages/estanques/lista/lista.component';
 import { AgregarEstanqueComponent } from './pages/estanques/agregar/agregar.component';
 import { ModificarEstanqueComponent } from './pages/estanques/modificar/modificar.component';
 import { AgregarTipoProductoComponent } from './pages/tipoProducto/agregar/agregar.component';
@@ -76,7 +77,7 @@ registerLocaleData(es);
     AgregarUnidadComponent,
     ModificarUnidadComponent,
     DetalleUnidadComponent,
-    ListaEstanquesComponent,
+    ListaEstanqueComponent,
     AgregarEstanqueComponent,
     ModificarEstanqueComponent,
     ListaTipoProductoComponent,
@@ -119,6 +120,7 @@ registerLocaleData(es);
     NzPopconfirmModule,
     NzModalModule,
     NzTabsModule,
+    NzDropDownModule,
     AppRoutingModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }, SessionDataService],

@@ -22,5 +22,17 @@ export class DetalleUnidadComponent implements OnInit {
       this.productiveUnit = data['productiveUnit'];
     }
   }
+  public goToListPonds() {
+    const state = { 
+      productiveUnit: this.productiveUnit
+     };
+    this.router.navigate(['/listaEstanques'], { state });
+  }
+  public   goToCreatePond() {
+    const state = { 
+      productiveUnit: this.productiveUnit
+     };
+    this.router.navigate(['/agregarEstanque'], { state });
+  }
   ngOnInit(): void {}
 }

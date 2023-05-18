@@ -1,40 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IListPondRequest, IListPondResponse, IPond } from 'src/app/models/Pond.model';
+import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
+import { PondService } from 'src/app/services/pond.service';
 
 @Component({
   selector: 'app-lista-estanques',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.less']
+  styleUrls: ['./lista.component.less'],
 })
-export class ListaEstanquesComponent {
-  expandSet = new Set<number>();
-  onExpandChange(id: number, checked: boolean): void {
-    if (checked) {
-      this.expandSet.add(id);
-    } else {
-      this.expandSet.delete(id);
+export class ListaEstanqueComponent implements OnInit {
+  listOfData: IPond[] = [];
+  productiveUnit: IProductiveUnit = {
+    id: 0,
+    name: '',
+    description: '',
+    address: '',
+    is_active: false,
+    deleted_at: ''
+  };
+
+  constructor(
+    public router: Router,
+    public pondService: PondService
+  ) {
+    const data = this.router.getCurrentNavigation()?.extras.state;
+    if (data) {
+      this.productiveUnit = data['productiveUnit'];
     }
   }
-  listOfData = [
-    {
-      id: 1,
-      nombre: 'Estanque 1',
-      unidad: 'Circacia',
-      descripcion: 'hay 6 lagos',
-      expand: false,
-    },
-    {
-      id: 2,
-      nombre: 'Estanque 2',
-      unidad: 'Genova',
-      descripcion: 'cultivan solo x pez',
-      expand: false,
-    },
-    {
-      id: 3,
-      nombre: 'Estanque 3',
-      unidad: 'Filandia',
-      descripcion: 'hay de todo',
-      expand: false,
-    }
-  ];
+
+  public goToEdit(pond: IPond) {
+    const state = { pond };
+    this.router.navigate(['/modificarEstanque'], { state });
+  }
+
+  public handlerConfirmDelete(id: number) {
+    this.pondService.deletePond(id).subscribe( (response) => {
+      if (response) {
+        window.location.reload;
+      }
+    })
+  }
+
+  ngOnInit(): void {
+    const params: IListPondRequest = {
+      page: 1,
+      perPage: 10,
+    };
+    this.pondService
+      .listPonds(params, this.productiveUnit.id)
+      .subscribe((response: IListPondResponse) => {
+        this.listOfData = response.data;
+      });
+  }
 }

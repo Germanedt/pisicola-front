@@ -13,8 +13,7 @@ export class ListaUsuariosComponent implements OnInit{
   listOfData: IUser[] = [];
   constructor(
     public dataService: SessionDataService,
-    private usersService: UsersService,
-    private router: Router
+    private usersService: UsersService
   ){
   }
   public handlerConfirmDelete(userId: number){

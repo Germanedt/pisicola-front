@@ -1,31 +1,54 @@
-<h1>Modificar estanque</h1>
-<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-  <nz-form-item style="gap: 1rem;">
-    <nz-form-control nzErrorTip="Por favor ingrese el nombre o identificación del estanque">
+<h1>Modificar Tipo producto</h1>
+<form
+  nz-form
+  [formGroup]="form"
+  class="product-type-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control nzErrorTip="Por favor ingrese el nombre del estanque">
       <nz-input-group>
-        <input type="text" nz-input formControlName="nombre" placeholder="Nombre o identificación del estanque" />
+        <input
+          type="text"
+          nz-input
+          formControlName="name"
+          placeholder="Nombre del estanque"
+        />
       </nz-input-group>
     </nz-form-control>
-    <nz-form-control nzErrorTip="Por seleccione la unidad productiva a la que pertenece">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese el id del sensor del estanque"
+    >
       <nz-input-group>
-        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Unidad productiva" formControlName="unidad">
-          <nz-option nzLabel="Filandia" nzValue="1"></nz-option>
-          <nz-option nzLabel="Circacia" nzValue="2"></nz-option>
-          <nz-option nzLabel="Genova" nzValue="3"></nz-option>
-        </nz-select>
+        <input
+          type="text"
+          nz-input
+          formControlName="sensor_id"
+          placeholder="Id del sensor"
+        />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item style="gap: 1rem;">
-    <nz-form-control nzErrorTip="Por favor ingrese la descripción de la unidad productiva">
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control nzErrorTip="Por favor ingrese la descripción del estanque">
       <nz-input-group>
-        <textarea nz-input formControlName="descripcion" rows="8"
-          placeholder="Descripción de la unidad productiva"></textarea>
+        <textarea
+          nz-input
+          formControlName="description"
+          rows="8"
+          placeholder="Descripción del estanque"
+        ></textarea>
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
-  <button nz-button nzType="primary" nzSize="large" nzShape="round" style="float: right">
-    Guardar Cambios
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzShape="round"
+    style="float: right"
+  >
+    Guardar
     <span nz-icon nzType="save"></span>
   </button>
 </form>
