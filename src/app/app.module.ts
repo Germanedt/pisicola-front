@@ -58,6 +58,7 @@ import { SessionDataService } from './services/session-data.service';
 import { ModificarProductoComponent } from './pages/producto/modificar/modificar.component';
 import { AgregarProductoComponent } from './pages/producto/agregar/agregar.component';
 import { ListaProductoComponent } from './pages/producto/lista/lista.component';
+import { DetalleUnidadComponent } from './pages/unidades/detalle/detalle.component';
 
 registerLocaleData(es);
 
@@ -74,6 +75,7 @@ registerLocaleData(es);
     ListaUnidadesComponent,
     AgregarUnidadComponent,
     ModificarUnidadComponent,
+    DetalleUnidadComponent,
     ListaEstanquesComponent,
     AgregarEstanqueComponent,
     ModificarEstanqueComponent,

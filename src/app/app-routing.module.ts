@@ -32,6 +32,7 @@ import { HistorialCosechaComponent } from './pages/cosechas/historial/historial.
 import { ListaProductoComponent } from './pages/producto/lista/lista.component';
 import { AgregarProductoComponent } from './pages/producto/agregar/agregar.component';
 import { ModificarProductoComponent } from './pages/producto/modificar/modificar.component';
+import { DetalleUnidadComponent } from './pages/unidades/detalle/detalle.component';
 
 const routes: Routes = [
   {
@@ -77,8 +78,12 @@ const routes: Routes = [
         component: AgregarUnidadComponent
       },
       {
-        path: 'modificarUnidad/:id',
+        path: 'modificarUnidad',
         component: ModificarUnidadComponent
+      },
+      {
+        path: 'detalleUnidad',
+        component: DetalleUnidadComponent
       },
       {
         path: 'listaEstanques',

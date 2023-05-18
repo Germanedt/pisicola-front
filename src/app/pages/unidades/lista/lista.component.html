@@ -17,7 +17,10 @@
         <td>{{ data.address }}</td>
         <td>{{ data.description }}</td>
         <td class="actions-container">
-          <a nz-button nzType="primary" nzSize="default" class="edit-action" [routerLink]="['/modificarUnidad',data.id]">
+          <a nz-button nzType="primary" nzSize="default" class="show-action" (click)="goToShow(data)">
+            <span nz-icon nzType="eye"></span>
+          </a>
+          <a nz-button nzType="primary" nzSize="default" class="edit-action" (click)="goToEdit(data)">
             <span nz-icon nzType="edit"></span>
           </a>
           <!--

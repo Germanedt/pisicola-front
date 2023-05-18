@@ -24,6 +24,14 @@ export class ListaUnidadesComponent implements OnInit{
       }
     });
   }
+  public goToShow(productiveUnit: IProductiveUnit) {
+    const state = { productiveUnit };
+    this.router.navigate(['/detalleUnidad'], { state });
+  }
+  public goToEdit(productiveUnit: IProductiveUnit) {
+    const state = { productiveUnit };
+    this.router.navigate(['/modificarUnidad'], { state });
+  }
   ngOnInit(): void {
     const params: IListProductiveUnitRequest = {
       page: 1,

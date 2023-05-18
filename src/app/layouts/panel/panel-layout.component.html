@@ -2,13 +2,13 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-menu-item>
+      <!-- <li nz-menu-item>
         <a routerLink="/dashboard">
           <span nz-icon nzType="dashboard"></span>
           <span>Inicio</span>
         </a>
       </li>
-      <!-- <li nz-submenu nzTitle="Usuarios" nzIcon="user">
+      <li nz-submenu nzTitle="Usuarios" nzIcon="user">
         <ul>
           <li nz-menu-item>
             <a routerLink="/listaUsuarios">
@@ -17,20 +17,6 @@
           </li>
           <li nz-menu-item>
             <a routerLink="/agregarUsuario">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzTitle="Unidades productivas" nzIcon="user">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaUnidades">
-              Lista de unidades
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarUnidad">
               Agregar
             </a>
           </li>
@@ -50,6 +36,20 @@
           </li>
         </ul>
       </li>-->
+      <li nz-submenu nzTitle="Unidades productivas" nzIcon="user">
+        <ul>
+          <li nz-menu-item>
+            <a routerLink="/listaUnidades">
+              Lista de unidades
+            </a>
+          </li>
+          <li nz-menu-item>
+            <a routerLink="/agregarUnidad">
+              Agregar
+            </a>
+          </li>
+        </ul>
+      </li>
       <li nz-submenu nzTitle="Tipos de producto" nzIcon="unordered-list">
         <ul>
           <li nz-menu-item>
