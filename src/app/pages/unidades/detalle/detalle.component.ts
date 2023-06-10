@@ -14,7 +14,7 @@ export class DetalleUnidadComponent implements OnInit {
     description: '',
     address: '',
     is_active: false,
-    deleted_at: ''
+    deleted_at: '',
   };
   constructor(public router: Router) {
     const data = this.router.getCurrentNavigation()?.extras.state;
@@ -22,17 +22,27 @@ export class DetalleUnidadComponent implements OnInit {
       this.productiveUnit = data['productiveUnit'];
     }
   }
+  public goToDashboard() {
+    this.router.navigate(['/dashboard'], { state: this.getState() });
+  }
   public goToListPonds() {
-    const state = { 
-      productiveUnit: this.productiveUnit
-     };
-    this.router.navigate(['/listaEstanques'], { state });
+    this.router.navigate(['/listaEstanques'], { state: this.getState() });
   }
-  public   goToCreatePond() {
-    const state = { 
-      productiveUnit: this.productiveUnit
-     };
-    this.router.navigate(['/agregarEstanque'], { state });
+  public goToCreatePond() {
+    this.router.navigate(['/agregarEstanque'], { state: this.getState() });
   }
+  public goToListProducts() {
+    this.router.navigate(['/listaProductos'], { state: this.getState() });
+  }
+  public goToCreateProduct() {
+    this.router.navigate(['/agregarProducto'], { state: this.getState() });
+  }
+
+  private getState() {
+    return {
+      productiveUnit: this.productiveUnit,
+    };
+  }
+
   ngOnInit(): void {}
 }

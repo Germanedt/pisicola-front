@@ -1,11 +1,6 @@
 <h1>Agregar usuario</h1>
-<form
-  nz-form
-  [formGroup]="form"
-  class="login-form"
-  (ngSubmit)="submitForm()"
->
-  <nz-form-item style="gap: 1rem;">
+<form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()">
+  <nz-form-item style="gap: 1rem">
     <nz-form-control nzErrorTip="Por favor ingrese el nombre del usuario">
       <nz-input-group>
         <input
@@ -34,14 +29,16 @@
           nzPlaceHolder="Rol del usuario"
           formControlName="userTypeId"
         >
-          <nz-option nzLabel="Administrador" nzValue=1></nz-option>
-          <nz-option nzLabel="Productor" nzValue=2></nz-option>
-          <nz-option nzLabel="Por defecto" nzValue=3></nz-option>
+          <nz-option
+            *ngFor="let item of userTypes"
+            [nzLabel]="item.key"
+            [nzValue]="item.id"
+          ></nz-option>
         </nz-select>
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item style="gap: 1rem;">
+  <nz-form-item style="gap: 1rem">
     <nz-form-control nzErrorTip="Por favor ingrese la contraseña del usuario">
       <nz-input-group>
         <input
@@ -63,7 +60,13 @@
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
-  <button nz-button nzType="primary" nzSize="large" nzShape="round" style="float: right;">
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzShape="round"
+    style="float: right"
+  >
     Agregar
     <span nz-icon nzType="save"></span>
   </button>

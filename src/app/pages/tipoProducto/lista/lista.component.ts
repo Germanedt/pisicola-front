@@ -26,14 +26,13 @@ export class ListaTipoProductoComponent implements OnInit {
   }
 
   public handlerConfirmDelete(id: number) {
-    this.productTypeService.deleteProductType(id).subscribe( (response) => {
+    this.productTypeService.deleteProductType(id).subscribe((response) => {
       if (response) {
-        window.location.reload;
+        this.loadData();
       }
-    })
+    });
   }
-
-  ngOnInit(): void {
+  public loadData() {
     const params: IListProductTypeRequest = {
       page: 1,
       perPage: 10,
@@ -43,5 +42,8 @@ export class ListaTipoProductoComponent implements OnInit {
       .subscribe((response: IListProductTypeResponse) => {
         this.listOfData = response.data;
       });
+  }
+  ngOnInit(): void {
+    this.loadData();
   }
 }

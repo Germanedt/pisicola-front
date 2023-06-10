@@ -7,6 +7,7 @@ import {
   IListProductiveUnitResponse,
   IProductiveUnit,
   IProductiveUnitCreateRequest,
+  IProductiveUnitModifyRequest,
 } from '../models/ProductiveUnit.model';
 @Injectable({
   providedIn: 'root',
@@ -28,22 +29,23 @@ export class ProductiveUnitService {
   }
 
   public createProductiveUnit(payload: IProductiveUnitCreateRequest) {
-    return this.http.post(environment.PRODUCTIVE_UNIT_CREATE_SERVICE, payload, {
+    return this.http.post(environment.PRODUCTIVE_UNIT_CREATE_MODIFY_DELETE_SERVICE, payload, {
       headers: this.getHeaders(),
     });
   }
 
-  public getProductiveUnitById(payload: number) {
-    return this.http.get<IProductiveUnit>('', {
-      headers: this.getHeaders(),
-      params: {
-        idProductiveUnit: payload,
-      },
-    });
+  public modifyProductiveUnit(payload: IProductiveUnitModifyRequest) {
+    return this.http.put(
+      environment.PRODUCTIVE_UNIT_CREATE_MODIFY_DELETE_SERVICE,
+      payload,
+      {
+        headers: this.getHeaders(),
+      }
+    );
   }
 
   public deleteProductiveUnit(payload: number) {
-    return this.http.delete(environment.PRODUCTIVE_UNIT_DELETE_SERVICE+'/'+payload)
+    return this.http.delete(environment.PRODUCTIVE_UNIT_CREATE_MODIFY_DELETE_SERVICE+'/'+payload)
   }
 
   private getHeaders() {

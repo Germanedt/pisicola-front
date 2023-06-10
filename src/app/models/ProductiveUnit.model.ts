@@ -22,7 +22,12 @@ interface IProductiveUnitCreateRequest {
   description: string;
   address: string;
 }
-
+interface IProductiveUnitModifyRequest {
+  id: number;
+  name: string;
+  description: string;
+  address: string;
+}
 interface IProductiveUnit {
   id: number;
   name: string;
@@ -38,5 +43,6 @@ export {
   IListProductiveUnitRequest,
   IListProductiveUnitResponse,
   IProductiveUnitCreateRequest,
+  IProductiveUnitModifyRequest,
   IProductiveUnit,
 };

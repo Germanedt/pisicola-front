@@ -17,9 +17,9 @@ export class ProductService {
     private sessionData: SessionDataService
   ) {}
 
-  public listProduct(params: IListProductRequest) {
+  public listAllProduct(params: IListProductRequest) {
     return this.http.get<IListProductResponse>(
-      environment.PRODUCT_LIST_SERVICE,
+      environment.PRODUCT_LIST_ALL_SERVICE,
       {
         headers: this.getHeaders(),
         params: {
@@ -29,7 +29,21 @@ export class ProductService {
       }
     );
   }
-
+  public listByProductiveUnitProduct(
+    params: IListProductRequest,
+    productiveUnitId: number
+  ) {
+    return this.http.get<IListProductResponse>(
+      environment.PRODUCT_LIST_BY_UNIT_SERVICE + '/' + productiveUnitId,
+      {
+        headers: this.getHeaders(),
+        params: {
+          page: params.page,
+          perPage: params.perPage,
+        },
+      }
+    );
+  }
   public createProduct(payload: ICreateProductRequest) {
     return this.http.post(
       environment.PRODUCT_CREATE_MODIFY_DELETE_SERVICE,

@@ -8,6 +8,7 @@ import {
   IUser,
   IUsersCreateRequest,
 } from '../models/User.model';
+import { IUserType } from '../models/UserType.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,7 +19,7 @@ export class UsersService {
   ) {}
 
   public listUsers(params: IListUsersRequest) {
-    return this.http.get<IListUsersResponse>(environment.USERS_LIST_SERVICE, {
+    return this.http.get<IListUsersResponse>(environment.USER_LIST_SERVICE, {
       headers: this.getHeaders(),
       params: {
         page: params.page,
@@ -28,24 +29,35 @@ export class UsersService {
   }
 
   public createUser(payload: IUsersCreateRequest) {
-    return this.http.post(environment.USERS_CREATE_SERVICE, payload, {
-      headers: this.getHeaders(),
-    });
+    return this.http.post(
+      environment.USER_CREATE_MODIFY_DELETE_SERVICE,
+      payload,
+      {
+        headers: this.getHeaders(),
+      }
+    );
   }
-
-  public getUserById(payload: number) {
-    return this.http.get<IUser>('', {
-      headers: this.getHeaders(),
-      params: {
-        idUser: payload,
-      },
-    });
+  public modifyUser(payload: IUsersCreateRequest) {
+    return this.http.put(
+      environment.USER_CREATE_MODIFY_DELETE_SERVICE,
+      payload,
+      {
+        headers: this.getHeaders(),
+      }
+    );
   }
 
   public deleteUser(payload: number) {
-    return this.http.delete(environment.USERS_DELETE_SERVICE+'/'+payload)
+    return this.http.delete(
+      environment.USER_CREATE_MODIFY_DELETE_SERVICE + '/' + payload
+    );
   }
 
+  public getUserTypes() {
+    return this.http.get<IUserType[]>(environment.USER_TYPE_LIST_SERVICE, {
+      headers: this.getHeaders(),
+    });
+  }
   private getHeaders() {
     return new HttpHeaders({
       Accept: 'application/json',

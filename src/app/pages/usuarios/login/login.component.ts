@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       };
       this.authService.login(payload).subscribe((response: ILoginResponse) => {
         this.dataService.setLoginData(response);
-        if (this.dataService.getUserData().user_type.key.toLowerCase() === 'admin') {
+        if (this.dataService.getUserData().user_type?.key.toLowerCase() === 'admin') {
           this.router.navigate(['/listaUnidades']);
         }else {
           this.router.navigate(['/dashboard']);

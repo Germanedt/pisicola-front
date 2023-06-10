@@ -1,11 +1,11 @@
 <h1>{{ productiveUnit.name }}</h1>
 <button nz-button nzType="default">Asignar usuarios</button>
-<button nz-button nzType="default" disabled>Lista de cosechas</button>
-<button nz-button nz-dropdown [nzDropdownMenu]="menu">
+<button nz-button nzType="default" (click)="goToDashboard()">Cosechas</button>
+<button nz-button nz-dropdown [nzDropdownMenu]="estanques">
   Estanques
   <span nz-icon nzType="down"></span>
 </button>
-<nz-dropdown-menu #menu="nzDropdownMenu">
+<nz-dropdown-menu #estanques="nzDropdownMenu">
   <ul nz-menu>
     <li nz-menu-item>
       <a (click)="goToListPonds()">Lista</a>
@@ -15,7 +15,20 @@
     </li>
   </ul>
 </nz-dropdown-menu>
-<button nz-button nzType="default">Lista de productos</button>
+<button nz-button nz-dropdown [nzDropdownMenu]="productos">
+  Productos
+  <span nz-icon nzType="down"></span>
+</button>
+<nz-dropdown-menu #productos="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item>
+      <a (click)="goToListProducts()">Lista</a>
+    </li>
+    <li nz-menu-item>
+      <a (click)="goToCreateProduct()">Agregar</a>
+    </li>
+  </ul>
+</nz-dropdown-menu>
 <nz-divider></nz-divider>
 <h4>Dirección de la unidad productiva</h4>
 <p>{{ productiveUnit.address }}</p>

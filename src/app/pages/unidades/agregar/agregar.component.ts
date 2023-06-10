@@ -11,14 +11,6 @@ import { SessionDataService } from 'src/app/services/session-data.service';
   styleUrls: ['./agregar.component.less'],
 })
 export class AgregarUnidadComponent implements OnInit {
-  productiveUnit: IProductiveUnit = {
-    id: 0,
-    name: '',
-    description: '',
-    address: '',
-    is_active: false,
-    deleted_at: ''
-  };
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
     address: ['', [Validators.required]],
@@ -54,10 +46,6 @@ export class AgregarUnidadComponent implements OnInit {
     private service: ProductiveUnitService,
     private router: Router
   ) {
-    const data = this.router.getCurrentNavigation()?.extras.state;
-    if (data) {
-      this.productiveUnit = data['productiveUnit'];
-    }
   }
 
   ngOnInit(): void {}

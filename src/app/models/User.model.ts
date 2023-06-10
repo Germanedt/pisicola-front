@@ -28,6 +28,15 @@ interface IUsersCreateRequest {
   password_confirmation: string;
   
 }
+interface IUserModifyRequest {
+  id: number;
+  full_name: string;
+  email: string;
+  user_type_id: number;
+  password: string;
+  password_confirmation: string;
+  
+}
 interface IUser {
   id: number;
   user_type_id: number;
@@ -37,12 +46,13 @@ interface IUser {
   deleted_at: string;
   created_at?: string;
   updated_at?: string;
-  user_type: IUserType;
+  user_type?: IUserType;
 }
 
 export {
   IListUsersRequest,
   IListUsersResponse,
   IUsersCreateRequest,
+  IUserModifyRequest,
   IUser,
 };

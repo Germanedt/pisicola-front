@@ -13,17 +13,22 @@ export class ListaUsuariosComponent implements OnInit{
   listOfData: IUser[] = [];
   constructor(
     public dataService: SessionDataService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private router: Router
   ){
   }
   public handlerConfirmDelete(userId: number){
     this.usersService.deleteUser(userId).subscribe((response: any) =>{
       if (response) {
-        window.location.reload;
+        this.loadData();
       }
     });
   }
-  ngOnInit(): void {
+  public goToEdit(user: IUser) {
+    const state = {user};
+    this.router.navigate(['/modificarUsuario'], { state })
+  }
+  public loadData() {
     const params: IListUsersRequest = {
       page: 1,
       perPage: 10
@@ -31,6 +36,8 @@ export class ListaUsuariosComponent implements OnInit{
     this.usersService.listUsers(params).subscribe((response: IListUsersResponse) =>{
       this.listOfData = response.data;
     });
-    
+  }
+  ngOnInit(): void {
+    this.loadData();
   }
 }

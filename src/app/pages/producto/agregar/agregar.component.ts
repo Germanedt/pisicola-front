@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { ICreateProductRequest } from 'src/app/models/Product.model';
-import {
-  IProductType,
-} from 'src/app/models/ProductType.model';
+import { IProductType } from 'src/app/models/ProductType.model';
 import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductTypeService } from 'src/app/services/productType.service';
@@ -25,7 +23,15 @@ export class AgregarProductoComponent implements OnInit {
     productive_unit_id: [0, [Validators.required]],
     description: ['', [Validators.required]],
   });
-
+  productiveUnit: IProductiveUnit = {
+    id: 0,
+    name: '',
+    description: '',
+    address: '',
+    is_active: false,
+    deleted_at: '',
+  };
+  isAdmin: boolean = true;
   submitForm(): void {
     if (this.form.valid) {
       const payload: ICreateProductRequest = {
@@ -55,7 +61,19 @@ export class AgregarProductoComponent implements OnInit {
     private productTypeService: ProductTypeService,
     private productiveUnitService: ProductiveUnitService,
     private router: Router
-  ) {}
+  ) {
+    const data = this.router.getCurrentNavigation()?.extras.state;
+    if (data) {
+      this.productiveUnit = data['productiveUnit'];
+      this.isAdmin = false;
+      this.form.setValue({
+        name: '',
+        fish_id: 0,
+        productive_unit_id: this.productiveUnit.id,
+        description: '',
+      });
+    }
+  }
 
   private loadDataSelect() {
     forkJoin({

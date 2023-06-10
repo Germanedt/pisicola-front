@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUsersCreateRequest } from 'src/app/models/User.model';
+import { IUserType } from 'src/app/models/UserType.model';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -23,6 +24,7 @@ export class AgregarUsuarioComponent implements OnInit {
     password: ['', [Validators.required]],
     passwordConfirmation: ['', [Validators.required]],
   });
+  userTypes: IUserType[] = [];
 
   submitForm(): void {
     if (this.form.valid) {
@@ -54,5 +56,9 @@ export class AgregarUsuarioComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.usersService.getUserTypes().subscribe((res) => {
+      this.userTypes = res;
+    })
+  }
 }

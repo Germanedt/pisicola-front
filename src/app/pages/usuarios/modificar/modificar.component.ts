@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  FormBuilder,
   FormGroup,
-  UntypedFormBuilder,
-  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { IUser } from 'src/app/models/User.model';
+import { Router } from '@angular/router';
+import { IUser, IUserModifyRequest } from 'src/app/models/User.model';
+import { IUserType } from 'src/app/models/UserType.model';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -15,6 +15,14 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./modificar.component.less'],
 })
 export class ModificarUsuarioComponent implements OnInit {
+  user: IUser = {
+    id: 0,
+    user_type_id: 0,
+    email: '',
+    full_name: '',
+    is_active: false,
+    deleted_at: ''
+  }
   form: FormGroup = this.fb.group({
     fullName: ['', [Validators.required]],
     email: [
@@ -24,12 +32,25 @@ export class ModificarUsuarioComponent implements OnInit {
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ],
     ],
-    userTypeId: ['', [Validators.required]]
+    userTypeId: [0, [Validators.required]],
   });
-  idUser = 0;
-  submitForm(): void {
+  userTypes: IUserType[] = [];
+
+  public submitForm(): void {
     if (this.form.valid) {
-      console.log('submit', this.form.value);
+      const payload: IUserModifyRequest = {
+        id: this.user.id,
+        full_name: this.form.get('fullName')?.value,
+        email: this.form.get('email')?.value,
+        user_type_id: this.form.get('userTypeId')?.value,
+        password: '',
+        password_confirmation: ''
+      };
+      this.usersService.modifyUser(payload).subscribe((response) => {
+        if (response) {
+          this.router.navigate(['listaUsuarios']);
+        }
+      });
     } else {
       Object.values(this.form.controls).forEach((control) => {
         if (control.invalid) {
@@ -41,19 +62,27 @@ export class ModificarUsuarioComponent implements OnInit {
   }
 
   constructor(
-    private fb: UntypedFormBuilder,
-    private activeted: ActivatedRoute,
+    private fb: FormBuilder,
+    private router: Router,
     private usersService: UsersService
-  ) {}
+  ) {
+    const data = this.router.getCurrentNavigation()?.extras.state;
+    if (data) {
+      this.user = data['user'];
+      this.form.setValue(
+        {
+          fullName: this.user.full_name,
+          email: this.user.email,
+          userTypeId: this.user.user_type_id
+        }
+      )
+      
+    }    
+  }
 
   ngOnInit(): void {
-    this.idUser = parseInt(this.activeted.snapshot.paramMap.get('id')!);
-    //this.usersService.getUserById(this.idUser).subscribe((response: IUser) => {
-      this.form.patchValue({
-        fullName: 'German Donoso',//response.full_name,
-        email: 'german@pond.com', //response.email,
-        userTypeId: 1 //response.user_type_id,
-      })
-    //})
+    this.usersService.getUserTypes().subscribe((res) => {
+      this.userTypes = res;
+    })
   }
 }

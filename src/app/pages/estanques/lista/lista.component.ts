@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IListPondRequest, IListPondResponse, IPond } from 'src/app/models/Pond.model';
+import {
+  IListPondRequest,
+  IListPondResponse,
+  IPond,
+} from 'src/app/models/Pond.model';
 import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
 import { PondService } from 'src/app/services/pond.service';
 
@@ -17,13 +21,10 @@ export class ListaEstanqueComponent implements OnInit {
     description: '',
     address: '',
     is_active: false,
-    deleted_at: ''
+    deleted_at: '',
   };
 
-  constructor(
-    public router: Router,
-    public pondService: PondService
-  ) {
+  constructor(public router: Router, public pondService: PondService) {
     const data = this.router.getCurrentNavigation()?.extras.state;
     if (data) {
       this.productiveUnit = data['productiveUnit'];
@@ -31,19 +32,19 @@ export class ListaEstanqueComponent implements OnInit {
   }
 
   public goToEdit(pond: IPond) {
-    const state = { pond };
+    const state = { pond: pond, productiveUnit: this.productiveUnit };
     this.router.navigate(['/modificarEstanque'], { state });
   }
 
   public handlerConfirmDelete(id: number) {
-    this.pondService.deletePond(id).subscribe( (response) => {
+    this.pondService.deletePond(id).subscribe((response) => {
       if (response) {
-        window.location.reload;
+        this.loadData();
       }
-    })
+    });
   }
 
-  ngOnInit(): void {
+  public loadData() {
     const params: IListPondRequest = {
       page: 1,
       perPage: 10,
@@ -53,5 +54,8 @@ export class ListaEstanqueComponent implements OnInit {
       .subscribe((response: IListPondResponse) => {
         this.listOfData = response.data;
       });
+  }
+  ngOnInit(): void {
+    this.loadData();
   }
 }

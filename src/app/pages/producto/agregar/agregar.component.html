@@ -29,7 +29,10 @@
         </nz-select>
       </nz-input-group>
     </nz-form-control>
-    <nz-form-control nzErrorTip="Por seleccione una unidad productiva">
+    <nz-form-control
+      nzErrorTip="Por seleccione una unidad productiva"
+      *ngIf="isAdmin"
+    >
       <nz-input-group>
         <nz-select
           nzShowSearch

@@ -10,7 +10,7 @@
       <th>id</th>
       <th>Nombre</th>
       <th>Producto</th>
-      <th>Unidad productiva</th>
+      <th *ngIf="isAdmin">Unidad productiva</th>
       <th>Descripción</th>
       <th></th>
     </tr>
@@ -21,7 +21,7 @@
         <td>{{ data.id }}</td>
         <td>{{ data.name }}</td>
         <td>{{ data.fish?.name }}</td>
-        <td>{{ data.productive_unit?.name }}</td>
+        <td *ngIf="isAdmin">{{ data.productive_unit?.name }}</td>
         <td>{{ data.description }}</td>
         <td class="actions-container">
           <a

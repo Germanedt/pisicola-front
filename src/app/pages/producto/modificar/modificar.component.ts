@@ -27,6 +27,7 @@ export class ModificarProductoComponent implements OnInit {
     fish_id: 0,
     productive_unit_id: 0
   };
+  isAdmin: boolean = true;
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
     fish_id: [0, [Validators.required]],
@@ -68,6 +69,7 @@ export class ModificarProductoComponent implements OnInit {
     const data = this.router.getCurrentNavigation()?.extras.state;
     if (data) {
       this.product = data['product'];
+      this.isAdmin = data['isAdmin'];
       this.form.setValue(
         {
           name: this.product.name,

@@ -15,6 +15,7 @@ interface IMetaListPondResponse {
   total: number;
 }
 interface ICreatePondRequest {
+  productive_unit_id: number;
   name: string;
   description: string;
   sensor_id: string;
@@ -27,12 +28,14 @@ interface IModifyPondRequest {
 }
 interface IPond {
   id: number;
+  productive_unit_id: number,
   name: string;
   description: string;
   sensor_id: string;
   created_at: string;
   deleted_at: string;
   updated_at: string;
+            
 }
 export {
   IListPondRequest,

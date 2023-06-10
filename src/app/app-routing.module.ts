@@ -66,7 +66,7 @@ const routes: Routes = [
         component: AgregarUsuarioComponent
       },
       {
-        path: 'modificarUsuario/:id',
+        path: 'modificarUsuario',
         component: ModificarUsuarioComponent
       },
       {
