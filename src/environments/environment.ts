@@ -14,6 +14,8 @@ export const environment = {
   PRODUCT_LIST_ALL_SERVICE: 'http://18.223.195.235:8080/fish_steps/list/all',
   PRODUCT_LIST_BY_UNIT_SERVICE: 'http://18.223.195.235:8080/fish_steps/list_by_productive_unit',
   PRODUCT_CREATE_MODIFY_DELETE_SERVICE: 'http://18.223.195.235:8080/fish_steps',
+  STAT_CREATE_MODIFY_DELETE_SERVICE: 'http://18.223.195.235:8080/fish_steps/stats',
+  STAT_LIST_BY_PRODUCT_SERVICE: 'http://18.223.195.235:8080/fish_steps/stats/list_by_fish_step',
   //Pendientes
   USER_GET_POFILE_SERVICE: 'http://18.223.195.235:8080/users/profile',
   

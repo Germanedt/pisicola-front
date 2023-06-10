@@ -1,0 +1,102 @@
+<h1>Agregar Parametro</h1>
+<form
+  nz-form
+  [formGroup]="form"
+  class="product-type-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor seleccione un producto"
+    >
+      <nz-input-group>
+        <nz-select
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Producto"
+          formControlName="fish_step_id"
+        >
+          <nz-option
+            *ngFor="let item of products"
+            [nzLabel]="item.name"
+            [nzValue]="item.id"
+          ></nz-option>
+        </nz-select>
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control
+      nzErrorTip="Por favor ingrese la calve del parametro"
+    >
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="key"
+          placeholder="Clave del parametro"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese el nombre del parametro"
+    >
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="name"
+          placeholder="Nombre del parametro"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control
+      nzErrorTip="Por favor el valor minimo del parametro"
+    >
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="value_minimum"
+          placeholder="Valor minimo del parametro"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control
+      nzErrorTip="Por favor el valor maximo del parametro"
+    >
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="value_maximum"
+          placeholder="Valor maximo del parametro"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese la descripción del tipo de producto"
+    >
+      <nz-input-group>
+        <textarea
+          nz-input
+          formControlName="description"
+          rows="8"
+          placeholder="Descripción del tipo de producto"
+        ></textarea>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzShape="round"
+    style="float: right"
+  >
+    Agregar
+    <span nz-icon nzType="save"></span>
+  </button>
+</form>

@@ -1,4 +1,4 @@
-<h1>Lista de productos</h1>
+<h1>Listado parametros de {{product.name}}</h1>
 <nz-table
   #nzTable
   [nzData]="listOfData"
@@ -9,8 +9,9 @@
     <tr>
       <th>id</th>
       <th>Nombre</th>
-      <th>Producto</th>
-      <th *ngIf="isAdmin">Unidad productiva</th>
+      <th>Clave</th>
+      <th>Valor minimo</th>
+      <th>Valor maximo</th>
       <th>Descripción</th>
       <th></th>
     </tr>
@@ -20,8 +21,9 @@
       <tr>
         <td>{{ data.id }}</td>
         <td>{{ data.name }}</td>
-        <td>{{ data.fish?.name }}</td>
-        <td *ngIf="isAdmin">{{ data.productive_unit?.name }}</td>
+        <td>{{ data.key }}</td>
+        <td>{{ data.value_minimum }}</td>
+        <td>{{ data.value_maximum }}</td>
         <td>{{ data.description }}</td>
         <td class="actions-container">
           <a
@@ -33,16 +35,6 @@
           >
             <span nz-icon nzType="edit"></span>
           </a>
-          <a
-            *ngIf="!isAdmin"
-            nz-button
-            nzType="primary"
-            nzSize="default"
-            class="show-action"
-            (click)="goToListStats(data)"
-          >
-            <span nz-icon nzType="bar-chart"></span>
-          </a>
           <!--
             (nzOnCancel)=""-->
           <a
@@ -52,7 +44,7 @@
             class="delete-action"
             nz-popconfirm
             (nzOnConfirm)="handlerConfirmDelete(data.id)"
-            nzPopconfirmTitle="¿Seguro desea eliminar el tipo de producto?"
+            nzPopconfirmTitle="¿Seguro desea eliminar el parametro?"
             nzOkText="Si, eliminar"
             nzCancelText="Cancelar"
           >

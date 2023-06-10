@@ -60,6 +60,9 @@ import { ModificarProductoComponent } from './pages/producto/modificar/modificar
 import { AgregarProductoComponent } from './pages/producto/agregar/agregar.component';
 import { ListaProductoComponent } from './pages/producto/lista/lista.component';
 import { DetalleUnidadComponent } from './pages/unidades/detalle/detalle.component';
+import { AgregarParametroComponent } from './pages/parametros/agregar/agregar.component';
+import { ListaParametrosComponent } from './pages/parametros/lista/lista.component';
+import { ModificarParametroComponent } from './pages/parametros/modificar/modificar.component';
 
 registerLocaleData(es);
 
@@ -98,6 +101,9 @@ registerLocaleData(es);
     ListaGastosComponent,
     AgregarGastoComponent,
     DetallesCosechaComponent,
+    AgregarParametroComponent,
+    ListaParametrosComponent,
+    ModificarParametroComponent,
     HistorialCosechaComponent
   ],
   imports: [

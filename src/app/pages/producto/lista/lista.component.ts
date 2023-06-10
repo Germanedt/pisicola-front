@@ -38,6 +38,10 @@ export class ListaProductoComponent implements OnInit {
     this.router.navigate(['/modificarProducto'], { state });
   }
 
+  public goToListStats (product: IProduct) {
+    const state = { product: product };
+    this.router.navigate(['/listaParametros'], { state });
+  }
   public handlerConfirmDelete(id: number) {
     this.productService.deleteProduct(id).subscribe((response) => {
       if (response) {

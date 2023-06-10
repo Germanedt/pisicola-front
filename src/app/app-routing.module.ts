@@ -33,6 +33,9 @@ import { ListaProductoComponent } from './pages/producto/lista/lista.component';
 import { AgregarProductoComponent } from './pages/producto/agregar/agregar.component';
 import { ModificarProductoComponent } from './pages/producto/modificar/modificar.component';
 import { DetalleUnidadComponent } from './pages/unidades/detalle/detalle.component';
+import { AgregarParametroComponent } from './pages/parametros/agregar/agregar.component';
+import { ListaParametrosComponent } from './pages/parametros/lista/lista.component';
+import { ModificarParametroComponent } from './pages/parametros/modificar/modificar.component';
 
 const routes: Routes = [
   {
@@ -120,6 +123,18 @@ const routes: Routes = [
       {
         path: 'modificarProducto',
         component: ModificarProductoComponent
+      },
+      {
+        path: 'agregarParametro',
+        component: AgregarParametroComponent
+      },
+      {
+        path: 'listaParametros',
+        component: ListaParametrosComponent
+      },
+      {
+        path: 'modificarParametro',
+        component: ModificarParametroComponent
       },
       {
         path: 'agregarAlimento',

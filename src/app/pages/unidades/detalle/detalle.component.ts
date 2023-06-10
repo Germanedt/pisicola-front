@@ -37,7 +37,9 @@ export class DetalleUnidadComponent implements OnInit {
   public goToCreateProduct() {
     this.router.navigate(['/agregarProducto'], { state: this.getState() });
   }
-
+  public goToCreateStats() {
+    this.router.navigate(['/agregarParametro'], { state: this.getState() });
+  }
   private getState() {
     return {
       productiveUnit: this.productiveUnit,
