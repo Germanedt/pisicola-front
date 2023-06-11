@@ -11,17 +11,19 @@ import { SessionDataService } from 'src/app/services/session-data.service';
 })
 export class PanelLayoutComponent {
   isCollapsed = false;
-
+  isAdmin = false;
   constructor(
     public dataService: SessionDataService,
     private authService: AuthenticationService,
     private router: Router
-  ) {}
+  ) {
+    this.isAdmin = dataService.getUserData().user_type?.key === 'admin';
+  }
   public goToListUsersAll() {
     const params: IListUsersRequest = {
       page: 1,
       perPage: 10,
-      includeDeletes: true,
+      includeDeletes: false,
       includeAdmins: true,
     };
     const state = { params };

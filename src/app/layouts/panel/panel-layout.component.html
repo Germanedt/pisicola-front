@@ -2,26 +2,6 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <!-- <li nz-menu-item>
-        <a routerLink="/dashboard">
-          <span nz-icon nzType="dashboard"></span>
-          <span>Inicio</span>
-        </a>
-      </li>
-      <li nz-submenu nzTitle="Estanques" nzIcon="folder">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaEstanques">
-              Lista de estanques
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarEstanque">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>-->
       <li nz-submenu nzTitle="Usuarios" nzIcon="user">
         <ul>
           <li nz-menu-item>
@@ -36,7 +16,7 @@
           </li>
         </ul>
       </li>
-      <li nz-submenu nzTitle="Unidades productivas" nzIcon="build">
+      <li nz-submenu nzTitle="Unidades productivas" nzIcon="build" *ngIf="isAdmin">
         <ul>
           <li nz-menu-item>
             <a routerLink="/listaUnidades">
@@ -50,7 +30,7 @@
           </li>
         </ul>
       </li>
-      <li nz-submenu nzTitle="Tipos de producto" nzIcon="unordered-list">
+      <li nz-submenu nzTitle="Tipos de producto" nzIcon="unordered-list" *ngIf="isAdmin">
         <ul>
           <li nz-menu-item>
             <a routerLink="/listaTipoProducto">

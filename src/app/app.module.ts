@@ -63,6 +63,7 @@ import { DetalleUnidadComponent } from './pages/unidades/detalle/detalle.compone
 import { AgregarParametroComponent } from './pages/parametros/agregar/agregar.component';
 import { ListaParametrosComponent } from './pages/parametros/lista/lista.component';
 import { ModificarParametroComponent } from './pages/parametros/modificar/modificar.component';
+import { CanActivateRole } from './guard/accessControl.guard';
 
 registerLocaleData(es);
 
@@ -104,7 +105,7 @@ registerLocaleData(es);
     AgregarParametroComponent,
     ListaParametrosComponent,
     ModificarParametroComponent,
-    HistorialCosechaComponent
+    HistorialCosechaComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -129,7 +130,11 @@ registerLocaleData(es);
     NzDropDownModule,
     AppRoutingModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: es_ES }, SessionDataService],
+  providers: [
+    CanActivateRole,
+    { provide: NZ_I18N, useValue: es_ES },
+    SessionDataService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

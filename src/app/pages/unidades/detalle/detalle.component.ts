@@ -18,6 +18,8 @@ export class DetalleUnidadComponent implements OnInit {
   };
   constructor(public router: Router) {
     const data = this.router.getCurrentNavigation()?.extras.state;
+    console.log(data);
+    
     if (data) {
       this.productiveUnit = data['productiveUnit'];
     }

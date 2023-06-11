@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup = this.fb.group({
     //Borrar
     userName: [
-      'german@pond.com',
+      'manager_two@pond.com',
       [
         Validators.required,
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
@@ -35,12 +35,21 @@ export class LoginComponent implements OnInit {
       };
       this.authService.login(payload).subscribe((response: ILoginResponse) => {
         this.dataService.setLoginData(response);
-        if (this.dataService.getUserData().user_type?.key.toLowerCase() === 'admin') {
+        this.router.navigate(['/listaUnidades']);
+        /*if (
+          this.dataService.getUserData().user_type?.key.toLowerCase() ===
+          'admin'
+        ) {
           this.router.navigate(['/listaUnidades']);
-        }else {
-          this.router.navigate(['/dashboard']);
-        }
-        
+        } else {
+          this.dataService.loadProductiveUnit().subscribe((response) => {
+            console.log(response);
+            this.dataService.setProductiveUnit(response.data[0]);
+            const productiveUnit = response.data[0];
+            const state = { productiveUnit };
+            this.router.navigate(['/detalleUnidad'], { state });
+          });
+        }*/
       });
     } else {
       Object.values(this.form.controls).forEach((control) => {

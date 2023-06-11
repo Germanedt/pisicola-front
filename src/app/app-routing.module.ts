@@ -36,6 +36,7 @@ import { DetalleUnidadComponent } from './pages/unidades/detalle/detalle.compone
 import { AgregarParametroComponent } from './pages/parametros/agregar/agregar.component';
 import { ListaParametrosComponent } from './pages/parametros/lista/lista.component';
 import { ModificarParametroComponent } from './pages/parametros/modificar/modificar.component';
+import { CanActivateRole } from './guard/accessControl.guard';
 
 const routes: Routes = [
   {
@@ -44,97 +45,117 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: LoginComponent
+        component: LoginComponent,
       },
       {
         path: 'recuperar',
-        component: RecuperarClaveComponent
-      }
-    ]
+        component: RecuperarClaveComponent,
+      },
+    ],
   },
   {
     path: '',
     component: PanelLayoutComponent,
     children: [
       {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-      {
         path: 'listaUsuarios',
-        component: ListaUsuariosComponent
+        component: ListaUsuariosComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'agregarUsuario',
-        component: AgregarUsuarioComponent
+        component: AgregarUsuarioComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'modificarUsuario',
-        component: ModificarUsuarioComponent
+        component: ModificarUsuarioComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'listaUnidades',
-        component: ListaUnidadesComponent
+        component: ListaUnidadesComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'agregarUnidad',
-        component: AgregarUnidadComponent
+        component: AgregarUnidadComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'modificarUnidad',
-        component: ModificarUnidadComponent
+        component: ModificarUnidadComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'detalleUnidad',
-        component: DetalleUnidadComponent
-      },
-      {
-        path: 'listaEstanques',
-        component: ListaEstanqueComponent
-      },
-      {
-        path: 'agregarEstanque',
-        component: AgregarEstanqueComponent
-      },
-      {
-        path: 'modificarEstanque',
-        component: ModificarEstanqueComponent
+        component: DetalleUnidadComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'listaTipoProducto',
-        component: ListaTipoProductoComponent
+        component: ListaTipoProductoComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'agregarTipoProducto',
-        component: AgregarTipoProductoComponent
+        component: AgregarTipoProductoComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'modificarTipoProducto',
-        component: ModificarTipoProductoComponent
+        component: ModificarTipoProductoComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'listaProductos',
-        component: ListaProductoComponent
+        component: ListaProductoComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'agregarProducto',
-        component: AgregarProductoComponent
+        component: AgregarProductoComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'modificarProducto',
-        component: ModificarProductoComponent
+        component: ModificarProductoComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'listaEstanques',
+        component: ListaEstanqueComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'agregarEstanque',
+        component: AgregarEstanqueComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'modificarEstanque',
+        component: ModificarEstanqueComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'agregarParametro',
-        component: AgregarParametroComponent
+        component: AgregarParametroComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'listaParametros',
-        component: ListaParametrosComponent
+        component: ListaParametrosComponent,
+        canActivate: [CanActivateRole],
       },
       {
         path: 'modificarParametro',
-        component: ModificarParametroComponent
+        component: ModificarParametroComponent,
+        canActivate: [CanActivateRole],
+      },
+      //Pendientes
+      /*{
+        path: 'dashboard',
+        component: DashboardComponent
       },
       {
         path: 'agregarAlimento',
@@ -183,14 +204,14 @@ const routes: Routes = [
       {
         path: 'historialCosecha',
         component: HistorialCosechaComponent
-      },
-    ]
+      },*/
+    ],
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
