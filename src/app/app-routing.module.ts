@@ -37,6 +37,9 @@ import { AgregarParametroComponent } from './pages/parametros/agregar/agregar.co
 import { ListaParametrosComponent } from './pages/parametros/lista/lista.component';
 import { ModificarParametroComponent } from './pages/parametros/modificar/modificar.component';
 import { CanActivateRole } from './guard/accessControl.guard';
+import { ListaCosechaComponent } from './pages/cosechas/lista/lista.component';
+import { AgregarCosechaComponent } from './pages/cosechas/agregar/agregar.component';
+import { ModificarCosechaComponent } from './pages/cosechas/modificar/modificar.component';
 
 const routes: Routes = [
   {
@@ -152,6 +155,31 @@ const routes: Routes = [
         component: ModificarParametroComponent,
         canActivate: [CanActivateRole],
       },
+      {
+        path: 'listaCosechas',
+        component: ListaCosechaComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'agregarCosecha',
+        component: AgregarCosechaComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'modificarCosecha',
+        component: ModificarCosechaComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'detallesCosecha',
+        component: DetallesCosechaComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'historialCosecha',
+        component: HistorialCosechaComponent,
+        canActivate: [CanActivateRole],
+      }
       //Pendientes
       /*{
         path: 'dashboard',
@@ -196,14 +224,6 @@ const routes: Routes = [
       {
         path: 'agregarGasto',
         component: AgregarGastoComponent
-      },
-      {
-        path: 'detallesCosecha',
-        component: DetallesCosechaComponent
-      },
-      {
-        path: 'historialCosecha',
-        component: HistorialCosechaComponent
       },*/
     ],
   },

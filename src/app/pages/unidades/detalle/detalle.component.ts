@@ -19,28 +19,13 @@ export class DetalleUnidadComponent implements OnInit {
   constructor(public router: Router) {
     const data = this.router.getCurrentNavigation()?.extras.state;
     console.log(data);
-    
+
     if (data) {
       this.productiveUnit = data['productiveUnit'];
     }
   }
-  public goToDashboard() {
-    this.router.navigate(['/dashboard'], { state: this.getState() });
-  }
-  public goToListPonds() {
-    this.router.navigate(['/listaEstanques'], { state: this.getState() });
-  }
-  public goToCreatePond() {
-    this.router.navigate(['/agregarEstanque'], { state: this.getState() });
-  }
-  public goToListProducts() {
-    this.router.navigate(['/listaProductos'], { state: this.getState() });
-  }
-  public goToCreateProduct() {
-    this.router.navigate(['/agregarProducto'], { state: this.getState() });
-  }
-  public goToCreateStats() {
-    this.router.navigate(['/agregarParametro'], { state: this.getState() });
+  public goTo(route: string) {
+    this.router.navigate([route], { state: this.getState() });
   }
   private getState() {
     return {

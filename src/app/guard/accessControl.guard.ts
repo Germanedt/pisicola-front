@@ -24,6 +24,11 @@ export class CanActivateRole implements CanActivate {
     { route: 'agregarParametro', roles: ['admin', 'unit_manager'] },
     { route: 'listaParametros', roles: ['admin', 'unit_manager'] },
     { route: 'modificarParametro', roles: ['admin', 'unit_manager'] },
+    { route: 'listaCosechas', roles: ['admin', 'unit_manager']},
+    { route: 'agregarCosecha', roles: ['admin', 'unit_manager']},
+    { route: 'detallesCosecha', roles: ['admin', 'unit_manager']},
+    { route: 'historialCosecha', roles: ['admin', 'unit_manager']},
+    { route: 'modificarCosecha', roles: ['admin', 'unit_manager']}
   ];
   constructor(
     private sessionService: SessionDataService,

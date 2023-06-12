@@ -64,6 +64,9 @@ import { AgregarParametroComponent } from './pages/parametros/agregar/agregar.co
 import { ListaParametrosComponent } from './pages/parametros/lista/lista.component';
 import { ModificarParametroComponent } from './pages/parametros/modificar/modificar.component';
 import { CanActivateRole } from './guard/accessControl.guard';
+import { ListaCosechaComponent } from './pages/cosechas/lista/lista.component';
+import { AgregarCosechaComponent } from './pages/cosechas/agregar/agregar.component';
+import { ModificarCosechaComponent } from './pages/cosechas/modificar/modificar.component';
 
 registerLocaleData(es);
 
@@ -105,6 +108,9 @@ registerLocaleData(es);
     AgregarParametroComponent,
     ListaParametrosComponent,
     ModificarParametroComponent,
+    ListaCosechaComponent,
+    AgregarCosechaComponent,
+    ModificarCosechaComponent,
     HistorialCosechaComponent,
   ],
   imports: [

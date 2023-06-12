@@ -1,0 +1,62 @@
+<h1>Modificar Cosecha</h1>
+<form
+  nz-form
+  [formGroup]="form"
+  class="product-type-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control nzErrorTip="Por favor seleccione un estanque">
+      <nz-input-group>
+        <nz-select
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Estanque"
+          formControlName="pond_id"
+        >
+          <nz-option
+            *ngFor="let item of ponds"
+            [nzLabel]="item.name"
+            [nzValue]="item.id"
+          ></nz-option>
+        </nz-select>
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control nzErrorTip="Por favor seleccione producto">
+      <nz-input-group>
+        <nz-select
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Producto"
+          formControlName="fish_step_id"
+        >
+          <nz-option
+            *ngFor="let item of products"
+            [nzLabel]="item.name"
+            [nzValue]="item.id"
+          ></nz-option>
+        </nz-select>
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control nzErrorTip="Por favor ingrese el total de peces">
+      <nz-input-group>
+        <input
+          type="number"
+          nz-input
+          formControlName="total_fish"
+          placeholder="Total de peces"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzShape="round"
+    style="float: right"
+  >
+    Guardar cambios
+    <span nz-icon nzType="save"></span>
+  </button>
+</form>

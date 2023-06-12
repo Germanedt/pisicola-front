@@ -1,0 +1,70 @@
+<h1>Lista de Cosechas</h1>
+<nz-row nzGutter="16">
+  <nz-col
+    nzXs="24"
+    nzSm="24"
+    nzMd="12"
+    nzLg="10"
+    nzXl="8"
+    class="nz-mb-2"
+    *ngFor="let item of listOfData"
+  >
+    <nz-card nzTitle="Mojarra Roja" class="card-header-light">
+      <nz-row nzJustify="space-between">
+        <nz-col>Estanque</nz-col>
+        <nz-col class="ctm-separator"></nz-col>
+        <nz-col>{{ item.pond?.name }}</nz-col>
+      </nz-row>
+      <nz-row nzJustify="space-between">
+        <nz-col>Etapa</nz-col>
+        <nz-col class="ctm-separator"></nz-col>
+        <nz-col
+          >{{ item.fish_step?.fish?.name }} - {{ item.fish_step?.name }}</nz-col
+        >
+      </nz-row>
+      <nz-row nzJustify="space-between">
+        <nz-col>Fecha</nz-col>
+        <nz-col class="ctm-separator"></nz-col>
+        <nz-col>{{ item.created_at | date }}</nz-col>
+      </nz-row>
+      <nz-row nzJustify="space-between" class="nz-mb-2">
+        <nz-col>N° de peces</nz-col>
+        <nz-col class="ctm-separator"></nz-col>
+        <nz-col>{{ item.total_fish }}</nz-col>
+      </nz-row>
+      <nz-row nzJustify="end" class="actions-container">
+        <a
+          nz-button
+          nzType="primary"
+          nzSize="default"
+          class="show-action"
+          (click)="gotTo()"
+        >
+          <span nz-icon nzType="eye"></span>
+        </a>
+        <a
+          nz-button
+          nzType="primary"
+          nzSize="default"
+          class="edit-action"
+          (click)="goToEdit(item)"
+        >
+          <span nz-icon nzType="edit"></span>
+        </a>
+        <a
+          nz-button
+          nzType="primary"
+          nzSize="default"
+          class="delete-action"
+          nz-popconfirm
+          (nzOnConfirm)="handlerConfirmDelete(item.id)"
+          nzPopconfirmTitle="¿Seguro desea eliminar el tipo de producto?"
+          nzOkText="Si, eliminar"
+          nzCancelText="Cancelar"
+        >
+          <span nz-icon nzType="delete"></span>
+        </a>
+      </nz-row>
+    </nz-card>
+  </nz-col>
+</nz-row>
