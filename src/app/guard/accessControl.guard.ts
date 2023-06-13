@@ -36,7 +36,6 @@ export class CanActivateRole implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    console.log('guardian');
     if (this.sessionService.getUserData().id === 0) {
       this.router.navigate(['/login']);
       return false;

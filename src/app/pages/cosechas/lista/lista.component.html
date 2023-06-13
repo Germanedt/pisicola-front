@@ -38,7 +38,7 @@
           nzType="primary"
           nzSize="default"
           class="show-action"
-          (click)="gotTo()"
+          (click)="gotTo(item)"
         >
           <span nz-icon nzType="eye"></span>
         </a>
@@ -58,11 +58,24 @@
           class="delete-action"
           nz-popconfirm
           (nzOnConfirm)="handlerConfirmDelete(item.id)"
-          nzPopconfirmTitle="¿Seguro desea eliminar el tipo de producto?"
+          nzPopconfirmTitle="¿Seguro desea eliminar la cosecha?"
           nzOkText="Si, eliminar"
           nzCancelText="Cancelar"
         >
           <span nz-icon nzType="delete"></span>
+        </a>
+        <a
+          nz-button
+          nzType="primary"
+          nzSize="default"
+          class="close-action"
+          nz-popconfirm
+          (nzOnConfirm)="handlerConfirmClose(item.id)"
+          nzPopconfirmTitle="¿Seguro desea cerrar la cosecha?"
+          nzOkText="Si, cerrar"
+          nzCancelText="Cancelar"
+        >
+          <span nz-icon nzType="close-circle"></span>
         </a>
       </nz-row>
     </nz-card>

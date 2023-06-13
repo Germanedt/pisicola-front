@@ -67,6 +67,7 @@ import { CanActivateRole } from './guard/accessControl.guard';
 import { ListaCosechaComponent } from './pages/cosechas/lista/lista.component';
 import { AgregarCosechaComponent } from './pages/cosechas/agregar/agregar.component';
 import { ModificarCosechaComponent } from './pages/cosechas/modificar/modificar.component';
+import { SensorChartComponent } from './components/sensorChart/sensor-chart.component';
 
 registerLocaleData(es);
 
@@ -111,6 +112,7 @@ registerLocaleData(es);
     ListaCosechaComponent,
     AgregarCosechaComponent,
     ModificarCosechaComponent,
+    SensorChartComponent,
     HistorialCosechaComponent,
   ],
   imports: [

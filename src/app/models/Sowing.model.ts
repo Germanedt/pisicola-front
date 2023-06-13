@@ -42,10 +42,28 @@ interface IModifySowingRequest {
   fish_step_id: number;
   total_fish: number;
 }
+interface ISowingStat {
+  id: number;
+  pond_id: number;
+  sowing_id: number;
+  fish_step_stat_id: number;
+  key: string;
+  value: number;
+  fish_step_stat_name: string;
+  fish_step_stat_value_minimum: number;
+  fish_step_stat_value_maximum: number;
+  topic: number;
+  topic_time: string;
+  triggered_alarm: boolean;
+  alarm_source: any;
+  created_at: string;
+  updated_at: string;
+}
 export {
   IListSowingRequest,
   IListSowingResponse,
   ICreateSowingRequest,
   IModifySowingRequest,
   ISowing,
+  ISowingStat,
 };

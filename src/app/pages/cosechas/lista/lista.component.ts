@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
-import { IListSowingRequest, IListSowingResponse, ISowing } from 'src/app/models/Sowing.model';
+import {
+  IListSowingRequest,
+  IListSowingResponse,
+  ISowing,
+} from 'src/app/models/Sowing.model';
 import { SowingService } from 'src/app/services/sowing.service';
 
 @Component({
   selector: 'app-lista-cosechas',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.less']
+  styleUrls: ['./lista.component.less'],
 })
 export class ListaCosechaComponent {
   listOfData: ISowing[] = [];
@@ -31,6 +35,7 @@ export class ListaCosechaComponent {
     const params: IListSowingRequest = {
       page: 1,
       perPage: 10,
+      includeClosed: false,
     };
     this.service
       .listSowings(params, this.productiveUnit.id)
@@ -45,15 +50,24 @@ export class ListaCosechaComponent {
       }
     });
   }
-  public gotTo() {
-    this.router.navigate(['/detallesCosecha']);
+  public gotTo(sowing: ISowing) {
+    const state = { sowing };
+    this.router.navigate(['/detallesCosecha'], { state });
   }
   public goToEdit(sowing: ISowing) {
     const state = {
       productiveUnit: this.productiveUnit,
-      sowing
-    }
+      sowing,
+    };
     this.router.navigate(['/modificarCosecha'], { state });
+  }
+  public handlerConfirmClose(sowingId: number) {
+    this.service.closeSowing(sowingId).subscribe((response) => {
+      if (response) {
+        console.log(response);
+        this.loadData();
+      }
+    });
   }
   ngOnInit(): void {
     this.loadData();

@@ -7,6 +7,7 @@ import {
   IListSowingRequest,
   IListSowingResponse,
   IModifySowingRequest,
+  ISowingStat,
 } from '../models/Sowing.model';
 @Injectable({
   providedIn: 'root',
@@ -59,6 +60,26 @@ export class SowingService {
     );
   }
 
+  public closeSowing(payload: number) {
+    return this.http.put(
+      environment.SOWING_CREATE_MODIFY_DELETE_SERVICE +
+        '/' +
+        payload +
+        '/close',
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
+
+  public loadSowingStats(payload: number) {
+    return this.http.get<ISowingStat[]>(
+      environment.SOWING_LIST_STATS_SERVICE + '/' + payload + '/current',
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
   private getHeaders() {
     return new HttpHeaders({
       Accept: 'application/json',

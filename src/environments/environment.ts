@@ -18,7 +18,7 @@ export const environment = {
   STAT_LIST_BY_PRODUCT_SERVICE: 'http://18.223.195.235:8080/fish_steps/stats/list_by_fish_step',
   SOWING_LIST_SERVICE: 'http://18.223.195.235:8080/sowings/list_by_productive_unit',
   SOWING_CREATE_MODIFY_DELETE_SERVICE: 'http://18.223.195.235:8080/sowings',
-
+  SOWING_LIST_STATS_SERVICE: 'http://18.223.195.235:8080/sowings/stats/list_by_sowing',
   //Pendientes
   USER_GET_POFILE_SERVICE: 'http://18.223.195.235:8080/users/profile',
   
