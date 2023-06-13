@@ -27,9 +27,13 @@ export class DetallesCosechaComponent implements OnInit {
       this.sowing = data['sowing'];
     }
   }
-  ngOnInit(): void {
+  public loadData(){
+    this.listOfData = [];
     this.service.loadSowingStats(this.sowing.id).subscribe((response) => {
       this.listOfData = response;
     });
+  }
+  ngOnInit(): void {
+    this.loadData();
   }
 }

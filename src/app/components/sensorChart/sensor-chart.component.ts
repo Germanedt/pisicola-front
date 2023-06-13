@@ -138,8 +138,21 @@ export class SensorChartComponent {
     return this.sowingStat.value;
   }
 
+  public getMinimun() {
+    if (this.sowingStat.fish_step_stat_value_minimum) {
+      return this.sowingStat.fish_step_stat_value_minimum
+    }else {
+      return '-'
+    }
+  }
+  public getMaximun() {
+    if (this.sowingStat.fish_step_stat_value_maximum) {
+      return this.sowingStat.fish_step_stat_value_maximum
+    }else {
+      return '-'
+    }
+  }
   ngAfterViewInit(): void {
-    console.log(this.sowingStat);
     this.generateChart('chartdiv' + this.sowingStat.id);
   }
 }

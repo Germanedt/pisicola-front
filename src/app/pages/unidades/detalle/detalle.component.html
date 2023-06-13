@@ -44,8 +44,17 @@
 </nz-dropdown-menu>
 <button nz-button nzType="default" (click)="goTo('/agregarParametro')">Agregar Parametro</button>
 <nz-divider></nz-divider>
-<h4>Dirección de la unidad productiva</h4>
-<p>{{ productiveUnit.address }}</p>
-<h4>Descripción de la unidad productiva</h4>
-<p>{{ productiveUnit.description }}</p>
-<div class="space-flag">Estadisticas</div>
+<nz-card nzTitle="Información general" class="card-header-light">
+  <nz-row>
+    <nz-col style="color: #8d375a;">Dirección de la unidad productiva:</nz-col>
+    <nz-col style="margin-left: 10px;">{{ productiveUnit.address }}</nz-col>
+  </nz-row>
+  <nz-row nzJustify="space-between">
+    <nz-col style="color: #8d375a;">Descripción de la unidad productiva:</nz-col>
+  </nz-row>
+  <nz-row nzJustify="space-between">
+    <nz-col><p>{{ productiveUnit.description }}</p></nz-col>
+  </nz-row>
+</nz-card>
+<!-- 
+<div class="space-flag">Estadisticas</div> -->

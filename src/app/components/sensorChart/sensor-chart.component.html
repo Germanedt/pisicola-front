@@ -1,5 +1,10 @@
 <div class="container-chart">
-  <img src="../../../assets/img/alarm.gif" alt="" class="has-alarm" *ngIf="sowingStat.triggered_alarm">
+  <img
+    src="../../../assets/img/alarm.gif"
+    alt=""
+    class="has-alarm"
+    *ngIf="sowingStat.triggered_alarm"
+  />
   <h2>
     {{
       sowingStat.fish_step_stat_name
@@ -14,13 +19,13 @@
   ></div>
   <div class="data-container">
     <span
-      >Min: <strong>{{ sowingStat.value }}</strong></span
+      >Min: <strong>{{ getMinimun() }}</strong></span
     >
     <span class="value"
       >Valor: <strong>{{ sowingStat.value }}</strong></span
     >
     <span
-      >Max: <strong>{{ sowingStat.value }}</strong></span
+      >Max: <strong>{{ getMaximun() }}</strong></span
     >
   </div>
 </div>

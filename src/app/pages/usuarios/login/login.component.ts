@@ -36,20 +36,6 @@ export class LoginComponent implements OnInit {
       this.authService.login(payload).subscribe((response: ILoginResponse) => {
         this.dataService.setLoginData(response);
         this.router.navigate(['/listaUnidades']);
-        /*if (
-          this.dataService.getUserData().user_type?.key.toLowerCase() ===
-          'admin'
-        ) {
-          this.router.navigate(['/listaUnidades']);
-        } else {
-          this.dataService.loadProductiveUnit().subscribe((response) => {
-            console.log(response);
-            this.dataService.setProductiveUnit(response.data[0]);
-            const productiveUnit = response.data[0];
-            const state = { productiveUnit };
-            this.router.navigate(['/detalleUnidad'], { state });
-          });
-        }*/
       });
     } else {
       Object.values(this.form.controls).forEach((control) => {
