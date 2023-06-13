@@ -1,8 +1,26 @@
 <div class="container-chart">
-  <h2>{{sowingStat.key}} - {{sowingStat.value}}</h2>
+  <img src="../../../assets/img/alarm.gif" alt="" class="has-alarm" *ngIf="sowingStat.triggered_alarm">
+  <h2>
+    {{
+      sowingStat.fish_step_stat_name
+        ? sowingStat.fish_step_stat_name
+        : sowingStat.key
+    }}
+  </h2>
   <div
     class="chartdiv"
     id="chartdiv{{ sowingStat.id }}"
     style="width: 100%"
   ></div>
+  <div class="data-container">
+    <span
+      >Min: <strong>{{ sowingStat.value }}</strong></span
+    >
+    <span class="value"
+      >Valor: <strong>{{ sowingStat.value }}</strong></span
+    >
+    <span
+      >Max: <strong>{{ sowingStat.value }}</strong></span
+    >
+  </div>
 </div>

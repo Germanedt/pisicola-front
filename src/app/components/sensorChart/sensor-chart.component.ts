@@ -38,7 +38,7 @@ export class SensorChartComponent {
         endAngle: 360,
       })
     );
-    const color = this.getIndicatorColor()
+    const color = this.getIndicatorColor();
     let axisRenderer = am5radar.AxisRendererCircular.new(root, {
       innerRadius: -10,
       strokeOpacity: 1,
@@ -58,19 +58,12 @@ export class SensorChartComponent {
     let xAxis = chart.xAxes.push(
       am5xy.ValueAxis.new(root, {
         maxDeviation: 0,
-        min: this.sowingStat.fish_step_stat_value_minimum
-          ? this.sowingStat.fish_step_stat_value_minimum
-          : 0,
-        max: this.sowingStat.fish_step_stat_value_maximum
-          ? this.sowingStat.fish_step_stat_value_maximum
-          : 100,
+        min: this.validateMin(),
+        max: this.validateMax(),
         strictMinMax: true,
         renderer: axisRenderer,
       })
     );
-
-    // Add clock hand
-    // https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Clock_hands
     let axisDataItem = xAxis.makeDataItem({});
     axisDataItem.set('value', 0);
 
@@ -128,6 +121,23 @@ export class SensorChartComponent {
 
     return 0xb7eb8f;
   }
+  public validateMin(): number {
+    if (this.sowingStat.value <= this.sowingStat.fish_step_stat_value_minimum)
+      return this.sowingStat.fish_step_stat_value_minimum - 5;
+    if (this.sowingStat.fish_step_stat_value_minimum)
+      return this.sowingStat.fish_step_stat_value_minimum;
+    if (this.sowingStat.value > 0) return 0;
+    return this.sowingStat.value;
+  }
+  public validateMax() {
+    if (this.sowingStat.value >= this.sowingStat.fish_step_stat_value_maximum)
+      return this.sowingStat.value + 5;
+    if (this.sowingStat.fish_step_stat_value_maximum)
+      return this.sowingStat.fish_step_stat_value_maximum;
+    if (this.sowingStat.value > 0) return this.sowingStat.value + 5;
+    return this.sowingStat.value;
+  }
+
   ngAfterViewInit(): void {
     console.log(this.sowingStat);
     this.generateChart('chartdiv' + this.sowingStat.id);

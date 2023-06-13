@@ -1,23 +1,38 @@
-@import '../../../theme.less';
-.chartdiv{
-    height: 200px !important;
+@import "../../../theme.less";
+.chartdiv {
+  height: 200px !important;
 }
 
 .container-chart {
-    background: @background-light;
-    border-radius: 10px;
-    padding: 15px;
+  background: @background-light;
+  border-radius: 10px;
+  padding: 15px;
 }
 
 .container-chart {
-    h2 {
-        text-align: center;
-    }
+  h2 {
+    text-align: center;
+  }
 }
 
 .container-update {
-    text-align: center;
-    p {
-        margin-bottom: 0;
-    }
+  text-align: center;
+  p {
+    margin-bottom: 0;
+  }
+}
+.data-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 32px;
+  .value {
+    font-size: 1.3rem;
+  }
+}
+.has-alarm {
+  height: 40px;
+  position: absolute;
+  top: 15px;
+  left: 20px;
 }
