@@ -27,11 +27,16 @@ export class DetallesCosechaComponent implements OnInit {
       this.sowing = data['sowing'];
     }
   }
-  public loadData(){
+  public loadData() {
     this.listOfData = [];
     this.service.loadSowingStats(this.sowing.id).subscribe((response) => {
       this.listOfData = response;
     });
+  }
+  public gotToHistory() {
+    const keys: string[] = this.listOfData.map((item) => item.key);
+    const state = { sowing: this.sowing, keys };
+    this.router.navigate(['/historialCosecha'], { state });
   }
   ngOnInit(): void {
     this.loadData();

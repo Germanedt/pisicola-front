@@ -19,6 +19,8 @@ export const environment = {
   SOWING_LIST_SERVICE: 'http://18.223.195.235:8080/sowings/list_by_productive_unit',
   SOWING_CREATE_MODIFY_DELETE_SERVICE: 'http://18.223.195.235:8080/sowings',
   SOWING_LIST_STATS_SERVICE: 'http://18.223.195.235:8080/sowings/stats/list_by_sowing',
+  SOWING_LIST_HISTORY_STATS_SERVICE: 'http://18.223.195.235:8080/sowings/stats/list_group_by_keys',
+  
   //Pendientes
   USER_GET_POFILE_SERVICE: 'http://18.223.195.235:8080/users/profile',
   

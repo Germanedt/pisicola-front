@@ -68,6 +68,7 @@ import { ListaCosechaComponent } from './pages/cosechas/lista/lista.component';
 import { AgregarCosechaComponent } from './pages/cosechas/agregar/agregar.component';
 import { ModificarCosechaComponent } from './pages/cosechas/modificar/modificar.component';
 import { SensorChartComponent } from './components/sensorChart/sensor-chart.component';
+import { HistoryChartComponent } from './components/historyChart/history-chart.component';
 
 registerLocaleData(es);
 
@@ -113,6 +114,7 @@ registerLocaleData(es);
     AgregarCosechaComponent,
     ModificarCosechaComponent,
     SensorChartComponent,
+    HistoryChartComponent,
     HistorialCosechaComponent,
   ],
   imports: [

@@ -59,6 +59,21 @@ interface ISowingStat {
   created_at: string;
   updated_at: string;
 }
+interface ISowingHistoryRequest {
+  sowing_id: number;
+  keys: string[];
+  start_date: string;
+  end_date: string;
+}
+interface ISowinStatRecord {
+  key: string,
+  stats: ISowingStat[]
+}
+interface ISowingHistoryResponse {
+  pond: IPond;
+  sowing: ISowing;
+  stats: any;
+}
 export {
   IListSowingRequest,
   IListSowingResponse,
@@ -66,4 +81,7 @@ export {
   IModifySowingRequest,
   ISowing,
   ISowingStat,
+  ISowingHistoryRequest,
+  ISowinStatRecord,
+  ISowingHistoryResponse,
 };

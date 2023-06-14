@@ -7,6 +7,8 @@ import {
   IListSowingRequest,
   IListSowingResponse,
   IModifySowingRequest,
+  ISowingHistoryRequest,
+  ISowingHistoryResponse,
   ISowingStat,
 } from '../models/Sowing.model';
 @Injectable({
@@ -77,6 +79,19 @@ export class SowingService {
       environment.SOWING_LIST_STATS_SERVICE + '/' + payload + '/current',
       {
         headers: this.getHeaders(),
+      }
+    );
+  }
+  public loadSowingHistoryStats(payload: ISowingHistoryRequest) {
+    return this.http.post<ISowingHistoryResponse>(
+      environment.SOWING_LIST_HISTORY_STATS_SERVICE,
+      payload,
+      {
+        headers: this.getHeaders(),
+        params: {
+          page: 1,
+          perPage: 100,
+        },
       }
     );
   }
