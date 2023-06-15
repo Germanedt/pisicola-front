@@ -10,6 +10,7 @@ import { SowingService } from 'src/app/services/sowing.service';
 })
 export class DetallesCosechaComponent implements OnInit {
   public listOfData: ISowingStat[] = [];
+  public lastUpdate: Date = new Date();
   sowing: ISowing = {
     id: 0,
     user_id_created: 0,
@@ -31,6 +32,7 @@ export class DetallesCosechaComponent implements OnInit {
     this.listOfData = [];
     this.service.loadSowingStats(this.sowing.id).subscribe((response) => {
       this.listOfData = response;
+      this.lastUpdate = new Date();
     });
   }
   public gotToHistory() {

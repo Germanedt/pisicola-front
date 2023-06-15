@@ -1,24 +1,42 @@
-@import '../../../../theme.less';
+@import "../../../../theme.less";
 
-.chartdiv{
-    height: 250px !important;
+.chartdiv {
+  height: 250px !important;
 }
 
 .container-chart {
-    background: @background-light;
-    border-radius: 10px;
-    padding: 15px 0;
+  background: @background-light;
+  border-radius: 10px;
+  padding: 15px 0;
 }
 
 .container-chart {
-    h2 {
-        text-align: center;
-    }
+  h2 {
+    text-align: center;
+  }
 }
 
 .container-update {
-    text-align: center;
-    p {
-        margin-bottom: 0;
-    }
+  text-align: center;
+  p {
+    margin-bottom: 0;
+  }
+}
+.error-div {
+  color: @error-color;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+.not-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ccc;
+  .icon {
+    font-size: 6rem;
+  }
+  .text {
+    font-size: 1.3rem;
+  }
 }

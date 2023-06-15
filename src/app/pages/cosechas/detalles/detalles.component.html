@@ -33,7 +33,7 @@
 <nz-card nzTitle="Mediciónes" class="card-header-light">
   <nz-row nzJustify="center">
     <nz-col class="container-update nz-mb-2">
-      <p>Última actualización: 23/03/2023 12:45 pm</p>
+      <p>Última actualización: {{lastUpdate | date:'medium'}}</p>
       <label class="nz-mr-1">
         <a (click)="loadData()">Actualizar</a>
       </label>

@@ -6,10 +6,10 @@ import {
   ISowinStatRecord,
   ISowing,
   ISowingHistoryRequest,
-  ISowingStat,
 } from 'src/app/models/Sowing.model';
 import { Router } from '@angular/router';
 import { SowingService } from 'src/app/services/sowing.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-historial-cosechas',
@@ -30,6 +30,9 @@ export class HistorialCosechaComponent implements OnInit {
     deleted_at: '',
   };
   keys: string[] = [];
+  endDate: Date = new Date();
+  startDate: Date = new Date(new Date().setDate(this.endDate.getDate() - 7));
+  showError = false;
   constructor(public router: Router, public service: SowingService) {
     const data = this.router.getCurrentNavigation()?.extras.state;
     if (data) {
@@ -40,13 +43,35 @@ export class HistorialCosechaComponent implements OnInit {
   ngOnInit(): void {
     this.loadData();
   }
+  public onChangeStartDate() {
+    this.showError = false;
+  }
+  public onChangeEndDate() {
+    this.showError = false;
+  }
+  public handleClickSearch() {
+    if (
+      this.startDate &&
+      this.endDate &&
+      moment(this.startDate).isBefore(moment(this.endDate))
+    ) {
+      this.loadData();
+    } else {
+      this.showError = true;
+    }
+  }
+  public hasData() {
+    return this.listOfData.length > 0;
+  }
   public loadData() {
     this.listOfData = [];
     const payload: ISowingHistoryRequest = {
       sowing_id: this.sowing.id,
       keys: this.keys,
-      start_date: '2023-06-07 00:00:00',
-      end_date: '2023-06-15 00:00:00',
+      start_date:
+        moment(this.startDate, 'YYYY-MM-DD').format('YYYY-MM-DD') + ' 00:00:00',
+      end_date:
+        moment(this.endDate, 'YYYY-MM-DD').format('YYYY-MM-DD') + ' 23:59:59',
     };
     this.service.loadSowingHistoryStats(payload).subscribe((response) => {
       this.listOfData = Object.keys(response.stats).map((item: string) => {

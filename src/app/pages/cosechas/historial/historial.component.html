@@ -32,6 +32,44 @@
 <br />
 <nz-card nzTitle="Historial Mediciónes" class="card-header-light">
   <nz-row [nzGutter]="16">
+    <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="8" class="nz-mb-2">
+      <nz-form-control nzErrorTip="Por favor ingrese el total de peces">
+        <nz-date-picker
+          style="height: 40px; width: 100%"
+          [(ngModel)]="startDate"
+          nzPlaceHolder="Fecha Inicial"
+          (ngModelChange)="onChangeStartDate()"
+        ></nz-date-picker>
+      </nz-form-control>
+    </nz-col>
+    <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="8" class="nz-mb-2">
+      <nz-form-control nzErrorTip="Selecciona una fecha">
+        <nz-date-picker
+          style="height: 40px; width: 100%"
+          [(ngModel)]="endDate"
+          nzPlaceHolder="Fecha Final"
+          (ngModelChange)="onChangeEndDate()"
+        ></nz-date-picker>
+      </nz-form-control>
+    </nz-col>
+    <nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="8" class="nz-mb-2">
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        nzShape="round"
+        style="float: left"
+        (click)="handleClickSearch()"
+      >
+        Buscar
+        <span nz-icon nzType="search"></span>
+      </button>
+    </nz-col>
+  </nz-row>
+  <div *ngIf="showError" class="error-div">
+    Valida los campos e intenta de nuevo
+  </div>
+  <nz-row [nzGutter]="16" *ngIf="hasData()">
     <nz-col
       nzXs="24"
       nzSm="24"
@@ -43,5 +81,9 @@
     >
       <app-history-chart [historyStats]="item"></app-history-chart>
     </nz-col>
+  </nz-row>
+  <nz-row [nzGutter]="16" *ngIf="!hasData()" class="not-data">
+    <span nz-icon nzType="folder-open" nzTheme="outline" class="icon"></span>
+    <span class="text">No hay datos disponibles en el rango</span>
   </nz-row>
 </nz-card>

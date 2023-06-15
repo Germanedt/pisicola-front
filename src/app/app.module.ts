@@ -23,6 +23,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 //Componentes y modulos propios
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -138,6 +139,7 @@ registerLocaleData(es);
     NzModalModule,
     NzTabsModule,
     NzDropDownModule,
+    NzDatePickerModule,
     AppRoutingModule,
   ],
   providers: [
