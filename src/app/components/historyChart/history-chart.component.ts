@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { ISowinStatRecord, ISowingStat } from 'src/app/models/Sowing.model';
+import { ISowinStatRecord } from 'src/app/models/Sowing.model';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5 from '@amcharts/amcharts5';
 import * as am5xy from '@amcharts/amcharts5/xy';
-import * as am5radar from '@amcharts/amcharts5/radar';
 @Component({
   selector: 'app-history-chart',
   templateUrl: './history-chart.component.html',
@@ -36,27 +35,23 @@ export class HistoryChartComponent {
 
     // Create axes
     // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-    let xRenderer = am5xy.AxisRendererX.new(root, {});
-    xRenderer.grid.template.set('forceHidden', true);
-    xRenderer.labels.template.setAll({ multiLocation: 0, location: 0 });
+    let xRenderer = am5xy.AxisRendererX.new(root, {
+      inversed: true
+    });
 
     let xAxis = chart.xAxes.push(
-      am5xy.DateAxis.new(root, {
-        baseInterval: { timeUnit: 'minute', count: 30 },
+      am5xy.GaplessDateAxis.new(root, {
+        baseInterval: { timeUnit: 'second', count: 1 },
         renderer: xRenderer,
         tooltip: am5.Tooltip.new(root, {}),
-        extraMin: 0.01,
-        extraMax: 0.01,
         tooltipLocation: 0,
       })
     );
 
     let yRenderer = am5xy.AxisRendererY.new(root, {});
-    yRenderer.grid.template.set('forceHidden', true);
-
     let yAxis = chart.yAxes.push(
       am5xy.ValueAxis.new(root, {
-        renderer: yRenderer,
+        renderer: yRenderer
       })
     );
 
@@ -81,7 +76,6 @@ export class HistoryChartComponent {
         valueYField: 'value',
         valueXField: 'timestamp',
         locationX: 0,
-        seriesTooltipTarget: 'bullet',
         tooltip: am5.Tooltip.new(root, {
           labelText: '{valueY}',
         }),
@@ -93,13 +87,15 @@ export class HistoryChartComponent {
         radius: 3,
         templateField: 'bulletSettings',
         fill: series.get('fill'),
-        strokeWidth: 2,
+        strokeWidth: 0,
         stroke: root.interfaceColors.get('background'),
+        
       });
 
       return am5.Bullet.new(root, {
         sprite: circle,
         locationX: 0,
+        
       });
     });
 
@@ -128,7 +124,7 @@ export class HistoryChartComponent {
       });
     }
 
-    createGuide(98.8, 'Min', []);
+    createGuide(10.8, 'Min', []);
     createGuide(101.2, 'Max', []);
 
     let data = this.getDataStat();

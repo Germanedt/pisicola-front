@@ -52,7 +52,7 @@ export class HistorialCosechaComponent implements OnInit {
       this.listOfData = Object.keys(response.stats).map((item: string) => {
         return {
           key: item,
-          stats: response.stats[item].reverse(),
+          stats: response.stats[item],
         };
       });
     });
