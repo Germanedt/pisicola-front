@@ -36,22 +36,20 @@ export class HistoryChartComponent {
     // Create axes
     // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
     let xRenderer = am5xy.AxisRendererX.new(root, {
-      inversed: true
+      inversed: false
     });
 
     let xAxis = chart.xAxes.push(
       am5xy.GaplessDateAxis.new(root, {
         baseInterval: { timeUnit: 'second', count: 1 },
-        renderer: xRenderer,
-        tooltip: am5.Tooltip.new(root, {}),
-        tooltipLocation: 0,
+        renderer: xRenderer
       })
     );
 
     let yRenderer = am5xy.AxisRendererY.new(root, {});
     let yAxis = chart.yAxes.push(
       am5xy.ValueAxis.new(root, {
-        renderer: yRenderer
+        renderer: yRenderer,
       })
     );
 
@@ -75,27 +73,24 @@ export class HistoryChartComponent {
         yAxis: yAxis,
         valueYField: 'value',
         valueXField: 'timestamp',
+        seriesTooltipTarget: 'bullet',
         locationX: 0,
-        tooltip: am5.Tooltip.new(root, {
-          labelText: '{valueY}',
-        }),
       })
     );
 
     series.bullets.push(function () {
       let circle = am5.Circle.new(root, {
-        radius: 3,
+        radius: 4,
         templateField: 'bulletSettings',
         fill: series.get('fill'),
-        strokeWidth: 0,
+        strokeWidth: 2,
         stroke: root.interfaceColors.get('background'),
-        
+        tooltipText: "[bold]{valueY}[/]\n{valueX.formatDate(\"YYYY/MM/dd hh:mm a\")}",
       });
 
       return am5.Bullet.new(root, {
         sprite: circle,
-        locationX: 0,
-        
+        locationX: 0
       });
     });
 
