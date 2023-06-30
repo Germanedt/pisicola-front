@@ -70,6 +70,8 @@ import { AgregarCosechaComponent } from './pages/cosechas/agregar/agregar.compon
 import { ModificarCosechaComponent } from './pages/cosechas/modificar/modificar.component';
 import { SensorChartComponent } from './components/sensorChart/sensor-chart.component';
 import { HistoryChartComponent } from './components/historyChart/history-chart.component';
+import { ListaEmpleadosComponent } from './pages/empleados/lista/lista.component';
+import { AgregarEmpleadoComponent } from './pages/empleados/agregar/agregar.component';
 
 registerLocaleData(es);
 
@@ -117,6 +119,8 @@ registerLocaleData(es);
     SensorChartComponent,
     HistoryChartComponent,
     HistorialCosechaComponent,
+    ListaEmpleadosComponent,
+    AgregarEmpleadoComponent
   ],
   imports: [
     ReactiveFormsModule,

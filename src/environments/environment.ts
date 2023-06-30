@@ -20,7 +20,8 @@ export const environment = {
   SOWING_CREATE_MODIFY_DELETE_SERVICE: 'http://18.223.195.235:8080/sowings',
   SOWING_LIST_STATS_SERVICE: 'http://18.223.195.235:8080/sowings/stats/list_by_sowing',
   SOWING_LIST_HISTORY_STATS_SERVICE: 'http://18.223.195.235:8080/sowings/stats/list_group_by_keys',
-  
+  EMPLOYEES_LIST_SERVICE: 'http://18.223.195.235:8080/employees/list_by_productive_unit/',
+  EMPLOYEES_CREATE_MODIFY_DELETE_SERVICE: 'http://18.223.195.235:8080/employees',
   //Pendientes
   USER_GET_POFILE_SERVICE: 'http://18.223.195.235:8080/users/profile',
   

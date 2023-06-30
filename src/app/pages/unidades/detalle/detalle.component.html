@@ -43,6 +43,20 @@
   </ul>
 </nz-dropdown-menu>
 <button nz-button nzType="default" (click)="goTo('/agregarParametro')">Agregar Parametro</button>
+<button nz-button nz-dropdown [nzDropdownMenu]="empleados">
+  Empleados
+  <span nz-icon nzType="down"></span>
+</button>
+<nz-dropdown-menu #empleados="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item>
+      <a (click)="goTo('/listaEmpleados')">Lista</a>
+    </li>
+    <li nz-menu-item>
+      <a (click)="goTo('/agregarEmpleado')">Agregar</a>
+    </li>
+  </ul>
+</nz-dropdown-menu>
 <nz-divider></nz-divider>
 <nz-card nzTitle="Información general" class="card-header-light">
   <nz-row>

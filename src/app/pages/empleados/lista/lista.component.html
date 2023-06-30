@@ -1,0 +1,57 @@
+<h1>Listado empleados</h1>
+<nz-table
+  #nzTable
+  [nzData]="listOfData"
+  [nzBordered]="true"
+  nzTableLayout="fixed"
+>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nro de identificación</th>
+      <th>Tipo de documento</th>
+      <th>Nombre</th>
+      <th>Telefono</th>
+      <th>Ocupación</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let data of nzTable.data">
+      <tr>
+        <td>{{ data.id }}</td>
+        <td>{{ data.identifier }}</td>
+        <td>{{ data.identifier_type }}</td>
+        <td>{{ data.full_name }}</td>
+        <td>{{ data.phone }}</td>
+        <td>{{ data.occupation }}</td>
+        <td class="actions-container">
+          <a
+            nz-button
+            nzType="primary"
+            nzSize="default"
+            class="edit-action"
+            (click)="goToEdit(data)"
+          >
+            <span nz-icon nzType="edit"></span>
+          </a>
+          <!--
+            (nzOnCancel)=""-->
+          <a
+            nz-button
+            nzType="primary"
+            nzSize="default"
+            class="delete-action"
+            nz-popconfirm
+            (nzOnConfirm)="handlerConfirmDelete(data.id)"
+            nzPopconfirmTitle="¿Seguro desea eliminar el empleado?"
+            nzOkText="Si, eliminar"
+            nzCancelText="Cancelar"
+          >
+            <span nz-icon nzType="delete"></span>
+          </a>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</nz-table>

@@ -1,0 +1,66 @@
+<h1>Agregar Empleado</h1>
+<form
+  nz-form
+  [formGroup]="form"
+  class="employee-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item style="gap: 1rem;">
+    <nz-form-control nzErrorTip="Por favor ingrese el tipo de documento">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="identifier_type"
+          placeholder="Tipo de documento"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control nzErrorTip="Por favor ingrese el número de identificación">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="identifier"
+          placeholder="Número de identificación"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control nzErrorTip="Por favor ingrese el número de teléfono">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="phone"
+          placeholder="Número de teléfono"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item style="gap: 1rem;">
+    <nz-form-control nzErrorTip="Por favor ingrese el nombre completo del empleado">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="full_name"
+          placeholder="Nombre completo"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control nzErrorTip="Por favor ingrese la ocupación del empleado">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="occupation"
+          placeholder="Ocupación"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button nz-button nzType="primary" nzSize="large" nzShape="round" style="float: right;">
+    Agregar
+    <span nz-icon nzType="save"></span>
+  </button>
+</form>

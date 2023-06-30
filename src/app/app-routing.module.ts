@@ -40,6 +40,8 @@ import { CanActivateRole } from './guard/accessControl.guard';
 import { ListaCosechaComponent } from './pages/cosechas/lista/lista.component';
 import { AgregarCosechaComponent } from './pages/cosechas/agregar/agregar.component';
 import { ModificarCosechaComponent } from './pages/cosechas/modificar/modificar.component';
+import { ListaEmpleadosComponent } from './pages/empleados/lista/lista.component';
+import { AgregarEmpleadoComponent } from './pages/empleados/agregar/agregar.component';
 
 const routes: Routes = [
   {
@@ -178,6 +180,16 @@ const routes: Routes = [
       {
         path: 'historialCosecha',
         component: HistorialCosechaComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'listaEmpleados',
+        component: ListaEmpleadosComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'agregarEmpleado',
+        component: AgregarEmpleadoComponent,
         canActivate: [CanActivateRole],
       }
       //Pendientes
