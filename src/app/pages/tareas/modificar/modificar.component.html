@@ -1,0 +1,35 @@
+<h1>Modificar Tarea</h1>
+<form
+  nz-form
+  [formGroup]="form"
+  class="product-type-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item style="gap: 1rem;">
+    <nz-form-control nzErrorTip="Por favor ingrese el nombre del tipo de producto">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="name"
+          placeholder="Nombre del tipo de producto"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item style="gap: 1rem;">
+    <nz-form-control nzErrorTip="Por favor ingrese la descripción del tipo de producto">
+      <nz-input-group>
+        <textarea 
+          nz-input 
+          formControlName="description"
+          rows="8"
+          placeholder="Descripción del tipo de producto"></textarea>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button nz-button nzType="primary" nzSize="large" nzShape="round" style="float: right;">
+    Guardar
+    <span nz-icon nzType="save"></span>
+  </button>
+</form>

@@ -57,6 +57,20 @@
     </li>
   </ul>
 </nz-dropdown-menu>
+<button nz-button nz-dropdown [nzDropdownMenu]="tareas">
+  Tareas
+  <span nz-icon nzType="down"></span>
+</button>
+<nz-dropdown-menu #tareas="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item>
+      <a (click)="goTo('/listaTareas')">Lista</a>
+    </li>
+    <li nz-menu-item>
+      <a (click)="goTo('/agregarTarea')">Agregar</a>
+    </li>
+  </ul>
+</nz-dropdown-menu>
 <nz-divider></nz-divider>
 <nz-card nzTitle="Información general" class="card-header-light">
   <nz-row>

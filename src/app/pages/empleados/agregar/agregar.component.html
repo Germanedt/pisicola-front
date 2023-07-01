@@ -5,15 +5,17 @@
   class="employee-form"
   (ngSubmit)="submitForm()"
 >
-  <nz-form-item style="gap: 1rem;">
+  <nz-form-item style="gap: 1rem">
     <nz-form-control nzErrorTip="Por favor ingrese el tipo de documento">
       <nz-input-group>
-        <input
-          type="text"
-          nz-input
+        <nz-select
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Tipo de documento"
           formControlName="identifier_type"
-          placeholder="Tipo de documento"
-        />
+        >
+          <nz-option nzLabel="Cedula de ciudadanía" nzValue="cc"></nz-option>
+        </nz-select>
       </nz-input-group>
     </nz-form-control>
     <nz-form-control nzErrorTip="Por favor ingrese el número de identificación">
@@ -37,8 +39,10 @@
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item style="gap: 1rem;">
-    <nz-form-control nzErrorTip="Por favor ingrese el nombre completo del empleado">
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese el nombre completo del empleado"
+    >
       <nz-input-group>
         <input
           type="text"
@@ -59,7 +63,13 @@
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
-  <button nz-button nzType="primary" nzSize="large" nzShape="round" style="float: right;">
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzShape="round"
+    style="float: right"
+  >
     Agregar
     <span nz-icon nzType="save"></span>
   </button>
