@@ -1,0 +1,68 @@
+<h1>Agregar Registro de tarea</h1>
+<form
+  nz-form
+  [formGroup]="form"
+  class="product-type-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese la fecha inicial de la tarea"
+    >
+      <nz-date-picker
+        style="width: 100%"
+        formControlName="started_at"
+        nzPlaceHolder="Fecha Inicial"
+        nzFormat="YYYY-MM-dd HH:mm:ss"
+        nzShowTime
+      ></nz-date-picker>
+    </nz-form-control>
+    <nz-form-control
+      nzErrorTip="Por favor ingrese la fecha de finalización de la tarea"
+    >
+      <nz-date-picker
+        style="width: 100%"
+        formControlName="finished_at"
+        nzPlaceHolder="Fecha de finalización"
+        nzFormat="YYYY-MM-dd HH:mm:ss"
+        nzShowTime
+      ></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control nzErrorTip="Por seleccione una tarea">
+      <nz-input-group>
+        <nz-select
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Tarea"
+          formControlName="task_id"
+        >
+          <nz-option [nzLabel]="1" [nzValue]="1"></nz-option>
+        </nz-select>
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control nzErrorTip="Por seleccione un empleado">
+      <nz-input-group>
+        <nz-select
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Empleado"
+          formControlName="employee_id"
+        >
+          <nz-option [nzLabel]="1" [nzValue]="1"></nz-option>
+        </nz-select>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzShape="round"
+    style="float: right"
+  >
+    Agregar
+    <span nz-icon nzType="save"></span>
+  </button>
+</form>

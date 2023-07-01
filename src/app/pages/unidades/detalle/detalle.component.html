@@ -71,6 +71,20 @@
     </li>
   </ul>
 </nz-dropdown-menu>
+<button nz-button nz-dropdown [nzDropdownMenu]="rtareas">
+  Registro de tareas
+  <span nz-icon nzType="down"></span>
+</button>
+<nz-dropdown-menu #rtareas="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item>
+      <a (click)="goTo('/listaRegistroTareas')">Lista</a>
+    </li>
+    <li nz-menu-item>
+      <a (click)="goTo('/agregarRegistroTarea')">Agregar</a>
+    </li>
+  </ul>
+</nz-dropdown-menu>
 <nz-divider></nz-divider>
 <nz-card nzTitle="Información general" class="card-header-light">
   <nz-row>

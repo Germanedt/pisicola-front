@@ -24,6 +24,8 @@ export const environment = {
   EMPLOYEES_CREATE_MODIFY_DELETE_SERVICE: 'http://18.223.195.235:8080/employees',
   TASK_LIST_SERVICE: 'http://18.223.195.235:8080/tasks/list_by_productive_unit/',
   TASK_CREATE_MODIFY_DELETE_SERVICE: 'http://18.223.195.235:8080/tasks',
+  TASKLOG_LIST_SERVICE: 'http://18.223.195.235:8080/tasks/logs/list_by_productive_unit/',
+  TASKLOG_CREATE_MODIFY_DELETE_SERVICE: 'http://18.223.195.235:8080/tasks/logs',
   //Pendientes
   USER_GET_POFILE_SERVICE: 'http://18.223.195.235:8080/users/profile',
   
