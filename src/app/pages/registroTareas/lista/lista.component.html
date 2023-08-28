@@ -20,11 +20,11 @@
     <ng-container *ngFor="let data of nzTable.data">
       <tr>
         <td>{{ data.id }}</td>
-        <td>{{ data.task.name }}</td>
-        <td>{{ data.employee.full_name }}</td>
+        <td>{{ data.task?.name }}</td>
+        <td>{{ data.employee?.full_name }}</td>
         <td>{{ getDate(data.started_at) }}</td>
         <td>{{ getDate(data.finished_at) }}</td>
-        <td>{{ data.duration }} Min.</td>
+        <td>{{ data.duration| number:'1.0-0' }} Min.</td>
         <td class="actions-container">
           <a
             nz-button

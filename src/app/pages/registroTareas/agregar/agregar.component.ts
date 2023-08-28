@@ -2,8 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import {
+  IEmployees,
+  IListEmployeesRequest,
+} from 'src/app/models/Employee.model';
 import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
+import { IListTaskRequest, ITask } from 'src/app/models/Task.model';
 import { ICreateTaskLogRequest } from 'src/app/models/TaskLog.model';
+import { EmployeesService } from 'src/app/services/employees.service';
+import { TaskService } from 'src/app/services/task.service';
 import { TaskLogService } from 'src/app/services/taskLog.service';
 
 @Component({
@@ -24,19 +31,26 @@ export class AgregarRegistroTareaComponent implements OnInit {
     description: '',
     address: '',
     is_active: false,
-    deleted_at: ''
-  }
+    deleted_at: '',
+  };
+  tasks: ITask[] = [];
+  employees: IEmployees[] = [];
   submitForm(): void {
     if (this.form.valid) {
       const payload: ICreateTaskLogRequest = {
         task_id: this.form.get('task_id')?.value,
         employee_id: this.form.get('employee_id')?.value,
-        started_at: moment(this.form.get('started_at')?.value).format('YYYY-MM-DD HH:mm:ss'),
-        finished_at: moment(this.form.get('finished_at')?.value).format('YYYY-MM-DD HH:mm:ss')
+        started_at: moment(this.form.get('started_at')?.value).format(
+          'YYYY-MM-DD HH:mm:ss'
+        ),
+        finished_at: moment(this.form.get('finished_at')?.value).format(
+          'YYYY-MM-DD HH:mm:ss'
+        ),
       };
       this.service.createTaskLog(payload).subscribe((response) => {
         if (response) {
-          this.router.navigate(['listaRegistroTarea']);
+          const state = { productiveUnit: this.productiveUnit };
+          this.router.navigate(['listaRegistroTareas'], { state });
         }
       });
     } else {
@@ -51,6 +65,8 @@ export class AgregarRegistroTareaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: TaskLogService,
+    private taskService: TaskService,
+    private employeeService: EmployeesService,
     private router: Router
   ) {
     const data = this.router.getCurrentNavigation()?.extras.state;
@@ -59,7 +75,30 @@ export class AgregarRegistroTareaComponent implements OnInit {
     }
   }
 
+  getTaskList() {
+    const params: IListTaskRequest = {
+      page: 0,
+      perPage: 0,
+    };
+    this.taskService
+      .listTasks(params, this.productiveUnit.id)
+      .subscribe((response) => {
+        this.tasks = response.data;
+      });
+  }
+  getEmployeesList() {
+    const params: IListEmployeesRequest = {
+      page: 0,
+      perPage: 0,
+    };
+    this.employeeService
+      .listEmployess(params, this.productiveUnit.id)
+      .subscribe((response) => {
+        this.employees = response.data;
+      });
+  }
   ngOnInit(): void {
-    
+    this.getTaskList();
+    this.getEmployeesList();
   }
 }

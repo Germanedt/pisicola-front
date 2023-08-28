@@ -2,7 +2,7 @@
 <form
   nz-form
   [formGroup]="form"
-  class="product-type-form"
+  class="task-log-form"
   (ngSubmit)="submitForm()"
 >
   <nz-form-item style="gap: 1rem">
@@ -38,7 +38,11 @@
           nzPlaceHolder="Tarea"
           formControlName="task_id"
         >
-          <nz-option [nzLabel]="1" [nzValue]="1"></nz-option>
+          <nz-option
+            *ngFor="let item of tasks"
+            [nzLabel]="item.name"
+            [nzValue]="item.id"
+          ></nz-option>
         </nz-select>
       </nz-input-group>
     </nz-form-control>
@@ -50,7 +54,11 @@
           nzPlaceHolder="Empleado"
           formControlName="employee_id"
         >
-          <nz-option [nzLabel]="1" [nzValue]="1"></nz-option>
+          <nz-option
+            *ngFor="let item of employees"
+            [nzLabel]="item.full_name"
+            [nzValue]="item.id"
+          ></nz-option>
         </nz-select>
       </nz-input-group>
     </nz-form-control>

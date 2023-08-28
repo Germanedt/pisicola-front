@@ -1,38 +1,66 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IProductType } from 'src/app/models/ProductType.model';
-import { ProductTypeService } from 'src/app/services/productType.service';
+import * as moment from 'moment';
+import { IEmployees, IListEmployeesRequest } from 'src/app/models/Employee.model';
+import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
+import { IListTaskRequest, ITask } from 'src/app/models/Task.model';
+import { IModifyTaskLogRequest, ITaskLog } from 'src/app/models/TaskLog.model';
+import { EmployeesService } from 'src/app/services/employees.service';
+import { TaskService } from 'src/app/services/task.service';
+import { TaskLogService } from 'src/app/services/taskLog.service';
 
 @Component({
   selector: 'app-modificar-tproducto',
   templateUrl: './modificar.component.html',
-  styleUrls: ['./modificar.component.less']
+  styleUrls: ['./modificar.component.less'],
 })
-export class ModificarTipoProductoComponent implements OnInit {
-  productType: IProductType = {
+export class ModificarRegistroTareaComponent implements OnInit {
+  form: FormGroup = this.fb.group({
+    task_id: [0, [Validators.required]],
+    employee_id: [0, [Validators.required]],
+    started_at: ['', [Validators.required]],
+    finished_at: ['', [Validators.required]],
+  });
+  productiveUnit: IProductiveUnit = {
     id: 0,
     name: '',
     description: '',
-    created_at: '',
+    address: '',
+    is_active: false,
     deleted_at: '',
-    updated_at: ''
   };
-  form: FormGroup = this.fb.group({
-    name: ['', [Validators.required]],
-    description: ['', [Validators.required]],
-  });
-
+  taskLog: ITaskLog = {
+    id: 0,
+    task_id: 0,
+    employee_id: 0,
+    productive_unit_id: 0,
+    started_at: '',
+    finished_at: '',
+    duration: 0,
+    created_at: '',
+    updated_at: '',
+    deleted_at: '',
+  };
+  tasks: ITask[] = [];
+  employees: IEmployees[] = [];
   submitForm(): void {
     if (this.form.valid) {
-      const payload = {
-        id: this.productType.id,
-        name: this.form.get('name')?.value,
-        description: this.form.get('description')?.value
+      const payload: IModifyTaskLogRequest = {
+        id: this.taskLog.id,
+        task_id: this.form.get('task_id')?.value,
+        employee_id: this.form.get('employee_id')?.value,
+        started_at: moment(this.form.get('started_at')?.value).format(
+          'YYYY-MM-DD HH:mm:ss'
+        ),
+        finished_at: moment(this.form.get('finished_at')?.value).format(
+          'YYYY-MM-DD HH:mm:ss'
+        ),
       };
-      this.productTypeService.modifyProductType(payload).subscribe((response) => {
+      this.service.modifyTaskLog(payload).subscribe((response) => {
         if (response) {
-          this.router.navigate(['listaTipoProducto']);
+          const state = { productiveUnit: this.productiveUnit };
+          this.router.navigate(['listaRegistroTareas'], { state });
         }
       });
     } else {
@@ -47,20 +75,47 @@ export class ModificarTipoProductoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private productTypeService: ProductTypeService,
+    private service: TaskLogService,
+    private taskService: TaskService,
+    private employeeService: EmployeesService,
     private router: Router
   ) {
     const data = this.router.getCurrentNavigation()?.extras.state;
     if (data) {
-      this.productType = data['productType'];
-      this.form.setValue(
-        {
-          name: this.productType.name,
-          description: this.productType.description
-        }
-      )
-      
+      this.productiveUnit = data['productiveUnit'];
+      this.taskLog = data['taskLog'];
+      this.form.setValue({
+        task_id: this.taskLog.task_id,
+        employee_id: this.taskLog.employee_id,
+        started_at: this.taskLog.started_at,
+        finished_at: this.taskLog.finished_at,
+      });
     }
   }
-  ngOnInit(): void {}
+  getTaskList() {
+    const params: IListTaskRequest = {
+      page: 0,
+      perPage: 0,
+    };
+    this.taskService
+      .listTasks(params, this.productiveUnit.id)
+      .subscribe((response) => {
+        this.tasks = response.data;
+      });
+  }
+  getEmployeesList() {
+    const params: IListEmployeesRequest = {
+      page: 0,
+      perPage: 0,
+    };
+    this.employeeService
+      .listEmployess(params, this.productiveUnit.id)
+      .subscribe((response) => {
+        this.employees = response.data;
+      });
+  }
+  ngOnInit(): void {
+    this.getTaskList();
+    this.getEmployeesList();
+  }
 }

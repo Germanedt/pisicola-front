@@ -48,6 +48,7 @@ import { ModificarTareaComponent } from './pages/tareas/modificar/modificar.comp
 import { ListaRegistroTareasComponent } from './pages/registroTareas/lista/lista.component';
 import { AgregarRegistroTareaComponent } from './pages/registroTareas/agregar/agregar.component';
 import { ModificarEmpleadoComponent } from './pages/empleados/modificar/modificar.component';
+import { ModificarRegistroTareaComponent } from './pages/registroTareas/modificar/modificar.component';
 
 const routes: Routes = [
   {
@@ -228,7 +229,11 @@ const routes: Routes = [
         component: AgregarRegistroTareaComponent,
         canActivate: [CanActivateRole],
       },
-
+      {
+        path: 'modificarRegistroTarea',
+        component: ModificarRegistroTareaComponent,
+        canActivate: [CanActivateRole],
+      }
       //Pendientes
       /*{
         path: 'dashboard',

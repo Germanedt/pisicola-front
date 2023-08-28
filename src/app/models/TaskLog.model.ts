@@ -25,8 +25,10 @@ interface ICreateTaskLogRequest {
 }
 interface IModifyTaskLogRequest {
   id: number;
-  name: string;
-  description: string;
+  task_id: number;
+  employee_id: number;
+  started_at: string;
+  finished_at: string;
 }
 interface ITaskLog {
   id: number;
@@ -39,8 +41,8 @@ interface ITaskLog {
   created_at: string;
   updated_at: string;
   deleted_at: string;
-  task: ITask;
-  employee: IEmployees;
+  task?: ITask;
+  employee?: IEmployees;
 }
 export {
   IListTaskLogRequest,

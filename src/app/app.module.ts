@@ -78,6 +78,7 @@ import { AgregarTareaComponent } from './pages/tareas/agregar/agregar.component'
 import { ModificarTareaComponent } from './pages/tareas/modificar/modificar.component';
 import { ListaRegistroTareasComponent } from './pages/registroTareas/lista/lista.component';
 import { AgregarRegistroTareaComponent } from './pages/registroTareas/agregar/agregar.component';
+import { ModificarRegistroTareaComponent } from './pages/registroTareas/modificar/modificar.component';
 
 registerLocaleData(es);
 
@@ -132,7 +133,8 @@ registerLocaleData(es);
     AgregarTareaComponent,
     ModificarTareaComponent,
     ListaRegistroTareasComponent,
-    AgregarRegistroTareaComponent
+    AgregarRegistroTareaComponent,
+    ModificarRegistroTareaComponent
   ],
   imports: [
     ReactiveFormsModule,
