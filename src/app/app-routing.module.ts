@@ -49,6 +49,9 @@ import { ListaRegistroTareasComponent } from './pages/registroTareas/lista/lista
 import { AgregarRegistroTareaComponent } from './pages/registroTareas/agregar/agregar.component';
 import { ModificarEmpleadoComponent } from './pages/empleados/modificar/modificar.component';
 import { ModificarRegistroTareaComponent } from './pages/registroTareas/modificar/modificar.component';
+import { ListaConceptosPagoComponent } from './pages/conceptoPago/lista/lista.component';
+import { AgregarConceptoPagoComponent } from './pages/conceptoPago/agregar/agregar.component';
+import { ModificarConceptoPagoComponent } from './pages/conceptoPago/modificar/modificar.component';
 
 const routes: Routes = [
   {
@@ -232,6 +235,21 @@ const routes: Routes = [
       {
         path: 'modificarRegistroTarea',
         component: ModificarRegistroTareaComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'listaConceptosPago',
+        component: ListaConceptosPagoComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'agregarConceptoPago',
+        component: AgregarConceptoPagoComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'modificarConceptoPago',
+        component: ModificarConceptoPagoComponent,
         canActivate: [CanActivateRole],
       }
       //Pendientes

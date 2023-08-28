@@ -85,6 +85,20 @@
     </li>
   </ul>
 </nz-dropdown-menu>
+<button nz-button nz-dropdown [nzDropdownMenu]="payments">
+  Pagos
+  <span nz-icon nzType="down"></span>
+</button>
+<nz-dropdown-menu #payments="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item>
+      <a (click)="goTo('/listaConceptosPago')">Lista conceptos</a>
+    </li>
+    <li nz-menu-item>
+      <a (click)="goTo('/agregarConceptoPago')">Agregar conceptos</a>
+    </li>
+  </ul>
+</nz-dropdown-menu>
 <nz-divider></nz-divider>
 <nz-card nzTitle="Información general" class="card-header-light">
   <nz-row>

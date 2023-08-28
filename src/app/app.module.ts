@@ -24,6 +24,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
 //Componentes y modulos propios
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -79,6 +80,9 @@ import { ModificarTareaComponent } from './pages/tareas/modificar/modificar.comp
 import { ListaRegistroTareasComponent } from './pages/registroTareas/lista/lista.component';
 import { AgregarRegistroTareaComponent } from './pages/registroTareas/agregar/agregar.component';
 import { ModificarRegistroTareaComponent } from './pages/registroTareas/modificar/modificar.component';
+import { ListaConceptosPagoComponent } from './pages/conceptoPago/lista/lista.component';
+import { AgregarConceptoPagoComponent } from './pages/conceptoPago/agregar/agregar.component';
+import { ModificarConceptoPagoComponent } from './pages/conceptoPago/modificar/modificar.component';
 
 registerLocaleData(es);
 
@@ -134,7 +138,10 @@ registerLocaleData(es);
     ModificarTareaComponent,
     ListaRegistroTareasComponent,
     AgregarRegistroTareaComponent,
-    ModificarRegistroTareaComponent
+    ModificarRegistroTareaComponent,
+    ListaConceptosPagoComponent,
+    AgregarConceptoPagoComponent,
+    ModificarConceptoPagoComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -158,6 +165,7 @@ registerLocaleData(es);
     NzTabsModule,
     NzDropDownModule,
     NzDatePickerModule,
+    NzSwitchModule,
     AppRoutingModule,
   ],
   providers: [

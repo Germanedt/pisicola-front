@@ -23,6 +23,7 @@ export class DetalleUnidadComponent implements OnInit {
     }
   }
   public goTo(route: string) {
+    console.log(route);
     this.router.navigate([route], { state: this.getState() });
   }
   private getState() {

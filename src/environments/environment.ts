@@ -28,6 +28,8 @@ export const environment = {
   TASK_CREATE_MODIFY_DELETE_SERVICE: host + '/tasks',
   TASKLOG_LIST_SERVICE: host + '/tasks/logs/list_by_productive_unit/',
   TASKLOG_CREATE_MODIFY_DELETE_SERVICE: host + '/tasks/logs',
+  PAYMENT_CONCEPT_LIST_SERVICE: host + '/payment_concepts/list_by_productive_unit/',
+  PAYMENT_CONCEPT_CREATE_MODIFY_DELETE_SERVICE: host + '/payment_concepts',
   //Pendientes
   USER_GET_POFILE_SERVICE: host + '/users/profile',
 };
