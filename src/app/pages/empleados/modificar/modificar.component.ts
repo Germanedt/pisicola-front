@@ -1,38 +1,60 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IProductType } from 'src/app/models/ProductType.model';
-import { ProductTypeService } from 'src/app/services/productType.service';
+import { IEmployees, IModifyEmployeeRequest } from 'src/app/models/Employee.model';
+import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
+import { EmployeesService } from 'src/app/services/employees.service';
 
 @Component({
-  selector: 'app-modificar-tproducto',
+  selector: 'app-modificar-empleado',
   templateUrl: './modificar.component.html',
   styleUrls: ['./modificar.component.less']
 })
-export class ModificarTipoProductoComponent implements OnInit {
-  productType: IProductType = {
+export class ModificarEmpleadoComponent implements OnInit {
+  form: FormGroup = this.fb.group({
+    identifier_type: ['', [Validators.required]],
+    identifier: ['', [Validators.required]],
+    full_name: ['', [Validators.required]],
+    phone: ['', [Validators.required]],
+    occupation: ['', [Validators.required]],
+  });
+  productiveUnit: IProductiveUnit = {
     id: 0,
     name: '',
     description: '',
+    address: '',
+    is_active: false,
+    deleted_at: ''
+  }
+  employee: IEmployees = {
+    id: 0,
+    productive_unit_id: 0,
+    identifier_type: '',
+    identifier: '',
+    full_name: '',
+    phone: '',
+    occupation: '',
     created_at: '',
-    deleted_at: '',
-    updated_at: ''
+    updated_at: '',
+    deleted_at: ''
   };
-  form: FormGroup = this.fb.group({
-    name: ['', [Validators.required]],
-    description: ['', [Validators.required]],
-  });
 
   submitForm(): void {
     if (this.form.valid) {
-      const payload = {
-        id: this.productType.id,
-        name: this.form.get('name')?.value,
-        description: this.form.get('description')?.value
+      const payload: IModifyEmployeeRequest = {
+        id:this.employee.id,
+        identifier_type: this.form.get('identifier_type')?.value,
+        identifier: this.form.get('identifier')?.value,
+        full_name: this.form.get('full_name')?.value,
+        phone: this.form.get('phone')?.value,
+        occupation: this.form.get('occupation')?.value,
       };
-      this.productTypeService.modifyProductType(payload).subscribe((response) => {
+      this.service.modifyEmployee(payload).subscribe((response) => {
         if (response) {
-          this.router.navigate(['listaTipoProducto']);
+          const state = {
+            productiveUnit: this.productiveUnit,
+          };
+          this.router.navigate(['listaEmpleados'], { state });
         }
       });
     } else {
@@ -47,16 +69,20 @@ export class ModificarTipoProductoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private productTypeService: ProductTypeService,
+    private service: EmployeesService,
     private router: Router
   ) {
     const data = this.router.getCurrentNavigation()?.extras.state;
     if (data) {
-      this.productType = data['productType'];
+      this.employee = data['employee'];
+      this.productiveUnit = data['productiveUnit'];
       this.form.setValue(
         {
-          name: this.productType.name,
-          description: this.productType.description
+          identifier_type: this.employee.identifier_type,
+          identifier: this.employee.identifier,
+          full_name: this.employee.full_name,
+          phone: this.employee.phone,
+          occupation: this.employee.occupation,
         }
       )
       

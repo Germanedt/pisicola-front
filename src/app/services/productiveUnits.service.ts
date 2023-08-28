@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { SessionDataService } from './session-data.service';
 import {
+  ICreateProductiveUnitUser,
   IListProductiveUnitRequest,
   IListProductiveUnitResponse,
   IProductiveUnit,
@@ -19,19 +20,26 @@ export class ProductiveUnitService {
   ) {}
 
   public listProductiveUnits(params: IListProductiveUnitRequest) {
-    return this.http.get<IListProductiveUnitResponse>(environment.PRODUCTIVE_UNIT_LIST_SERVICE, {
-      headers: this.getHeaders(),
-      params: {
-        page: params.page,
-        perPage: params.perPage,
-      },
-    });
+    return this.http.get<IListProductiveUnitResponse>(
+      environment.PRODUCTIVE_UNIT_LIST_SERVICE,
+      {
+        headers: this.getHeaders(),
+        params: {
+          page: params.page,
+          perPage: params.perPage,
+        },
+      }
+    );
   }
 
   public createProductiveUnit(payload: IProductiveUnitCreateRequest) {
-    return this.http.post(environment.PRODUCTIVE_UNIT_CREATE_MODIFY_DELETE_SERVICE, payload, {
-      headers: this.getHeaders(),
-    });
+    return this.http.post(
+      environment.PRODUCTIVE_UNIT_CREATE_MODIFY_DELETE_SERVICE,
+      payload,
+      {
+        headers: this.getHeaders(),
+      }
+    );
   }
 
   public modifyProductiveUnit(payload: IProductiveUnitModifyRequest) {
@@ -45,9 +53,16 @@ export class ProductiveUnitService {
   }
 
   public deleteProductiveUnit(payload: number) {
-    return this.http.delete(environment.PRODUCTIVE_UNIT_CREATE_MODIFY_DELETE_SERVICE+'/'+payload)
+    return this.http.delete(
+      environment.PRODUCTIVE_UNIT_CREATE_MODIFY_DELETE_SERVICE + '/' + payload
+    );
   }
 
+  public addUserToProductiveUnit(payload: ICreateProductiveUnitUser) {
+    return this.http.post(environment.PRODUCTIVE_UNIT_ADD_USER, payload, {
+      headers: this.getHeaders(),
+    });
+  }
   private getHeaders() {
     return new HttpHeaders({
       Accept: 'application/json',

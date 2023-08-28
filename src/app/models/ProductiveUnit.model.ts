@@ -1,8 +1,7 @@
-
 interface IListProductiveUnitRequest {
   page: number;
   perPage: number;
-  includeDeletes?: boolean
+  includeDeletes?: boolean;
 }
 interface IMetaListProductiveUnitResponse {
   current_page: number;
@@ -38,11 +37,16 @@ interface IProductiveUnit {
   created_at?: string;
   updated_at?: string;
 }
+interface ICreateProductiveUnitUser {
+  user_id: number;
+  productive_unit_id: number;
+}
 
 export {
   IListProductiveUnitRequest,
   IListProductiveUnitResponse,
   IProductiveUnitCreateRequest,
   IProductiveUnitModifyRequest,
+  ICreateProductiveUnitUser,
   IProductiveUnit,
 };

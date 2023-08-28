@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {
+  ICreateProductiveUnitUser,
+  IListProductiveUnitRequest,
+  IProductiveUnit,
+} from 'src/app/models/ProductiveUnit.model';
 import { IUsersCreateRequest } from 'src/app/models/User.model';
 import { IUserType } from 'src/app/models/UserType.model';
+import { ProductiveUnitService } from 'src/app/services/productiveUnits.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -21,10 +27,13 @@ export class AgregarUsuarioComponent implements OnInit {
       ],
     ],
     userTypeId: [0, [Validators.required]],
+    productiveUnitId: [0],
     password: ['', [Validators.required]],
     passwordConfirmation: ['', [Validators.required]],
   });
   userTypes: IUserType[] = [];
+  productiveUnits: IProductiveUnit[] = [];
+  isAdminUser = true;
 
   submitForm(): void {
     if (this.form.valid) {
@@ -37,7 +46,17 @@ export class AgregarUsuarioComponent implements OnInit {
       };
       this.usersService.createUser(payload).subscribe((response) => {
         if (response) {
-          this.router.navigate(['listaUsuarios']);
+          const payload: ICreateProductiveUnitUser = {
+            user_id: response.id,
+            productive_unit_id: this.form.get('productiveUnitId')?.value,
+          };
+          this.productiveUnitService
+            .addUserToProductiveUnit(payload)
+            .subscribe((res) => {
+              if (res) {
+                this.router.navigate(['listaUsuarios']);
+              }
+            });
         }
       });
     } else {
@@ -49,16 +68,35 @@ export class AgregarUsuarioComponent implements OnInit {
       });
     }
   }
-
+  listenUserTypeChanges(): void {
+    this.form.get('userTypeId')?.valueChanges.subscribe((val) => {
+      console.log(val);
+      const userTypeSelected = this.userTypes.find((item) => item.id === val);
+      this.isAdminUser = userTypeSelected?.key === 'admin';
+      if (this.productiveUnits.length === 0 && !this.isAdminUser) {
+        const params: IListProductiveUnitRequest = {
+          page: 1,
+          perPage: 100000,
+        };
+        this.productiveUnitService
+          .listProductiveUnits(params)
+          .subscribe((res) => {
+            this.productiveUnits = res.data;
+          });
+      }
+    });
+  }
   constructor(
     private fb: FormBuilder,
     private usersService: UsersService,
+    private productiveUnitService: ProductiveUnitService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.usersService.getUserTypes().subscribe((res) => {
       this.userTypes = res;
-    })
+      this.listenUserTypeChanges();
+    });
   }
 }

@@ -30,7 +30,7 @@ export class ListaEmpleadosComponent implements OnInit {
   }
 
   public goToEdit(employee: IEmployees) {
-    const state = { employee };
+    const state = { employee, productiveUnit: this.productiveUnit };
     this.router.navigate(['/modificarEmpleado'], { state });
   }
 

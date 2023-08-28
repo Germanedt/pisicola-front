@@ -29,7 +29,7 @@ export class UsersService {
   }
 
   public createUser(payload: IUsersCreateRequest) {
-    return this.http.post(
+    return this.http.post<IUser>(
       environment.USER_CREATE_MODIFY_DELETE_SERVICE,
       payload,
       {

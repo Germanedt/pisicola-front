@@ -1,34 +1,75 @@
-<h1>Modificar Tipo producto</h1>
+<h1>Modificar Empleado</h1>
 <form
   nz-form
   [formGroup]="form"
-  class="product-type-form"
+  class="employee-form"
   (ngSubmit)="submitForm()"
 >
-  <nz-form-item style="gap: 1rem;">
-    <nz-form-control nzErrorTip="Por favor ingrese el nombre del tipo de producto">
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control nzErrorTip="Por favor ingrese el tipo de documento">
+      <nz-input-group>
+        <nz-select
+          nzShowSearch
+          nzAllowClear
+          nzPlaceHolder="Tipo de documento"
+          formControlName="identifier_type"
+        >
+          <nz-option nzLabel="Cedula de ciudadanía" nzValue="cc"></nz-option>
+        </nz-select>
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control nzErrorTip="Por favor ingrese el número de identificación">
       <nz-input-group>
         <input
           type="text"
           nz-input
-          formControlName="name"
-          placeholder="Nombre del tipo de producto"
+          formControlName="identifier"
+          placeholder="Número de identificación"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control nzErrorTip="Por favor ingrese el número de teléfono">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="phone"
+          placeholder="Número de teléfono"
         />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
-  <nz-form-item style="gap: 1rem;">
-    <nz-form-control nzErrorTip="Por favor ingrese la descripción del tipo de producto">
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese el nombre completo del empleado"
+    >
       <nz-input-group>
-        <textarea 
-          nz-input 
-          formControlName="description"
-          rows="8"
-          placeholder="Descripción del tipo de producto"></textarea>
+        <input
+          type="text"
+          nz-input
+          formControlName="full_name"
+          placeholder="Nombre completo"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control nzErrorTip="Por favor ingrese la ocupación del empleado">
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="occupation"
+          placeholder="Ocupación"
+        />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
-  <button nz-button nzType="primary" nzSize="large" nzShape="round" style="float: right;">
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzShape="round"
+    style="float: right"
+  >
     Guardar
     <span nz-icon nzType="save"></span>
   </button>

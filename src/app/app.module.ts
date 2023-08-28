@@ -72,6 +72,7 @@ import { SensorChartComponent } from './components/sensorChart/sensor-chart.comp
 import { HistoryChartComponent } from './components/historyChart/history-chart.component';
 import { ListaEmpleadosComponent } from './pages/empleados/lista/lista.component';
 import { AgregarEmpleadoComponent } from './pages/empleados/agregar/agregar.component';
+import { ModificarEmpleadoComponent } from './pages/empleados/modificar/modificar.component';
 import { ListaTareasComponent } from './pages/tareas/lista/lista.component';
 import { AgregarTareaComponent } from './pages/tareas/agregar/agregar.component';
 import { ModificarTareaComponent } from './pages/tareas/modificar/modificar.component';
@@ -126,6 +127,7 @@ registerLocaleData(es);
     HistorialCosechaComponent,
     ListaEmpleadosComponent,
     AgregarEmpleadoComponent,
+    ModificarEmpleadoComponent,
     ListaTareasComponent,
     AgregarTareaComponent,
     ModificarTareaComponent,

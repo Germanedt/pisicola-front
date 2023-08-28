@@ -24,8 +24,11 @@ interface ICreateEmployeeRequest {
 }
 interface IModifyEmployeeRequest {
   id: number;
-  name: string;
-  description: string;
+  identifier_type: string;
+  identifier: string;
+  full_name: string;
+  phone: string;
+  occupation: string;
 }
 interface IEmployees {
   id: number;
