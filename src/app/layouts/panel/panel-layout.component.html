@@ -2,168 +2,23 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-submenu nzTitle="Usuarios" nzIcon="user">
-        <ul>
-          <li nz-menu-item>
-            <a (click)="goToListUsersAll()">
-              Lista de usuarios
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarUsuario">
-              Agregar
+      <li nz-menu-item *ngIf="!isAdmin" routerLink="/detalleUnidad">
+        <span nz-icon nzType="home"></span>
+        <span>Inicio</span>
+      </li>
+      <li nz-submenu [nzTitle]="data.title" [nzIcon]="data.icon" *ngFor="let data of buttonsRoutes">
+        <ul *ngIf="data.actions">
+          <li nz-menu-item *ngFor="let link of data.actions">
+            <a [routerLink]="link.route">
+              {{link.title}}
             </a>
           </li>
         </ul>
       </li>
-      <li nz-submenu nzTitle="Unidades productivas" nzIcon="build" *ngIf="isAdmin">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaUnidades">
-              Lista de unidades
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarUnidad">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzTitle="Tipos de producto" nzIcon="unordered-list" *ngIf="isAdmin">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaTipoProducto">
-              Lista de Tipos
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarTipoProducto">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzTitle="Productos" nzIcon="database">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaProductos">
-              Lista de productos
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarProducto">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <!--<li nz-submenu nzTitle="Gastos" nzIcon="fall">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaGastos">
-              Lista de gastos
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarGasto">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzTitle="Ventas" nzIcon="rise">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaUsuarios">
-              Lista de ventas
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarUsuario">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzTitle="Equipos" nzIcon="cluster">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaEquipos">
-              Lista de equipo
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarEquipo">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzTitle="Alimentos" nzIcon="rest">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaAlimento">
-              Lista de alimentos
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarAlimento">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzTitle="Medicamentos" nzIcon="heart">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaMedicamentos">
-              Lista de medicamentos
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarMedicamento">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzTitle="Insumos" nzIcon="rise">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaInsumos">
-              Lista de insumos
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarInsumo">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzTitle="Materiales" nzIcon="tool">
-        <ul>
-          <li nz-menu-item>
-            <a routerLink="/listaUsuarios">
-              Lista de materiales
-            </a>
-          </li>
-          <li nz-menu-item>
-            <a routerLink="/agregarUsuario">
-              Agregar
-            </a>
-          </li>
-        </ul>
-      </li> -->
       <li nz-menu-item (click)="logout();">
         <span nz-icon nzType="logout"></span>
         <span>Cerrar Sesión</span>
       </li>
-      <!--<li nz-menu-item>
-        <span nz-icon nzType="file"></span>
-        <span>File</span>
-      </li>-->
     </ul>
   </nz-sider>
   <nz-layout>
