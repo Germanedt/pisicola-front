@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IUser } from '../models/User.model';
 import { ILoginResponse, ITokenData } from '../models/Authentication.model';
+import { IProductiveUnit } from '../models/ProductiveUnit.model';
 
 const initUserData: IUser = {
   id: 0,
@@ -23,12 +24,21 @@ const initTokenInfo = {
   expires_at: '',
   token: '',
 };
+const initProdUnit: IProductiveUnit = {
+  id: 0,
+  name: '',
+  description: '',
+  address: '',
+  is_active: false,
+  deleted_at: ''
+}
 @Injectable({
   providedIn: 'root',
 })
 export class SessionDataService {
   private userData: IUser = initUserData;
   tokenInfo: ITokenData = initTokenInfo;
+  productiveUnit: IProductiveUnit = initProdUnit;
   constructor() {}
 
   public setLoginData(response: ILoginResponse) {
@@ -39,6 +49,9 @@ export class SessionDataService {
     };
     this.userData = response.profile;
     //window.sessionStorage.setItem('userData', JSON.stringify(this.userData));
+  }
+  public setProductiveUnit(prodUnit: IProductiveUnit) {
+    this.productiveUnit = prodUnit;
   }
   public getUserData(): IUser {
     return this.userData;

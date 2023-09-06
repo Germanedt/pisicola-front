@@ -28,8 +28,8 @@ export class ListaUnidadesComponent implements OnInit {
     });
   }
   public goToShow(productiveUnit: IProductiveUnit) {
-    const state = { productiveUnit };
-    this.router.navigate(['/detalleUnidad'], { state });
+    this.dataService.setProductiveUnit(productiveUnit);
+    this.router.navigate(['/detalleUnidad']);
   }
   public goToEdit(productiveUnit: IProductiveUnit) {
     const state = { productiveUnit };

@@ -1,116 +1,36 @@
-<h1>{{ productiveUnit.name }}</h1>
-<button nz-button nzType="default">Asignar usuarios</button>
-<button nz-button nz-dropdown [nzDropdownMenu]="cosechas">
-  Cosechas
-  <span nz-icon nzType="down"></span>
-</button>
-<nz-dropdown-menu #cosechas="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item>
-      <a (click)="goTo('/listaCosechas')">Lista</a>
-    </li>
-    <li nz-menu-item>
-      <a (click)="goTo('/agregarCosecha')">Agregar</a>
-    </li>
-  </ul>
-</nz-dropdown-menu>
-<button nz-button nz-dropdown [nzDropdownMenu]="estanques">
-  Estanques
-  <span nz-icon nzType="down"></span>
-</button>
-<nz-dropdown-menu #estanques="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item>
-      <a (click)="goTo('/listaEstanques')">Lista</a>
-    </li>
-    <li nz-menu-item>
-      <a (click)="goTo('/agregarEstanque')">Agregar</a>
-    </li>
-  </ul>
-</nz-dropdown-menu>
-<button nz-button nz-dropdown [nzDropdownMenu]="productos">
-  Productos
-  <span nz-icon nzType="down"></span>
-</button>
-<nz-dropdown-menu #productos="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item>
-      <a (click)="goTo('/listaProductos')">Lista</a>
-    </li>
-    <li nz-menu-item>
-      <a (click)="goTo('/agregarProduct')">Agregar</a>
-    </li>
-  </ul>
-</nz-dropdown-menu>
-<button nz-button nzType="default" (click)="goTo('/agregarParametro')">Agregar Parametro</button>
-<button nz-button nz-dropdown [nzDropdownMenu]="empleados">
-  Empleados
-  <span nz-icon nzType="down"></span>
-</button>
-<nz-dropdown-menu #empleados="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item>
-      <a (click)="goTo('/listaEmpleados')">Lista</a>
-    </li>
-    <li nz-menu-item>
-      <a (click)="goTo('/agregarEmpleado')">Agregar</a>
-    </li>
-  </ul>
-</nz-dropdown-menu>
-<button nz-button nz-dropdown [nzDropdownMenu]="tareas">
-  Tareas
-  <span nz-icon nzType="down"></span>
-</button>
-<nz-dropdown-menu #tareas="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item>
-      <a (click)="goTo('/listaTareas')">Lista</a>
-    </li>
-    <li nz-menu-item>
-      <a (click)="goTo('/agregarTarea')">Agregar</a>
-    </li>
-  </ul>
-</nz-dropdown-menu>
-<button nz-button nz-dropdown [nzDropdownMenu]="rtareas">
-  Registro de tareas
-  <span nz-icon nzType="down"></span>
-</button>
-<nz-dropdown-menu #rtareas="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item>
-      <a (click)="goTo('/listaRegistroTareas')">Lista</a>
-    </li>
-    <li nz-menu-item>
-      <a (click)="goTo('/agregarRegistroTarea')">Agregar</a>
-    </li>
-  </ul>
-</nz-dropdown-menu>
-<button nz-button nz-dropdown [nzDropdownMenu]="payments">
-  Pagos
-  <span nz-icon nzType="down"></span>
-</button>
-<nz-dropdown-menu #payments="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item>
-      <a (click)="goTo('/listaConceptosPago')">Lista conceptos</a>
-    </li>
-    <li nz-menu-item>
-      <a (click)="goTo('/agregarConceptoPago')">Agregar conceptos</a>
-    </li>
-  </ul>
-</nz-dropdown-menu>
+<h1>{{ dataService.productiveUnit.name }}</h1>
 <nz-divider></nz-divider>
 <nz-card nzTitle="Información general" class="card-header-light">
   <nz-row>
-    <nz-col style="color: #8d375a;">Dirección de la unidad productiva:</nz-col>
-    <nz-col style="margin-left: 10px;">{{ productiveUnit.address }}</nz-col>
+    <nz-col style="color: #8d375a">Dirección de la unidad productiva:</nz-col>
+    <nz-col style="margin-left: 10px">{{
+      dataService.productiveUnit.address
+    }}</nz-col>
   </nz-row>
   <nz-row nzJustify="space-between">
-    <nz-col style="color: #8d375a;">Descripción de la unidad productiva:</nz-col>
-  </nz-row>
-  <nz-row nzJustify="space-between">
-    <nz-col><p>{{ productiveUnit.description }}</p></nz-col>
+    <nz-col>
+      <p>
+        <span style="color: #8d375a">Descripción de la unidad productiva:</span>
+        {{ dataService.productiveUnit.description }}
+      </p>
+    </nz-col>
   </nz-row>
 </nz-card>
-<!-- 
-<div class="space-flag">Estadisticas</div> -->
+<nz-divider></nz-divider>
+<nz-card nzTitle="Cosechas" class="card-header-light">
+  <nz-row nzJustify="space-between" nzGutter="16">
+    <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="10" nzXl="8" class="nz-mb-2">
+      <app-sowing-card
+        *ngFor="let data of sowings"
+        [sowing]="data"
+        [hasActions]="hasActions"
+      ></app-sowing-card>
+    </nz-col>
+  </nz-row>
+</nz-card>
+<nz-divider></nz-divider>
+<nz-card nzTitle="Últimos gastos" class="card-header-light">
+  <nz-row nzJustify="space-between">
+    lista de gastos
+  </nz-row>
+</nz-card>

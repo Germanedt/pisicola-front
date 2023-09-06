@@ -83,6 +83,7 @@ import { ModificarRegistroTareaComponent } from './pages/registroTareas/modifica
 import { ListaConceptosPagoComponent } from './pages/conceptoPago/lista/lista.component';
 import { AgregarConceptoPagoComponent } from './pages/conceptoPago/agregar/agregar.component';
 import { ModificarConceptoPagoComponent } from './pages/conceptoPago/modificar/modificar.component';
+import { SowingCardComponent } from './components/sowingCard/sowing-card.component';
 
 registerLocaleData(es);
 
@@ -129,6 +130,7 @@ registerLocaleData(es);
     ModificarCosechaComponent,
     SensorChartComponent,
     HistoryChartComponent,
+    SowingCardComponent,
     HistorialCosechaComponent,
     ListaEmpleadosComponent,
     AgregarEmpleadoComponent,

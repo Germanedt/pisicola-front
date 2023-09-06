@@ -1,0 +1,70 @@
+<nz-card [nzTitle]="sowing.fish_step?.fish?.name" class="card-header-light">
+  <nz-row nzJustify="space-between">
+    <nz-col>Estanque</nz-col>
+    <nz-col class="ctm-separator"></nz-col>
+    <nz-col>{{ sowing.pond?.name }}</nz-col>
+  </nz-row>
+  <nz-row nzJustify="space-between">
+    <nz-col>Etapa</nz-col>
+    <nz-col class="ctm-separator"></nz-col>
+    <nz-col
+      >{{ sowing.fish_step?.name }}</nz-col
+    >
+  </nz-row>
+  <nz-row nzJustify="space-between">
+    <nz-col>Fecha</nz-col>
+    <nz-col class="ctm-separator"></nz-col>
+    <nz-col>{{ sowing.created_at | date }}</nz-col>
+  </nz-row>
+  <nz-row nzJustify="space-between" class="nz-mb-2">
+    <nz-col>N° de peces</nz-col>
+    <nz-col class="ctm-separator"></nz-col>
+    <nz-col>{{ sowing.total_fish }}</nz-col>
+  </nz-row>
+  <nz-row nzJustify="end" class="actions-container" *ngIf="hasActions">
+    <a
+      nz-button
+      nzType="primary"
+      nzSize="default"
+      class="show-action"
+      (click)="gotTo(sowing)"
+    >
+      <span nz-icon nzType="eye"></span>
+    </a>
+    <a
+      nz-button
+      nzType="primary"
+      nzSize="default"
+      class="edit-action"
+      (click)="goToEdit(sowing)"
+    >
+      <span nz-icon nzType="edit"></span>
+    </a>
+    <a
+      nz-button
+      nzType="primary"
+      nzSize="default"
+      class="delete-action"
+      nz-popconfirm
+      (nzOnConfirm)="handlerConfirmDelete(sowing.id)"
+      nzPopconfirmTitle="¿Seguro desea eliminar la cosecha?"
+      nzOkText="Si, eliminar"
+      nzCancelText="Cancelar"
+    >
+      <span nz-icon nzType="delete"></span>
+    </a>
+    <a
+      nz-button
+      nzType="primary"
+      nzSize="default"
+      class="close-action"
+      nz-popconfirm
+      (nzOnConfirm)="handlerConfirmClose(sowing.id)"
+      nzPopconfirmTitle="¿Seguro desea cerrar la cosecha?"
+      nzOkText="Si, cerrar"
+      nzCancelText="Cancelar"
+    >
+      <span nz-icon nzType="close-circle"></span>
+    </a>
+  </nz-row>
+</nz-card>

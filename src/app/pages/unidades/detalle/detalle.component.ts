@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
+import { IListSowingRequest, ISowing } from 'src/app/models/Sowing.model';
+import { SessionDataService } from 'src/app/services/session-data.service';
+import { SowingService } from 'src/app/services/sowing.service';
 
 @Component({
   selector: 'app-detalle-unidad',
@@ -8,29 +10,28 @@ import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
   styleUrls: ['./detalle.component.less'],
 })
 export class DetalleUnidadComponent implements OnInit {
-  productiveUnit: IProductiveUnit = {
-    id: 0,
-    name: '',
-    description: '',
-    address: '',
-    is_active: false,
-    deleted_at: '',
-  };
-  constructor(public router: Router) {
-    const data = this.router.getCurrentNavigation()?.extras.state;
-    if (data) {
-      this.productiveUnit = data['productiveUnit'];
-    }
-  }
+  sowings: ISowing[] = [];
+  hasActions = false;
+  constructor(
+    public router: Router,
+    public dataService: SessionDataService,
+    public sowingService: SowingService
+  ) {}
   public goTo(route: string) {
-    console.log(route);
-    this.router.navigate([route], { state: this.getState() });
+    this.router.navigate([route]);
   }
-  private getState() {
-    return {
-      productiveUnit: this.productiveUnit,
+  loadDataSowings() {
+    const params: IListSowingRequest = {
+      page: 0,
+      perPage: 0,
     };
+    this.sowingService
+      .listSowings(params, this.dataService.productiveUnit.id)
+      .subscribe((response) => {
+        this.sowings = response.data;
+      });
   }
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadDataSowings();
+  }
 }
