@@ -9,6 +9,7 @@ import {
 import { IUsersCreateRequest } from 'src/app/models/User.model';
 import { IUserType } from 'src/app/models/UserType.model';
 import { ProductiveUnitService } from 'src/app/services/productiveUnits.service';
+import { SessionDataService } from 'src/app/services/session-data.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -70,9 +71,8 @@ export class AgregarUsuarioComponent implements OnInit {
   }
   listenUserTypeChanges(): void {
     this.form.get('userTypeId')?.valueChanges.subscribe((val) => {
-      console.log(val);
       const userTypeSelected = this.userTypes.find((item) => item.id === val);
-      this.isAdminUser = userTypeSelected?.key === 'admin';
+      this.isAdminUser = userTypeSelected?.id === 1;
       if (this.productiveUnits.length === 0 && !this.isAdminUser) {
         const params: IListProductiveUnitRequest = {
           page: 1,
@@ -90,13 +90,32 @@ export class AgregarUsuarioComponent implements OnInit {
     private fb: FormBuilder,
     private usersService: UsersService,
     private productiveUnitService: ProductiveUnitService,
+    private dataService: SessionDataService,
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  loadUserTypes() {
     this.usersService.getUserTypes().subscribe((res) => {
       this.userTypes = res;
-      this.listenUserTypeChanges();
+      if (this.dataService.productiveUnit.id === 0) {
+        this.listenUserTypeChanges();
+      } else {
+        this.form.setValue(
+          {
+            fullName: '',
+            email: '',
+            userTypeId: 0,
+            password: '',
+            passwordConfirmation: '',
+            productiveUnitId: this.dataService.productiveUnit.id
+          }
+        )
+        console.log(this.form);
+        
+      }
     });
+  }
+  ngOnInit(): void {
+    this.loadUserTypes();
   }
 }

@@ -21,10 +21,7 @@ export class UsersService {
   public listUsers(params: IListUsersRequest) {
     return this.http.get<IListUsersResponse>(environment.USER_LIST_SERVICE, {
       headers: this.getHeaders(),
-      params: {
-        page: params.page,
-        perPage: params.perPage,
-      },
+      params: {...params},
     });
   }
 
@@ -49,7 +46,9 @@ export class UsersService {
 
   public deleteUser(payload: number) {
     return this.http.delete(
-      environment.USER_CREATE_MODIFY_DELETE_SERVICE + '/' + payload
+      environment.USER_CREATE_MODIFY_DELETE_SERVICE + '/' + payload, {
+        headers: this.getHeaders(),
+      }
     );
   }
 

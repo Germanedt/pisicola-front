@@ -6,7 +6,7 @@
       <th>Nombre</th>
       <th>Correo</th>
       <th>Rol</th>
-      <th></th>
+      <th *ngIf="isAdmin"></th>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +16,7 @@
         <td>{{ data.full_name }}</td>
         <td>{{ data.email }}</td>
         <td>{{ data.user_type?.key }}</td>
-        <td class="actions-container">
+        <td class="actions-container" *ngIf="isAdmin">
           <a nz-button nzType="primary" nzSize="default" class="edit-action" (click)="goToEdit(data)">
             <span nz-icon nzType="edit"></span>
           </a>

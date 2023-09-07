@@ -29,7 +29,7 @@ export const routeButtons: INavigationLink[] = [
         title: 'Agregar',
       },
     ],
-    roles: [2],
+    roles: [1,2],
   },
   {
     title: 'Tipos de producto',
