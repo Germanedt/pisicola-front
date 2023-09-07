@@ -6,6 +6,7 @@ import {
   IProductType,
 } from 'src/app/models/ProductType.model';
 import { ProductTypeService } from 'src/app/services/productType.service';
+import { SessionDataService } from 'src/app/services/session-data.service';
 
 @Component({
   selector: 'app-lista-tproducto',
@@ -14,10 +15,11 @@ import { ProductTypeService } from 'src/app/services/productType.service';
 })
 export class ListaTipoProductoComponent implements OnInit {
   listOfData: IProductType[] = [];
-
+  isAdmin: boolean = true;
   constructor(
     public router: Router,
-    public productTypeService: ProductTypeService
+    public productTypeService: ProductTypeService,
+    public dataService: SessionDataService
   ) {}
 
   public goToEdit(productType: IProductType) {
@@ -45,5 +47,6 @@ export class ListaTipoProductoComponent implements OnInit {
   }
   ngOnInit(): void {
     this.loadData();
+    this.isAdmin = this.dataService.getUserData().user_type_id === 1;
   }
 }

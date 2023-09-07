@@ -12,7 +12,7 @@ export class CanActivateRole implements CanActivate {
     { route: 'agregarUnidad', roles: ['admin'] },
     { route: 'modificarUnidad', roles: ['admin'] },
     { route: 'detalleUnidad', roles: ['admin', 'unit_manager'] },
-    { route: 'listaTipoProducto', roles: ['admin'] },
+    { route: 'listaTipoProducto', roles: ['admin', 'unit_manager'] },
     { route: 'agregarTipoProducto', roles: ['admin'] },
     { route: 'modificarTipoProducto', roles: ['admin'] },
     { route: 'listaProductos', roles: ['admin', 'unit_manager'] },

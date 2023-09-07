@@ -44,7 +44,18 @@ export const routeButtons: INavigationLink[] = [
         title: 'Agregar',
       },
     ],
-    roles: [1,2],
+    roles: [1],
+  },
+  {
+    title: 'Tipos de producto',
+    icon: 'unordered-list',
+    actions: [
+      {
+        route: '/listaTipoProducto',
+        title: 'Lista de Tipos',
+      }
+    ],
+    roles: [2],
   },
   {
     title: 'Productos',

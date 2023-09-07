@@ -10,7 +10,7 @@
       <th>id</th>
       <th>Nombre</th>
       <th>Descripción</th>
-      <th></th>
+      <th *ngIf="isAdmin"></th>
     </tr>
   </thead>
   <tbody>
@@ -19,7 +19,7 @@
         <td>{{ data.id }}</td>
         <td>{{ data.name }}</td>
         <td>{{ data.description }}</td>
-        <td class="actions-container">
+        <td class="actions-container" *ngIf="isAdmin">
           <a
             nz-button
             nzType="primary"
