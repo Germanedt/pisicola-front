@@ -8,6 +8,7 @@ import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductTypeService } from 'src/app/services/productType.service';
 import { ProductiveUnitService } from 'src/app/services/productiveUnits.service';
+import { SessionDataService } from 'src/app/services/session-data.service';
 
 @Component({
   selector: 'app-agregar-eproducto',
@@ -23,14 +24,6 @@ export class AgregarProductoComponent implements OnInit {
     productive_unit_id: [0, [Validators.required]],
     description: ['', [Validators.required]],
   });
-  productiveUnit: IProductiveUnit = {
-    id: 0,
-    name: '',
-    description: '',
-    address: '',
-    is_active: false,
-    deleted_at: '',
-  };
   isAdmin: boolean = true;
   submitForm(): void {
     if (this.form.valid) {
@@ -60,16 +53,15 @@ export class AgregarProductoComponent implements OnInit {
     private productService: ProductService,
     private productTypeService: ProductTypeService,
     private productiveUnitService: ProductiveUnitService,
+    private dataService: SessionDataService,
     private router: Router
   ) {
-    const data = this.router.getCurrentNavigation()?.extras.state;
-    if (data) {
-      this.productiveUnit = data['productiveUnit'];
+    if (this.dataService.productiveUnit.id !== 0) {
       this.isAdmin = false;
       this.form.setValue({
         name: '',
         fish_id: 0,
-        productive_unit_id: this.productiveUnit.id,
+        productive_unit_id: this.dataService.productiveUnit.id,
         description: '',
       });
     }

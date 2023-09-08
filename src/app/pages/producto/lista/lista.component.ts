@@ -5,8 +5,8 @@ import {
   IListProductResponse,
   IProduct,
 } from 'src/app/models/Product.model';
-import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
 import { ProductService } from 'src/app/services/product.service';
+import { SessionDataService } from 'src/app/services/session-data.service';
 
 @Component({
   selector: 'app-lista-eproducto',
@@ -15,21 +15,16 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ListaProductoComponent implements OnInit {
   listOfData: IProduct[] = [];
-  productiveUnit: IProductiveUnit = {
-    id: 0,
-    name: '',
-    description: '',
-    address: '',
-    is_active: false,
-    deleted_at: '',
-  };
   isAdmin: boolean = true;
 
-  constructor(public router: Router, public productService: ProductService) {
+  constructor(
+    public router: Router,
+    public productService: ProductService,
+    public dataService: SessionDataService
+  ) {
     const data = this.router.getCurrentNavigation()?.extras.state;
-    if (data) {
-      this.productiveUnit = data['productiveUnit'];
-      this.isAdmin = false;
+    if (dataService.productiveUnit.id !== 0) {
+      this.isAdmin = dataService.getUserData().user_type_id === 1;
     }
   }
 
@@ -38,7 +33,7 @@ export class ListaProductoComponent implements OnInit {
     this.router.navigate(['/modificarProducto'], { state });
   }
 
-  public goToListStats (product: IProduct) {
+  public goToListStats(product: IProduct) {
     const state = { product: product };
     this.router.navigate(['/listaParametros'], { state });
   }
@@ -63,7 +58,7 @@ export class ListaProductoComponent implements OnInit {
         });
     } else {
       this.productService
-        .listByProductiveUnitProduct(params, this.productiveUnit.id)
+        .listByProductiveUnitProduct(params, this.dataService.productiveUnit.id)
         .subscribe((response: IListProductResponse) => {
           this.listOfData = response.data;
         });
