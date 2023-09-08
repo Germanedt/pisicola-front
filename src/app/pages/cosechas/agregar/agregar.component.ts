@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { IPond } from 'src/app/models/Pond.model';
 import { IProduct } from 'src/app/models/Product.model';
-import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
 import { ICreateSowingRequest } from 'src/app/models/Sowing.model';
 import { PondService } from 'src/app/services/pond.service';
 import { ProductService } from 'src/app/services/product.service';
+import { SessionDataService } from 'src/app/services/session-data.service';
 import { SowingService } from 'src/app/services/sowing.service';
 
 @Component({
@@ -18,14 +18,6 @@ import { SowingService } from 'src/app/services/sowing.service';
 export class AgregarCosechaComponent implements OnInit {
   ponds: IPond[] = [];
   products: IProduct[] = [];
-  productiveUnit: IProductiveUnit = {
-    id: 0,
-    name: '',
-    description: '',
-    address: '',
-    is_active: false,
-    deleted_at: '',
-  };
   form: FormGroup = this.fb.group({
     pond_id: ['', [Validators.required]],
     fish_step_id: ['', [Validators.required]],
@@ -41,8 +33,7 @@ export class AgregarCosechaComponent implements OnInit {
       };
       this.service.createSowing(payload).subscribe((response) => {
         if (response) {
-          const state = { productiveUnit: this.productiveUnit };
-          this.router.navigate(['/listaCosechas'], { state });
+          this.router.navigate(['/listaCosechas']);
         }
       });
     } else {
@@ -60,13 +51,9 @@ export class AgregarCosechaComponent implements OnInit {
     private pondService: PondService,
     private productService: ProductService,
     private service: SowingService,
+    private dataService: SessionDataService,
     private router: Router
-  ) {
-    const data = this.router.getCurrentNavigation()?.extras.state;
-    if (data) {
-      this.productiveUnit = data['productiveUnit'];
-    }
-  }
+  ) {}
 
   private loadDataSelect() {
     forkJoin({
@@ -75,14 +62,14 @@ export class AgregarCosechaComponent implements OnInit {
           page: 1,
           perPage: 10,
         },
-        this.productiveUnit.id
+        this.dataService.productiveUnit.id
       ),
       products: this.productService.listByProductiveUnitProduct(
         {
           page: 1,
           perPage: 10,
         },
-        this.productiveUnit.id
+        this.dataService.productiveUnit.id
       ),
     }).subscribe((data) => {
       this.ponds = data.ponds.data;

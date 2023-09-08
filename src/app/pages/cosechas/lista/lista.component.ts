@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
 import {
   IListSowingRequest,
   IListSowingResponse,
   ISowing,
 } from 'src/app/models/Sowing.model';
+import { SessionDataService } from 'src/app/services/session-data.service';
 import { SowingService } from 'src/app/services/sowing.service';
 
 @Component({
@@ -15,20 +15,12 @@ import { SowingService } from 'src/app/services/sowing.service';
 })
 export class ListaCosechaComponent {
   listOfData: ISowing[] = [];
-  productiveUnit: IProductiveUnit = {
-    id: 0,
-    name: '',
-    description: '',
-    address: '',
-    is_active: false,
-    deleted_at: '',
-  };
 
-  constructor(public router: Router, public service: SowingService) {
-    const data = this.router.getCurrentNavigation()?.extras.state;
-    if (data) {
-      this.productiveUnit = data['productiveUnit'];
-    }
+  constructor(
+    public router: Router,
+    public service: SowingService,
+    public dataService: SessionDataService
+  ) {
   }
 
   public loadData() {
@@ -38,7 +30,7 @@ export class ListaCosechaComponent {
       includeClosed: false,
     };
     this.service
-      .listSowings(params, this.productiveUnit.id)
+      .listSowings(params, this.dataService.productiveUnit.id)
       .subscribe((response: IListSowingResponse) => {
         this.listOfData = response.data;
       });
@@ -56,7 +48,7 @@ export class ListaCosechaComponent {
   }
   public goToEdit(sowing: ISowing) {
     const state = {
-      productiveUnit: this.productiveUnit,
+      productiveUnit: this.dataService.productiveUnit,
       sowing,
     };
     this.router.navigate(['/modificarCosecha'], { state });
