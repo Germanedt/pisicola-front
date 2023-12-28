@@ -1,4 +1,4 @@
-const host = 'http://3.144.25.191:8080';
+const host = 'http://cryzat.xyz';
 export const environment = {
   production: false,
   AUTH_LOGIN_SERVICE: host + '/login',

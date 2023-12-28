@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "./",
             "outputPath": "dist/pisicola-front",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -45,8 +46,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "30mb",
-                  "maximumError": "30mb"
+                  "maximumWarning": "40mb",
+                  "maximumError": "40mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -54,7 +55,8 @@
                   "maximumError": "8mb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extractLicenses": false
             },
             "development": {
               "buildOptimizer": false,
