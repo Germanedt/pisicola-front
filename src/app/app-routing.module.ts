@@ -7,6 +7,7 @@ import { ListaUsuariosComponent } from './pages/usuarios/lista/lista.component';
 import { LoginComponent } from './pages/usuarios/login/login.component';
 import { RecuperarClaveComponent } from './pages/usuarios/recuperar-clave/recuperar-clave.component';
 import { ModificarUsuarioComponent } from './pages/usuarios/modificar/modificar.component';
+import { CambiarClaveUsuarioComponent } from './pages/usuarios/cambiar-clave/cambiar-clave.component';
 import { ListaUnidadesComponent } from './pages/unidades/lista/lista.component';
 import { AgregarUnidadComponent } from './pages/unidades/agregar/agregar.component';
 import { ModificarUnidadComponent } from './pages/unidades/modificar/modificar.component';
@@ -85,6 +86,11 @@ const routes: Routes = [
       {
         path: 'modificarUsuario',
         component: ModificarUsuarioComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'cambiarClaveUsuario',
+        component: CambiarClaveUsuarioComponent,
         canActivate: [CanActivateRole],
       },
       {

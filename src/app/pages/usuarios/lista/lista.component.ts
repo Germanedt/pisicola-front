@@ -27,7 +27,11 @@ export class ListaUsuariosComponent implements OnInit{
   }
   public goToEdit(user: IUser) {
     const state = {user};
-    this.router.navigate(['/modificarUsuario'], { state })
+    this.router.navigate(['/modificarUsuario'], { state });
+  }
+  public goToChangePass(user: IUser){
+    const state = {user};
+    this.router.navigate(['/cambiarClaveUsuario'], { state });
   }
   public loadData() {
     const params: IListUsersRequest = {

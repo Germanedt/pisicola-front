@@ -7,6 +7,7 @@ import {
   IListUsersResponse,
   IUser,
   IUsersCreateRequest,
+  IUserModifyRequest
 } from '../models/User.model';
 import { IUserType } from '../models/UserType.model';
 @Injectable({
@@ -34,7 +35,7 @@ export class UsersService {
       }
     );
   }
-  public modifyUser(payload: IUsersCreateRequest) {
+  public modifyUser(payload: IUserModifyRequest) {
     return this.http.put(
       environment.USER_CREATE_MODIFY_DELETE_SERVICE,
       payload,

@@ -6,15 +6,14 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser, IUserModifyRequest } from 'src/app/models/User.model';
-import { IUserType } from 'src/app/models/UserType.model';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
-  selector: 'app-modificar-usuario',
-  templateUrl: './modificar.component.html',
-  styleUrls: ['./modificar.component.less'],
+  selector: 'app-cambiar-clave-usuario',
+  templateUrl: './cambiar-clave.component.html',
+  styleUrls: ['./cambiar-clave.component.less'],
 })
-export class ModificarUsuarioComponent implements OnInit {
+export class CambiarClaveUsuarioComponent implements OnInit {
   user: IUser = {
     id: 0,
     user_type_id: 0,
@@ -24,25 +23,16 @@ export class ModificarUsuarioComponent implements OnInit {
     deleted_at: ''
   }
   form: FormGroup = this.fb.group({
-    fullName: ['', [Validators.required]],
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-      ],
-    ],
-    userTypeId: [0, [Validators.required]],
+    password: ['', [Validators.required]],
+    passwordConfirmation: ['', [Validators.required]],
   });
-  userTypes: IUserType[] = [];
 
   public submitForm(): void {
     if (this.form.valid) {
       const payload: IUserModifyRequest = {
         id: this.user.id,
-        full_name: this.form.get('fullName')?.value,
-        email: this.form.get('email')?.value,
-        user_type_id: this.form.get('userTypeId')?.value
+        password: this.form.get('password')?.value,
+        password_confirmation: this.form.get('passwordConfirmation')?.value
       };
       this.usersService.modifyUser(payload).subscribe((response) => {
         if (response) {
@@ -67,20 +57,8 @@ export class ModificarUsuarioComponent implements OnInit {
     const data = this.router.getCurrentNavigation()?.extras.state;
     if (data) {
       this.user = data['user'];
-      this.form.setValue(
-        {
-          fullName: this.user.full_name,
-          email: this.user.email,
-          userTypeId: this.user.user_type_id
-        }
-      )
-      
     }    
   }
 
-  ngOnInit(): void {
-    this.usersService.getUserTypes().subscribe((res) => {
-      this.userTypes = res;
-    })
-  }
+  ngOnInit(): void {}
 }

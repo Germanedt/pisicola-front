@@ -1,0 +1,35 @@
+<h1>Cambiar clave de {{user.full_name}}</h1>
+<form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()">
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control nzErrorTip="Por favor ingrese la contraseña del usuario">
+      <nz-input-group>
+        <input
+          type="password"
+          nz-input
+          formControlName="password"
+          placeholder="Contraseña del usuario"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control nzErrorTip="Por favor ingrese de nuevo la contraseña">
+      <nz-input-group>
+        <input
+          type="password"
+          nz-input
+          formControlName="passwordConfirmation"
+          placeholder="Confirmar la contraseña"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzShape="round"
+    style="float: right"
+  >
+    Guardar Cambios
+    <span nz-icon nzType="save"></span>
+  </button>
+</form>

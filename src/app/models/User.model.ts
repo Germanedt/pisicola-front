@@ -30,11 +30,11 @@ interface IUsersCreateRequest {
 }
 interface IUserModifyRequest {
   id: number;
-  full_name: string;
-  email: string;
-  user_type_id: number;
-  password: string;
-  password_confirmation: string;
+  full_name?: string;
+  email?: string;
+  user_type_id?: number;
+  password?: string;
+  password_confirmation?: string;
   
 }
 interface IUser {
