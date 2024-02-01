@@ -8,6 +8,7 @@ export class CanActivateRole implements CanActivate {
     { route: 'listaUsuarios', roles: ['admin', 'unit_manager'] },
     { route: 'agregarUsuario', roles: ['admin', 'unit_manager'] },
     { route: 'modificarUsuario', roles: ['admin', 'unit_manager'] },
+    { route: 'cambiarClaveUsuario', roles: ['admin', 'unit_manager'] },
     { route: 'listaUnidades', roles: ['admin', 'unit_manager'] },
     { route: 'agregarUnidad', roles: ['admin'] },
     { route: 'modificarUnidad', roles: ['admin'] },
