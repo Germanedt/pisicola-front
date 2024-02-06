@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IPond } from 'src/app/models/Pond.model';
-import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
 import { PondService } from 'src/app/services/pond.service';
 
 @Component({
@@ -21,14 +20,6 @@ export class ModificarEstanqueComponent implements OnInit {
     deleted_at: '',
     updated_at: '',
   };
-  productiveUnit: IProductiveUnit = {
-    id: 0,
-    name: '',
-    description: '',
-    address: '',
-    is_active: false,
-    deleted_at: '',
-  };
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
     sensor_id: ['', [Validators.required]],
@@ -46,10 +37,7 @@ export class ModificarEstanqueComponent implements OnInit {
       };
       this.pondService.modifyPond(payload).subscribe((response) => {
         if (response) {
-          const state = {
-            productiveUnit: this.productiveUnit,
-          };
-          this.router.navigate(['/listaEstanques'], { state });
+          this.router.navigate(['/listaEstanques']);
         }
       });
     } else {
@@ -70,7 +58,6 @@ export class ModificarEstanqueComponent implements OnInit {
     const data = this.router.getCurrentNavigation()?.extras.state;
     if (data) {
       this.pond = data['pond'];
-      this.productiveUnit = data['productiveUnit'];
       this.form.setValue({
         name: this.pond.name,
         sensor_id: this.pond.sensor_id,

@@ -5,8 +5,8 @@ import {
   IListPondResponse,
   IPond,
 } from 'src/app/models/Pond.model';
-import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
 import { PondService } from 'src/app/services/pond.service';
+import { SessionDataService } from 'src/app/services/session-data.service';
 
 @Component({
   selector: 'app-lista-estanques',
@@ -15,24 +15,16 @@ import { PondService } from 'src/app/services/pond.service';
 })
 export class ListaEstanqueComponent implements OnInit {
   listOfData: IPond[] = [];
-  productiveUnit: IProductiveUnit = {
-    id: 0,
-    name: '',
-    description: '',
-    address: '',
-    is_active: false,
-    deleted_at: '',
-  };
 
-  constructor(public router: Router, public pondService: PondService) {
-    const data = this.router.getCurrentNavigation()?.extras.state;
-    if (data) {
-      this.productiveUnit = data['productiveUnit'];
-    }
+  constructor(public router: Router, 
+    public pondService: PondService, 
+    public dataService: SessionDataService) {
   }
 
   public goToEdit(pond: IPond) {
-    const state = { pond: pond, productiveUnit: this.productiveUnit };
+    const state = {
+      pond,
+    };
     this.router.navigate(['/modificarEstanque'], { state });
   }
 
@@ -50,7 +42,7 @@ export class ListaEstanqueComponent implements OnInit {
       perPage: 10,
     };
     this.pondService
-      .listPonds(params, this.productiveUnit.id)
+      .listPonds(params, this.dataService.productiveUnit.id)
       .subscribe((response: IListPondResponse) => {
         this.listOfData = response.data;
       });
