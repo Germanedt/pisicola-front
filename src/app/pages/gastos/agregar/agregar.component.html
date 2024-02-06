@@ -1,74 +1,71 @@
-<h1>Agregar Gasto</h1>
+<h1>Agregar gasto</h1>
 <form
   nz-form
-  [formGroup]="validateForm"
-  class="login-form"
+  [formGroup]="form"
+  class="expenses-form"
   (ngSubmit)="submitForm()"
 >
- 
-    <nz-row nzXs="24" [nzGutter]="16">
-      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" class="nz-mb-2">
-        <nz-form-control nzErrorTip="Por favor ingrese el concepto del gasto">
-          <nz-input-group>
-            <label for="">Concepto</label>
-            <input
-              type="text"
-              nz-input
-              formControlName="concepto"
-            />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-col>
-      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" class="nz-mb-2">
-        <nz-form-control nzErrorTip="Por favor ingrese el precio del gasto">
-          <nz-input-group>
-            <label>Valor</label>
-            <input
-              type="number"
-              nz-input
-              formControlName="precio"
-              placeholder="$0"
-            />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-col>
-      <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="8" nzXl="6" class="nz-mb-2">
-        <nz-form-control nzErrorTip="Por favor ingrese la fecha de compra">
-          <nz-input-group>
-            <label>Fecha de compra</label>
-            <input
-              type="date"
-              nz-input
-              formControlName="fecha"
-            />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-col>
-      <nz-col nzXs="24" class="nz-mb-2">
-          <nz-form-control nzErrorTip="Por favor ingrese la descripción del gasto">
-            <nz-input-group>
-              <textarea 
-                nz-input 
-                formControlName="descripcion"
-                rows="8"
-                placeholder="Descripción del gasto"></textarea>
-            </nz-input-group>
-          </nz-form-control>
-      </nz-col>
-    </nz-row >
-    <nz-divider></nz-divider>
-    <nz-row nzJustify="end" [nzGutter]="16">
-      <nz-col>
-        <button nz-button  nzSize="large" nzShape="round">
-          Cancelar
-          <span nz-icon nzType="close"></span>
-        </button>
-      </nz-col>
-      <nz-col>
-        <button nz-button nzType="primary" nzSize="large" nzShape="round">
-          Guardar
-          <span nz-icon nzType="save"></span>
-        </button>
-      </nz-col>
-    </nz-row>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese el nombre del gasto"
+    >
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="name"
+          placeholder="Nombre del gasto"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese el valor del gasto"
+    >
+      <nz-input-group>
+        <input
+          type="number"
+          nz-input
+          formControlName="value"
+          placeholder="Valor del gasto"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control
+      nzErrorTip="Por favor ingrese la fecha del gasto"
+    >
+      <nz-date-picker
+        style="width: 100%"
+        formControlName="manual_created_at"
+        nzPlaceHolder="Fecha del gasto"
+        nzFormat="YYYY-MM-dd HH:mm:ss"
+        nzShowTime
+      ></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese la descripción del gasto"
+    >
+      <nz-input-group>
+        <textarea
+          nz-input
+          formControlName="note"
+          rows="8"
+          placeholder="Descripción del gasto"
+        ></textarea>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzShape="round"
+    style="float: right"
+  >
+    Agregar
+    <span nz-icon nzType="save"></span>
+  </button>
 </form>

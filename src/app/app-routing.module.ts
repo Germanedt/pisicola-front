@@ -257,6 +257,16 @@ const routes: Routes = [
         path: 'modificarConceptoPago',
         component: ModificarConceptoPagoComponent,
         canActivate: [CanActivateRole],
+      },
+      {
+        path: 'listaGastos',
+        component: ListaGastosComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'agregarGasto',
+        component: AgregarGastoComponent,
+        canActivate: [CanActivateRole],
       }
       //Pendientes
       /*{
@@ -294,14 +304,6 @@ const routes: Routes = [
       {
         path: 'listaEquipos',
         component: ListaEquiposComponent
-      },
-      {
-        path: 'listaGastos',
-        component: ListaGastosComponent
-      },
-      {
-        path: 'agregarGasto',
-        component: AgregarGastoComponent
       },*/
     ],
   },
