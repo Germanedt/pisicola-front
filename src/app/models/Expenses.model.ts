@@ -23,8 +23,11 @@ interface ICreateExpenseRequest {
 }
 interface IModifyExpenseRequest {
   id: number;
+  productive_unit_id: number;
   name: string;
-  description: string;
+  value: number;
+  note: string;
+  manual_created_at: string;
 }
 interface IExpense {
   id: number;

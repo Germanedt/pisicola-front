@@ -27,6 +27,7 @@ import { AgregarEquipoComponent } from './pages/equipos/agregar/agregar.componen
 import { ListaEquiposComponent } from './pages/equipos/lista/lista.component';
 import { ListaGastosComponent } from './pages/gastos/lista/lista.component';
 import { AgregarGastoComponent } from './pages/gastos/agregar/agregar.component';
+import { ModificarGastoComponent } from './pages/gastos/modificar/modificar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DetallesCosechaComponent } from './pages/cosechas/detalles/detalles.component';
 import { HistorialCosechaComponent } from './pages/cosechas/historial/historial.component';
@@ -266,6 +267,11 @@ const routes: Routes = [
       {
         path: 'agregarGasto',
         component: AgregarGastoComponent,
+        canActivate: [CanActivateRole],
+      },
+      {
+        path: 'modificarGasto',
+        component: ModificarGastoComponent,
         canActivate: [CanActivateRole],
       }
       //Pendientes

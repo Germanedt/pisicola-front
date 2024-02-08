@@ -31,7 +31,12 @@
     </button>
   </nz-col>
 </nz-row>-->
-<nz-table #nzTable [nzData]="listOfData" [nzBordered]="true" nzTableLayout="fixed">
+<nz-table
+  #nzTable
+  [nzData]="listOfData"
+  [nzBordered]="true"
+  nzTableLayout="fixed"
+>
   <thead>
     <tr>
       <th>Concepto</th>
@@ -47,18 +52,30 @@
         <td>{{ data.name }}</td>
         <td>{{ data.value }}</td>
         <td>{{ data.note }}</td>
-        <td>{{ data.manual_created_at }}</td>
+        <td>{{ formatFullDate(data.manual_created_at) }}</td>
         <td class="actions-container">
-          <a nz-button nzType="primary" nzSize="default" class="edit-action">
+          <a
+            nz-button
+            nzType="primary"
+            nzSize="default"
+            class="edit-action"
+            (click)="goToEdit(data)"
+          >
             <span nz-icon nzType="edit"></span>
           </a>
-          <!--(nzOnConfirm)=""
-            (nzOnCancel)=""-->
-          <a nz-button nzType="primary" nzSize="default" class="delete-action" nz-popconfirm
-            nzPopconfirmTitle="¿Seguro desea eliminar el insumo?" nzOkText="Si, eliminar" nzCancelText="Cancelar">
+          <a
+            nz-button
+            nzType="primary"
+            nzSize="default"
+            class="delete-action"
+            nz-popconfirm
+            (nzOnConfirm)="handlerConfirmDelete(data.id)"
+            nzPopconfirmTitle="¿Seguro desea eliminar el gasto?"
+            nzOkText="Si, eliminar"
+            nzCancelText="Cancelar"
+          >
             <span nz-icon nzType="delete"></span>
           </a>
-
         </td>
       </tr>
     </ng-container>

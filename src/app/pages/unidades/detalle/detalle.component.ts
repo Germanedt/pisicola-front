@@ -48,10 +48,21 @@ export class DetalleUnidadComponent implements OnInit {
       });
 
   }
+  goToEditExpeses(expense: IExpense) {
+    const state = { expense };
+    this.router.navigate(['modificarGasto'], { state });
+  }
   formatFullDate(dateString:string) {
     return moment(dateString).format(
       'YYYY-MM-DD hh:mm a'
     )
+  }
+  public handlerConfirmDelete(id: number) {
+    this.expensesService.deleteExpense(id).subscribe((response) => {
+      if (response) {
+        this.loadExpenses();
+      }
+    });
   }
   ngOnInit(): void {
     this.loadDataSowings();

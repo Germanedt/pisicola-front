@@ -20,7 +20,6 @@ export class AgregarGastoComponent implements OnInit{
   });
 
   submitForm(): void {
-    console.log('entró');
     if (this.form.valid) {
       const payload: ICreateExpenseRequest = {
         productive_unit_id: this.dataService.productiveUnit.id,

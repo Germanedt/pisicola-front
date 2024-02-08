@@ -66,6 +66,7 @@
                 nzType="primary"
                 nzSize="default"
                 class="edit-action"
+                (click)="goToEditExpeses(data)"
               >
                 <span nz-icon nzType="edit"></span>
               </a>
@@ -77,6 +78,7 @@
                 nzSize="default"
                 class="delete-action"
                 nz-popconfirm
+                (nzOnConfirm)="handlerConfirmDelete(data.id)"
                 nzPopconfirmTitle="¿Seguro desea eliminar el insumo?"
                 nzOkText="Si, eliminar"
                 nzCancelText="Cancelar"

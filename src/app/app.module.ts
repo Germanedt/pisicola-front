@@ -56,6 +56,7 @@ import { AgregarEquipoComponent } from './pages/equipos/agregar/agregar.componen
 import { ListaEquiposComponent } from './pages/equipos/lista/lista.component';
 import { ListaGastosComponent } from './pages/gastos/lista/lista.component';
 import { AgregarGastoComponent } from './pages/gastos/agregar/agregar.component';
+import { ModificarGastoComponent } from './pages/gastos/modificar/modificar.component';
 import { DetallesCosechaComponent } from './pages/cosechas/detalles/detalles.component';
 import { HistorialCosechaComponent } from './pages/cosechas/historial/historial.component';
 import { SessionDataService } from './services/session-data.service';
@@ -123,6 +124,7 @@ registerLocaleData(es);
     ListaEquiposComponent,
     ListaGastosComponent,
     AgregarGastoComponent,
+    ModificarGastoComponent,
     DetallesCosechaComponent,
     AgregarParametroComponent,
     ListaParametrosComponent,

@@ -1,0 +1,71 @@
+<h1>Modificar gasto</h1>
+<form
+  nz-form
+  [formGroup]="form"
+  class="expenses-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese el nombre del gasto"
+    >
+      <nz-input-group>
+        <input
+          type="text"
+          nz-input
+          formControlName="name"
+          placeholder="Nombre del gasto"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese el valor del gasto"
+    >
+      <nz-input-group>
+        <input
+          type="number"
+          nz-input
+          formControlName="value"
+          placeholder="Valor del gasto"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <nz-form-control
+      nzErrorTip="Por favor ingrese la fecha del gasto"
+    >
+      <nz-date-picker
+        style="width: 100%"
+        formControlName="manual_created_at"
+        nzPlaceHolder="Fecha del gasto"
+        nzFormat="YYYY-MM-dd HH:mm:ss"
+        nzShowTime
+      ></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item style="gap: 1rem">
+    <nz-form-control
+      nzErrorTip="Por favor ingrese la descripción del gasto"
+    >
+      <nz-input-group>
+        <textarea
+          nz-input
+          formControlName="note"
+          rows="8"
+          placeholder="Descripción del gasto"
+        ></textarea>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzShape="round"
+    style="float: right"
+  >
+    Guardar
+    <span nz-icon nzType="save"></span>
+  </button>
+</form>
