@@ -44,10 +44,10 @@
   <tbody>
     <ng-container *ngFor="let data of nzTable.data">
       <tr>
-        <td>{{ data.nombre }}</td>
-        <td>{{ data.precio }}</td>
-        <td>{{ data.descripcion }}</td>
-        <td>{{ data.fecha_compra }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.value }}</td>
+        <td>{{ data.note }}</td>
+        <td>{{ data.manual_created_at }}</td>
         <td class="actions-container">
           <a nz-button nzType="primary" nzSize="default" class="edit-action">
             <span nz-icon nzType="edit"></span>

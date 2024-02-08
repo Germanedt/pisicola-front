@@ -12,7 +12,7 @@ export class ExpensesService {
     private sessionData: SessionDataService
   ) {}
 
-  public listProductTypes(params: IListExpensesRequest, productiveId: number) {
+  public listExpenses(params: IListExpensesRequest, productiveId: number) {
     const url = environment.EXPENSES_LIST_SERVICE + productiveId;
     return this.http.get<IListExpensesResponse>(url, {
       headers: this.getHeaders(),
@@ -29,13 +29,13 @@ export class ExpensesService {
     });
   }
 
-  public modifyProductType(payload: IModifyExpenseRequest) {
+  public modifyExpense(payload: IModifyExpenseRequest) {
     return this.http.put(environment.EXPENSES_CREATE_MODIFY_DELETE_SERVICE, payload, {
       headers: this.getHeaders(),
     });
   }
 
-  public deleteProductType(payload: number) {
+  public deleteExpense(payload: number) {
     return this.http.delete(environment.EXPENSES_CREATE_MODIFY_DELETE_SERVICE+'/'+payload, {
       headers: this.getHeaders(),
     })

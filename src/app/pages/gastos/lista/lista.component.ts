@@ -1,33 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IExpense, IListExpensesRequest, IListExpensesResponse } from 'src/app/models/Expenses.model';
+import { ExpensesService } from 'src/app/services/Expenses.service';
+import { SessionDataService } from 'src/app/services/session-data.service';
 
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
   styleUrls: ['./lista.component.less']
 })
-export class ListaGastosComponent {
-  expandSet = new Set<number>();
-  onExpandChange(id: number, checked: boolean): void {
-    if (checked) {
-      this.expandSet.add(id);
-    } else {
-      this.expandSet.delete(id);
-    }
+export class ListaGastosComponent implements OnInit{
+  listOfData: IExpense[] = []
+  constructor(private service: ExpensesService,
+    public dataService: SessionDataService) {
+
   }
-  listOfData = [
-    {
-      id: 1,
-      nombre: 'Servicio de luz',
-      precio: '$20.000',
-      descripcion: "",
-      fecha_compra: "20/03/2023"
-    },
-    {
-      id: 2,
-      nombre: 'Servicio de agua',
-      precio: '$100.000',
-      descripcion: "",
-      fecha_compra: "20/03/2023"
+  loadData() {
+    const params: IListExpensesRequest = {
+      page: 0,
+      perPage:100
     }
-  ];
+    this.service.listExpenses(params, this.dataService.productiveUnit.id).subscribe(
+      (response: IListExpensesResponse) => {
+      this.listOfData = response.data;
+    })
+  }
+  ngOnInit(): void {
+    this.loadData();
+  }
 }

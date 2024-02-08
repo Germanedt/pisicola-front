@@ -19,9 +19,16 @@
 <nz-divider></nz-divider>
 <nz-card nzTitle="Cosechas" class="card-header-light">
   <nz-row nzJustify="space-between" nzGutter="16">
-    <nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="10" nzXl="8" class="nz-mb-2">
+    <nz-col
+      nzXs="24"
+      nzSm="24"
+      nzMd="12"
+      nzLg="10"
+      nzXl="8"
+      class="nz-mb-2"
+      *ngFor="let data of sowings"
+    >
       <app-sowing-card
-        *ngFor="let data of sowings"
         [sowing]="data"
         [hasActions]="hasActions"
       ></app-sowing-card>
@@ -31,6 +38,55 @@
 <nz-divider></nz-divider>
 <nz-card nzTitle="Últimos gastos" class="card-header-light">
   <nz-row nzJustify="space-between">
-    lista de gastos
+    <nz-table
+      #nzTable
+      [nzData]="expensesList"
+      [nzBordered]="true"
+      nzTableLayout="fixed"
+    >
+      <thead>
+        <tr>
+          <th>Concepto</th>
+          <th>Valor</th>
+          <th>Descripción</th>
+          <th>Fecha de gasto</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let data of nzTable.data">
+          <tr>
+            <td>{{ data.name }}</td>
+            <td>{{ data.value }}</td>
+            <td>{{ data.note }}</td>
+            <td>{{ formatFullDate(data.manual_created_at) }}</td>
+            <td class="actions-container">
+              <a
+                nz-button
+                nzType="primary"
+                nzSize="default"
+                class="edit-action"
+              >
+                <span nz-icon nzType="edit"></span>
+              </a>
+              <!--(nzOnConfirm)=""
+                (nzOnCancel)=""-->
+              <a
+                nz-button
+                nzType="primary"
+                nzSize="default"
+                class="delete-action"
+                nz-popconfirm
+                nzPopconfirmTitle="¿Seguro desea eliminar el insumo?"
+                nzOkText="Si, eliminar"
+                nzCancelText="Cancelar"
+              >
+                <span nz-icon nzType="delete"></span>
+              </a>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </nz-table>
   </nz-row>
 </nz-card>
