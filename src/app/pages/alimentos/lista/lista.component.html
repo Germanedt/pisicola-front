@@ -1,13 +1,11 @@
-<h1>Listado de alimentos</h1>
+<h1>Listado de alimentos cosecha {{ sowing.fish_step?.fish?.name }} - {{ sowing.pond?.name }}</h1>
 <nz-table #nzTable [nzData]="listOfData" [nzBordered]="true" nzTableLayout="fixed">
   <thead>
     <tr>
       <th>id</th>
       <th>Nombre</th>
-      <th>Precio</th>
       <th>Cantidad</th>
-      <th>Unidad de medida</th>
-      <th>Fecha de compra</th>
+      <th>Fecha de suministro</th>
       <th></th>
     </tr>
   </thead>
@@ -15,11 +13,9 @@
     <ng-container *ngFor="let data of nzTable.data">
       <tr>
         <td>{{ data.id }}</td>
-        <td>{{ data.nombre }}</td>
-        <td>{{ data.precio }}</td>
-        <td>{{ data.cantidad }}</td>
-        <td>{{ data.unidad }}</td>
-        <td>{{ data.fecha_compra }}</td>
+        <td>{{ data.supply.name }}</td>
+        <td>{{ data.quantity }}</td>
+        <td>{{ formatFullDate(data.apply_at) }}</td>
         <td class="actions-container">
           <a nz-button nzType="primary" nzSize="default" class="edit-action">
             <span nz-icon nzType="edit"></span>

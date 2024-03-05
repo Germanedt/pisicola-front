@@ -273,6 +273,11 @@ const routes: Routes = [
         path: 'modificarGasto',
         component: ModificarGastoComponent,
         canActivate: [CanActivateRole],
+      },
+      {
+        path: 'listaAlimentos',
+        component: ListaAlimentosComponent,
+        canActivate: [CanActivateRole]
       }
       //Pendientes
       /*{

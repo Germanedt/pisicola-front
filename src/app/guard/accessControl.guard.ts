@@ -44,7 +44,8 @@ export class CanActivateRole implements CanActivate {
     { route: 'modificarConceptoPago', roles: ['unit_manager']},
     { route: 'agregarGasto', roles: ['unit_manager']},
     { route: 'modificarGasto', roles: ['unit_manager']},
-    { route: 'listaGastos', roles: ['unit_manager']}
+    { route: 'listaGastos', roles: ['unit_manager']},
+    { route: 'listaAlimentos', roles: ['admin', 'unit_manager']}
   ];
   constructor(
     private sessionService: SessionDataService,

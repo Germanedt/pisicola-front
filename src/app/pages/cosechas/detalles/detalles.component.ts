@@ -40,6 +40,16 @@ export class DetallesCosechaComponent implements OnInit {
     const state = { sowing: this.sowing, keys };
     this.router.navigate(['/historialCosecha'], { state });
   }
+
+  public goToFoods() {
+    const state = { sowing: this.sowing };
+    this.router.navigate(['/listaAlimentos'], {state})
+  }
+
+  public goToMedicines() {
+    const state = { sowing: this.sowing };
+    this.router.navigate(['/listaMedicamentos'], {state})
+  }
   ngOnInit(): void {
     this.loadData();
   }

@@ -1,4 +1,4 @@
-<h1>{{ sowing.fish_step?.fish?.name }}</h1>
+<h1>{{ sowing.fish_step?.fish?.name }} - {{ sowing.pond?.name }}</h1>
 <nz-card nzTitle="Información general" class="card-header-light">
   <nz-row nzJustify="space-between">
     <nz-col>Estanque</nz-col>
@@ -20,8 +20,8 @@
     <nz-col class="ctm-separator"></nz-col>
     <nz-col>{{ sowing.total_fish }}</nz-col>
   </nz-row>
-  <nz-row nzJustify="end">
-    <a href="detallesCosecha">
+  <nz-row nzJustify="end" style="gap: 1rem">
+    <a (click)="goToFoods()">
       <button nz-button nzSize="small" nzType="primary">Alimento</button>
     </a>
     <a href="detallesCosecha">

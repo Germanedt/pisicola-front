@@ -32,6 +32,8 @@ export const environment = {
   PAYMENT_CONCEPT_CREATE_MODIFY_DELETE_SERVICE: host + '/payment_concepts',
   EXPENSES_CREATE_MODIFY_DELETE_SERVICE: host + '/general_expenses',
   EXPENSES_LIST_SERVICE: host + '/general_expenses/list_by_productive_unit/',
+  FOODS_CREATE_MODIFY_DELETE_SERVICE: host + '/supplies_used/aliments/',
+  FOODS_LIST_SERVICE: host + '/supplies_used/aliments/list_by_sowing_id/',
   //Pendientes
   USER_GET_POFILE_SERVICE: host + '/users/profile',
 };
