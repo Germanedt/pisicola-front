@@ -8,7 +8,7 @@ import { SessionDataService } from 'src/app/services/session-data.service';
 @Component({
   selector: 'app-agregar-estanques',
   templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.less'],
+  styleUrls: ['./agregar.component.scss'],
 })
 export class AgregarEstanqueComponent implements OnInit {
   form: FormGroup = this.fb.group({
@@ -23,7 +23,7 @@ export class AgregarEstanqueComponent implements OnInit {
         productive_unit_id: this.dataService.productiveUnit.id,
         name: this.form.get('name')?.value,
         sensor_id: this.form.get('sensor_id')?.value,
-        description: this.form.get('description')?.value
+        description: this.form.get('description')?.value,
       };
       this.pondService.createPond(payload).subscribe((response) => {
         if (response) {
@@ -45,8 +45,7 @@ export class AgregarEstanqueComponent implements OnInit {
     private pondService: PondService,
     private router: Router,
     public dataService: SessionDataService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {}
 }

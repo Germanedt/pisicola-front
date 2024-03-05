@@ -10,7 +10,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-detalle-unidad',
   templateUrl: './detalle.component.html',
-  styleUrls: ['./detalle.component.less'],
+  styleUrls: ['./detalle.component.scss'],
 })
 export class DetalleUnidadComponent implements OnInit {
   sowings: ISowing[] = [];
@@ -39,23 +39,20 @@ export class DetalleUnidadComponent implements OnInit {
   loadExpenses() {
     const params: IListExpensesRequest = {
       page: 0,
-      perPage: 0
-    }
+      perPage: 0,
+    };
     this.expensesService
       .listExpenses(params, this.dataService.productiveUnit.id)
       .subscribe((response) => {
         this.expensesList = response.data;
       });
-
   }
   goToEditExpeses(expense: IExpense) {
     const state = { expense };
     this.router.navigate(['modificarGasto'], { state });
   }
-  formatFullDate(dateString:string) {
-    return moment(dateString).format(
-      'YYYY-MM-DD hh:mm a'
-    )
+  formatFullDate(dateString: string) {
+    return moment(dateString).format('YYYY-MM-DD hh:mm a');
   }
   public handlerConfirmDelete(id: number) {
     this.expensesService.deleteExpense(id).subscribe((response) => {

@@ -1,4 +1,4 @@
-<nz-card [nzTitle]="sowing.fish_step?.fish?.name" class="card-header-light">
+<!-- <nz-card [nzTitle]="sowing.fish_step?.fish?.name" class="card-header-light">
   <nz-row nzJustify="space-between">
     <nz-col>Estanque</nz-col>
     <nz-col class="ctm-separator"></nz-col>
@@ -67,4 +67,47 @@
       <span nz-icon nzType="close-circle"></span>
     </a>
   </nz-row>
-</nz-card>
+</nz-card> -->
+
+<!-- sowing-card.component.html -->
+
+<!-- sowing-card.component.html -->
+<ion-item class="sowing-card">
+  <ion-label>
+    <ion-row>
+      <ion-col>
+        <ion-label>Estanque: {{ sowing.pond?.name }}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>Etapa: {{ sowing.fish_step?.name }}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label>Fecha: {{ sowing.created_at | date }}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>N° de peces: {{ sowing.total_fish }}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-label>
+
+  <ion-buttons slot="end" *ngIf="hasActions">
+    <ion-button (click)="gotTo(sowing)" color="primary">
+      <ion-icon name="eye"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="goToEdit(sowing)" color="primary">
+      <ion-icon name="create"></ion-icon>
+    </ion-button>
+
+    <ion-button color="primary" (click)="handlerConfirmDelete(sowing.id)">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+
+    <ion-button color="primary" (click)="handlerConfirmClose(sowing.id)">
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-item>

@@ -1,0 +1,26 @@
+.login-box {
+  &__logo-box {
+    align-items: center;
+    background-color: var(--ion-color-secondary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    height: 7rem;
+    margin: 1rem auto;
+    width: 7rem;
+  }
+  &__logo {
+    max-width: 80%;
+  }
+  &__title {
+    font-family: PassionOneRegular;
+    font-size: 2.25rem;
+  }
+  &__subtitle {
+    font-size: 1rem;
+    margin: 0;
+  }
+  &__btn-link {
+    text-transform: none;
+  }
+}

@@ -15,7 +15,7 @@ import { UsersService } from 'src/app/services/users.service';
 @Component({
   selector: 'app-agregar-usuario',
   templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.less'],
+  styleUrls: ['./agregar.component.scss'],
 })
 export class AgregarUsuarioComponent implements OnInit {
   form: FormGroup = this.fb.group({
@@ -100,18 +100,15 @@ export class AgregarUsuarioComponent implements OnInit {
       if (this.dataService.productiveUnit.id === 0) {
         this.listenUserTypeChanges();
       } else {
-        this.form.setValue(
-          {
-            fullName: '',
-            email: '',
-            userTypeId: 0,
-            password: '',
-            passwordConfirmation: '',
-            productiveUnitId: this.dataService.productiveUnit.id
-          }
-        )
+        this.form.setValue({
+          fullName: '',
+          email: '',
+          userTypeId: 0,
+          password: '',
+          passwordConfirmation: '',
+          productiveUnitId: this.dataService.productiveUnit.id,
+        });
         console.log(this.form);
-        
       }
     });
   }

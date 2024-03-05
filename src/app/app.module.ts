@@ -86,6 +86,7 @@ import { ListaConceptosPagoComponent } from './pages/conceptoPago/lista/lista.co
 import { AgregarConceptoPagoComponent } from './pages/conceptoPago/agregar/agregar.component';
 import { ModificarConceptoPagoComponent } from './pages/conceptoPago/modificar/modificar.component';
 import { SowingCardComponent } from './components/sowingCard/sowing-card.component';
+import { IonicModule } from '@ionic/angular';
 
 registerLocaleData(es);
 
@@ -173,6 +174,7 @@ registerLocaleData(es);
     NzDatePickerModule,
     NzSwitchModule,
     AppRoutingModule,
+    IonicModule.forRoot({}),
   ],
   providers: [
     CanActivateRole,

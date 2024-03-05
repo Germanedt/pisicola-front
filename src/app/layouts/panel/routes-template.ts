@@ -4,6 +4,7 @@ export const routeButtons: INavigationLink[] = [
   {
     title: 'Unidades productivas',
     icon: 'build',
+    ionicon: 'person-outline',
     actions: [
       {
         route: '/listaUnidades',
@@ -19,6 +20,7 @@ export const routeButtons: INavigationLink[] = [
   {
     title: 'Usuarios',
     icon: 'user',
+    ionicon: 'person-outline',
     actions: [
       {
         route: '/listaUsuarios',
@@ -29,11 +31,12 @@ export const routeButtons: INavigationLink[] = [
         title: 'Agregar',
       },
     ],
-    roles: [1,2],
+    roles: [1, 2],
   },
   {
     title: 'Tipos de producto',
     icon: 'unordered-list',
+    ionicon: 'list-outline',
     actions: [
       {
         route: '/listaTipoProducto',
@@ -49,17 +52,19 @@ export const routeButtons: INavigationLink[] = [
   {
     title: 'Tipos de producto',
     icon: 'unordered-list',
+    ionicon: 'list-outline',
     actions: [
       {
         route: '/listaTipoProducto',
         title: 'Lista de Tipos',
-      }
+      },
     ],
     roles: [2],
   },
   {
     title: 'Productos',
     icon: 'database',
+    ionicon: 'file-tray-stacked-outline',
     actions: [
       {
         route: '/listaProductos',
@@ -70,11 +75,12 @@ export const routeButtons: INavigationLink[] = [
         title: 'Agregar',
       },
     ],
-    roles: [1,2],
+    roles: [1, 2],
   },
   {
     title: 'Cosechas',
     icon: 'rocket',
+    ionicon: 'rocket-outline',
     actions: [
       {
         route: '/listaCosechas',
@@ -90,6 +96,7 @@ export const routeButtons: INavigationLink[] = [
   {
     title: 'Estanques',
     icon: 'block',
+    ionicon: 'copy-outline',
     actions: [
       {
         route: '/listaEstanques',
@@ -103,8 +110,9 @@ export const routeButtons: INavigationLink[] = [
     roles: [2],
   },
   {
-    title: 'Gastos',//Pendiente
+    title: 'Gastos', //Pendiente
     icon: 'shopping',
+    ionicon: 'bag-outline',
     actions: [
       {
         route: '/listaGastos',
@@ -120,6 +128,7 @@ export const routeButtons: INavigationLink[] = [
   {
     title: 'Empleados',
     icon: 'contacts',
+    ionicon: 'people-outline',
     actions: [
       {
         route: '/listaEmpleados',
@@ -135,6 +144,7 @@ export const routeButtons: INavigationLink[] = [
   {
     title: 'Tareas',
     icon: 'profile',
+    ionicon: 'list-outline',
     actions: [
       {
         route: '/listaTareas',
@@ -150,6 +160,7 @@ export const routeButtons: INavigationLink[] = [
   {
     title: 'Registro de tareas',
     icon: 'reconciliation',
+    ionicon: 'reader-outline',
     actions: [
       {
         route: '/listaRegistroTareas',
@@ -165,6 +176,7 @@ export const routeButtons: INavigationLink[] = [
   {
     title: 'Conceptos de pagos',
     icon: 'tag',
+    ionicon: 'pricetag-outline',
     actions: [
       {
         route: '/listaConceptosPago',
@@ -180,6 +192,7 @@ export const routeButtons: INavigationLink[] = [
   {
     title: 'Pagos',
     icon: 'tags',
+    ionicon: 'pricetags-outline',
     actions: [
       {
         route: '/listaPagos',
@@ -192,10 +205,10 @@ export const routeButtons: INavigationLink[] = [
     ],
     roles: [2],
   },
-  
   {
     title: 'Suministros',
     icon: 'shopping-cart',
+    ionicon: 'cart-outline',
     actions: [
       {
         route: '/listaProductos',

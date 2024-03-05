@@ -1,4 +1,4 @@
-<nz-layout class="login-container">
+<!-- <nz-layout class="login-container">
   <nz-card class="login-card">
     <div class="logo-container">
       <img src="/assets/img/logo.png" alt="image" />
@@ -47,4 +47,89 @@
       </div>
     </div>
   </nz-card>
-</nz-layout>
+</nz-layout> -->
+
+<!-- recuperar-clave.component.html -->
+<ion-content color="primary">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="12" size-sm="12" size-md="10" size-lg="8" size-xl="6">
+        <ion-card class="recover-password-box">
+          <div class="recover-password-box__logo-box">
+            <ion-img
+              src="/assets/img/logo.png"
+              class="recover-password-box__logo"
+              alt="image"
+            ></ion-img>
+          </div>
+          <ion-card-header class="ion-text-center">
+            <ion-card-title color="primary" class="recover-password-box__title"
+              >¿Olvidó su contraseña?</ion-card-title
+            >
+            <ion-card-subtitle
+              color="dark"
+              class="recover-password-box__subtitle"
+              >Escriba su correo electrónico para continuar</ion-card-subtitle
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <form
+              [formGroup]="validateForm"
+              (ngSubmit)="submitForm()"
+              class="ion-padding"
+            >
+              <div class="mx-1">
+                <ion-input
+                  label="Correo Electrónico"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Correo Electrónico"
+                  type="email"
+                  formControlName="mail"
+                ></ion-input>
+                <ion-text color="medium">
+                  <p>Ejemplo: usuario@dominio.com</p>
+                </ion-text>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    validateForm.get('mail')?.hasError('required') &&
+                    validateForm.get('mail')?.touched
+                  "
+                >
+                  <p>Por favor ingrese su usuario</p>
+                </ion-text>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    validateForm.get('mail')?.hasError('pattern') &&
+                    validateForm.get('mail')?.touched
+                  "
+                >
+                  <p>El formato del usuario no es válido</p>
+                </ion-text>
+              </div>
+              <ion-button
+                type="button"
+                class="recover-password-box__btn-link mb-1 ion-float-right"
+                fill="clear"
+                [routerLink]="['/']"
+                >Iniciar Sesión</ion-button
+              >
+              <ion-button
+                type="submit"
+                expand="block"
+                mode="ios"
+                color="secondary"
+                class="recover-password-box__button"
+                [disabled]="!validateForm.valid"
+                >Recuperar Contraseña
+                <ion-icon slot="end" name="arrow-forward-outline"></ion-icon
+              ></ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

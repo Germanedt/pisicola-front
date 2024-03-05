@@ -12,7 +12,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.less'],
+  styleUrls: ['./lista.component.scss'],
 })
 export class ListaGastosComponent implements OnInit {
   listOfData: IExpense[] = [];

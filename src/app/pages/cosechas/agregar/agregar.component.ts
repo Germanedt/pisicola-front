@@ -13,7 +13,7 @@ import { SowingService } from 'src/app/services/sowing.service';
 @Component({
   selector: 'app-agregar-cosecha',
   templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.less'],
+  styleUrls: ['./agregar.component.scss'],
 })
 export class AgregarCosechaComponent implements OnInit {
   ponds: IPond[] = [];

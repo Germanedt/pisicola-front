@@ -1,38 +1,101 @@
-<nz-layout class="login-container">
-  <nz-card class="login-card">
-    <div class="logo-container">
-      <img src="/assets/img/logo.png" alt="image" />
-    </div>
-    <span class="title-form">
-      <h1>Bienvenido</h1>
-      <small>Ingrese sus datos para continuar</small>
-    </span>
-    <form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()">
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Por favor ingrese su usuario">
-          <nz-input-group nzPrefixIcon="user">
-            <input type="email" nz-input formControlName="userName" placeholder="usuario" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Por favor ingrese su contraseña">
-          <nz-input-group nzPrefixIcon="lock">
-            <input type="password" nz-input formControlName="password" placeholder="Contraseña" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <div nz-row class="login-form-margin">
-        <div nz-col [nzSpan]="12">
-        </div>
-        <div nz-col [nzSpan]="12">
-          <a class="login-form-forgot" href="/recuperar">¿Olvidó su contraseña?</a>
-        </div>
-      </div>
-      <button nz-button nzType="primary" nzSize="large" nzShape="round">
-        Continuar
-        <span nz-icon nzType="right"></span>
-      </button>
-    </form>
-  </nz-card>
-</nz-layout>
+<!-- login.component.html -->
+<ion-content color="primary">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="12" size-sm="12" size-md="10" size-lg="8" size-xl="6">
+        <ion-card class="login-box">
+          <div class="login-box__logo-box">
+            <ion-img
+              src="/assets/img/logo.png"
+              class="login-box__logo"
+              alt="image"
+            ></ion-img>
+          </div>
+          <ion-card-header class="ion-text-center">
+            <ion-card-title color="primary" class="login-box__title"
+              >Bienvenido</ion-card-title
+            >
+            <ion-card-subtitle color="dark" class="login-box__subtitle"
+              >Ingrese sus datos para continuar</ion-card-subtitle
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <form
+              [formGroup]="form"
+              (ngSubmit)="submitForm()"
+              class="ion-padding"
+            >
+              <div class="mx-1">
+                <ion-input
+                  label="Correo Electrónico"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Correo Electrónico"
+                  type="email"
+                  formControlName="userName"
+                ></ion-input>
+                <ion-text color="medium">
+                  <p>Ejemplo: usuario@dominio.com</p>
+                </ion-text>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('userName')?.hasError('required') &&
+                    form.get('userName')?.touched
+                  "
+                >
+                  <p>Por favor ingrese su usuario</p>
+                </ion-text>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('userName')?.hasError('pattern') &&
+                    form.get('userName')?.touched
+                  "
+                >
+                  <p>El formato del usuario no es válido</p>
+                </ion-text>
+              </div>
+              <div class="mb-1">
+                <ion-input
+                  label="Contraseña"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Contraseña"
+                  type="password"
+                  formControlName="password"
+                ></ion-input>
+                <ion-text
+                  *ngIf="
+                    form.get('password')?.hasError('required') &&
+                    form.get('password')?.touched
+                  "
+                  color="danger"
+                >
+                  <p>Por favor ingrese su contraseña</p>
+                </ion-text>
+              </div>
+              <ion-button
+                type="button"
+                class="login-box__btn-link mb-1 ion-float-right"
+                fill="clear"
+                [routerLink]="['/recuperar']"
+                >¿Olvidó su contraseña?</ion-button
+              >
+              <ion-button
+                type="submit"
+                expand="block"
+                mode="ios"
+                color="secondary"
+                class="login-box__button"
+                [disabled]="!form.valid"
+                >Continuar
+                <ion-icon slot="end" name="arrow-forward-outline"></ion-icon
+              ></ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

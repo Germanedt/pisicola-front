@@ -11,7 +11,7 @@ import { SessionDataService } from 'src/app/services/session-data.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less'],
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   form: FormGroup = this.fb.group({

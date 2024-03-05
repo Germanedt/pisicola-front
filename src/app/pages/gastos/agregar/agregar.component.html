@@ -1,4 +1,4 @@
-<h1>Agregar gasto</h1>
+<!-- <h1>Agregar gasto</h1>
 <form
   nz-form
   [formGroup]="form"
@@ -68,4 +68,95 @@
     Agregar
     <span nz-icon nzType="save"></span>
   </button>
-</form>
+</form> -->
+
+<ion-content class="ion-padding" color="light">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="bills-box">
+          <ion-card-header>
+            <ion-card-title class="bills-box__title">
+              Agregar gasto
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form
+              [formGroup]="form"
+              class="expenses-form"
+              (ngSubmit)="submitForm()"
+            >
+              <div class="mx-1">
+                <ion-input
+                  label="Nombre del gasto"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Nombre del gasto"
+                  formControlName="name"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('name')?.hasError('required') &&
+                    form.get('name')?.touched
+                  "
+                >
+                  Por favor, ingrese el nombre del gasto.
+                </ion-text>
+              </div>
+
+              <div class="mb-1">
+                <ion-input
+                  label="Valor del gasto"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Valor del gasto"
+                  formControlName="value"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('value')?.hasError('required') &&
+                    form.get('value')?.touched
+                  "
+                >
+                  Por favor, ingrese el valor del gasto.
+                </ion-text>
+              </div>
+
+              <div class="mb-1">
+                <ion-textarea
+                  label="Descripción del gasto"
+                  labelPlacement="floating"
+                  fill="outline"
+                  placeholder="Descripción del gasto"
+                  formControlName="note"
+                  rows="8"
+                ></ion-textarea>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('note')?.hasError('required') &&
+                    form.get('note')?.touched
+                  "
+                >
+                  Por favor, ingrese la descripción del gasto.
+                </ion-text>
+              </div>
+
+              <ion-button
+                type="submit"
+                expand="block"
+                mode="ios"
+                color="secondary"
+                [disabled]="!form.valid"
+                >Guardar Gasto
+                <ion-icon slot="end" name="save-outline"></ion-icon
+              ></ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

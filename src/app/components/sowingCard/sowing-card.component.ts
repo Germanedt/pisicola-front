@@ -6,7 +6,7 @@ import { SowingService } from 'src/app/services/sowing.service';
 @Component({
   selector: 'app-sowing-card',
   templateUrl: './sowing-card.component.html',
-  styleUrls: ['./sowing-card.component.less'],
+  styleUrls: ['./sowing-card.component.scss'],
 })
 export class SowingCardComponent {
   @Input() sowing: ISowing = {
@@ -18,12 +18,15 @@ export class SowingCardComponent {
     closed_at: '',
     created_at: '',
     updated_at: '',
-    deleted_at: ''
+    deleted_at: '',
   };
   @Input() hasActions: boolean = true;
-  constructor(public router: Router, public dataService: SessionDataService, public service: SowingService) {
+  constructor(
+    public router: Router,
+    public dataService: SessionDataService,
+    public service: SowingService
+  ) {
     console.log(this.sowing);
-    
   }
   public gotTo(sowing: ISowing) {
     const state = { sowing };

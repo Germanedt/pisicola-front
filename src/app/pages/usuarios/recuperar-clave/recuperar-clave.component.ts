@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './recuperar-clave.component.html',
-  styleUrls: ['./recuperar-clave.component.less']
+  styleUrls: ['./recuperar-clave.component.scss'],
 })
-export class RecuperarClaveComponent implements OnInit{
+export class RecuperarClaveComponent implements OnInit {
   validateForm!: UntypedFormGroup;
   showInfo = false;
 
@@ -15,7 +19,7 @@ export class RecuperarClaveComponent implements OnInit{
       console.log('submit', this.validateForm.value);
       this.showInfo = true;
     } else {
-      Object.values(this.validateForm.controls).forEach(control => {
+      Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
@@ -28,7 +32,7 @@ export class RecuperarClaveComponent implements OnInit{
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      mail: [null, [Validators.required]]
+      mail: [null, [Validators.required]],
     });
   }
 }

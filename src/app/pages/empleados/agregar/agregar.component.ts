@@ -8,7 +8,7 @@ import { EmployeesService } from 'src/app/services/employees.service';
 @Component({
   selector: 'app-agregar-empleado',
   templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.less'],
+  styleUrls: ['./agregar.component.scss'],
 })
 export class AgregarEmpleadoComponent implements OnInit {
   form: FormGroup = this.fb.group({

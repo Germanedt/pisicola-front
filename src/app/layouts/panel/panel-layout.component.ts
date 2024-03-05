@@ -8,7 +8,7 @@ import { INavigationLink } from 'src/app/models/NavigationLink.model';
 @Component({
   selector: 'app-panel-layout',
   templateUrl: './panel-layout.component.html',
-  styleUrls: ['./panel-layout.component.less'],
+  styleUrls: ['./panel-layout.component.scss'],
 })
 export class PanelLayoutComponent {
   isCollapsed = false;
@@ -19,7 +19,9 @@ export class PanelLayoutComponent {
     private authService: AuthenticationService,
     private router: Router
   ) {
-    this.buttonsRoutes = routeButtons.filter( i => i.roles.includes(dataService.getUserData().user_type?.id ||  0));
+    this.buttonsRoutes = routeButtons.filter((i) =>
+      i.roles.includes(dataService.getUserData().user_type?.id || 0)
+    );
     this.isAdmin = dataService.getUserData().user_type?.id === 1;
   }
   goTo(route: string) {

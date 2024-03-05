@@ -11,7 +11,7 @@ import { SowingService } from 'src/app/services/sowing.service';
 @Component({
   selector: 'app-lista-cosechas',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.less'],
+  styleUrls: ['./lista.component.scss'],
 })
 export class ListaCosechaComponent {
   listOfData: ISowing[] = [];

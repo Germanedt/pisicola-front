@@ -7,7 +7,7 @@ import { EmployeesService } from 'src/app/services/employees.service';
 @Component({
   selector: 'app-lista-empleados',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.less'],
+  styleUrls: ['./lista.component.scss'],
 })
 export class ListaEmpleadosComponent implements OnInit {
   listOfData: IEmployees[] = [];

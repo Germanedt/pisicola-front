@@ -2,6 +2,7 @@ interface INavigationLink {
   title: string;
   route?: string;
   icon: string;
+  ionicon: string;
   actions?: ISublink[];
   roles: number[];
 }

@@ -9,9 +9,9 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-agregar-gasto',
   templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.less']
+  styleUrls: ['./agregar.component.scss'],
 })
-export class AgregarGastoComponent implements OnInit{
+export class AgregarGastoComponent implements OnInit {
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
     value: [0, [Validators.required]],
@@ -26,9 +26,9 @@ export class AgregarGastoComponent implements OnInit{
         name: this.form.get('name')?.value,
         value: this.form.get('value')?.value,
         note: this.form.get('note')?.value,
-        manual_created_at: moment(this.form.get('manual_created_at')?.value).format(
-          'YYYY-MM-DD HH:mm:ss'
-        ),
+        manual_created_at: moment(
+          this.form.get('manual_created_at')?.value
+        ).format('YYYY-MM-DD HH:mm:ss'),
       };
       this.service.createExpense(payload).subscribe((response) => {
         if (response) {
@@ -36,7 +36,7 @@ export class AgregarGastoComponent implements OnInit{
         }
       });
     } else {
-      Object.values(this.form.controls).forEach(control => {
+      Object.values(this.form.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
@@ -45,10 +45,12 @@ export class AgregarGastoComponent implements OnInit{
     }
   }
 
-  constructor(private fb: FormBuilder, 
+  constructor(
+    private fb: FormBuilder,
     private router: Router,
     public dataService: SessionDataService,
-    private service: ExpensesService) {}
+    private service: ExpensesService
+  ) {}
 
   ngOnInit(): void {}
 }
