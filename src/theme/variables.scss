@@ -270,9 +270,22 @@
 *
 */
 
+.m-0 {
+  margin: 0 !important;
+}
+
 .mx-1 {
   margin: 1.5rem 0 !important;
 }
 .mb-1 {
   margin-bottom: 1.5rem !important;
+}
+
+.px-0 {
+  padding-inline: 0 !important;
+}
+
+.py-0 {
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
 }
