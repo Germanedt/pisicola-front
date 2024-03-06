@@ -34,6 +34,8 @@ export const environment = {
   EXPENSES_LIST_SERVICE: host + '/general_expenses/list_by_productive_unit/',
   FOODS_CREATE_MODIFY_DELETE_SERVICE: host + '/supplies_used/aliments/',
   FOODS_LIST_SERVICE: host + '/supplies_used/aliments/list_by_sowing_id/',
+  SUPPLY_CREATE_MODIFY_DELETE_SERVICE: host + '/supplies/list_by_productive_unit_id/',
+  SUPPLY_LIST_SERVICE: host + '/supplies/list_by_productive_unit_id/',
   //Pendientes
   USER_GET_POFILE_SERVICE: host + '/users/profile',
 };

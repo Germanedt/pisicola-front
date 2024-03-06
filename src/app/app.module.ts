@@ -25,6 +25,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 //Componentes y modulos propios
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -172,6 +173,7 @@ registerLocaleData(es);
     NzDropDownModule,
     NzDatePickerModule,
     NzSwitchModule,
+    NzRadioModule,
     AppRoutingModule,
   ],
   providers: [

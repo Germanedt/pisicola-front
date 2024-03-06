@@ -198,8 +198,8 @@ export const routeButtons: INavigationLink[] = [
     icon: 'shopping-cart',
     actions: [
       {
-        route: '/listaProductos',
-        title: 'Lista de productos',
+        route: '/listaSuministros',
+        title: 'Lista de suministros',
       },
       {
         route: '/agregarProducto',

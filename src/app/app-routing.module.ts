@@ -278,6 +278,11 @@ const routes: Routes = [
         path: 'listaAlimentos',
         component: ListaAlimentosComponent,
         canActivate: [CanActivateRole]
+      },
+      {
+        path: 'listaSuministros',
+        component: ListaInsumosComponent,
+        canActivate: [CanActivateRole]
       }
       //Pendientes
       /*{
