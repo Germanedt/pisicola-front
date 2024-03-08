@@ -16,7 +16,7 @@ import { TaskLogService } from 'src/app/services/taskLog.service';
 @Component({
   selector: 'app-agregar-rtarea',
   templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.less'],
+  styleUrls: ['./agregar.component.scss'],
 })
 export class AgregarRegistroTareaComponent implements OnInit {
   form: FormGroup = this.fb.group({

@@ -11,7 +11,7 @@ import { TaskService } from 'src/app/services/task.service';
 @Component({
   selector: 'app-lista-tareas',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.less'],
+  styleUrls: ['./lista.component.scss'],
 })
 export class ListaTareasComponent implements OnInit {
   listOfData: ITask[] = [];

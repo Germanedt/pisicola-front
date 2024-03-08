@@ -45,7 +45,9 @@ export class ListaProductoComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ionViewWillEnter():void {
     const params: IListProductRequest = {
       page: 1,
       perPage: 10,

@@ -7,7 +7,7 @@ import { PaymentConceptService } from 'src/app/services/paymentConcept.service';
 @Component({
   selector: 'app-lista-conceptos-pago',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.less'],
+  styleUrls: ['./lista.component.scss'],
 })
 export class ListaConceptosPagoComponent implements OnInit {
   listOfData: IPaymentConcept[] = [];

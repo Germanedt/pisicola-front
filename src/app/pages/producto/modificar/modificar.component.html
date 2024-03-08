@@ -1,4 +1,4 @@
-<h1>Modificar Producto</h1>
+<!-- <h1>Modificar Producto</h1>
 <form nz-form [formGroup]="form" class="product-form" (ngSubmit)="submitForm()">
   <nz-form-item style="gap: 1rem">
     <nz-form-control
@@ -73,4 +73,136 @@
     Guardar
     <span nz-icon nzType="save"></span>
   </button>
-</form>
+</form> -->
+
+<ion-content class="ion-padding" color="light">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="product-box">
+          <ion-card-header>
+            <ion-card-title class="product-box__title">
+              Modificar Producto
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form
+              [formGroup]="form"
+              class="product-form"
+              (ngSubmit)="submitForm()"
+            >
+              <!-- Detalles del Producto -->
+              <div class="mx-1">
+                <ion-input
+                  label="Nombre del Producto"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Nombre del tipo de producto"
+                  type="text"
+                  formControlName="name"
+                ></ion-input>
+                <!-- Mensaje de error para el campo de nombre -->
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('name')?.hasError('required') &&
+                    form.get('name')?.touched
+                  "
+                >
+                  Por favor, ingresa el nombre del producto.
+                </ion-text>
+              </div>
+
+              <div class="mb-1">
+                <ion-textarea
+                  label="Descripción del Producto"
+                  labelPlacement="floating"
+                  fill="outline"
+                  placeholder="Ingresa una descripción detallada del producto"
+                  formControlName="description"
+                  rows="8"
+                ></ion-textarea>
+                <!-- Mensaje de error para el campo de descripción -->
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('description')?.hasError('required') &&
+                    form.get('description')?.touched
+                  "
+                >
+                  Por favor, ingresa una descripción para el producto.
+                </ion-text>
+              </div>
+
+              <!-- Tipo de Producto -->
+              <div class="mb-1">
+                <ion-select
+                  label="Categoría del Producto"
+                  label-placement="floating"
+                  fill="outline"
+                  formControlName="fish_id"
+                  placeholder="Selecciona una categoría para el producto"
+                >
+                  <ion-select-option
+                    *ngFor="let item of productTypes"
+                    [value]="item.id"
+                    >{{ item.name }}</ion-select-option
+                  >
+                </ion-select>
+                <!-- Mensaje de error para el campo de categoría del producto -->
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('fish_id')?.hasError('required') &&
+                    form.get('fish_id')?.touched
+                  "
+                >
+                  Por favor, selecciona una categoría para el producto.
+                </ion-text>
+              </div>
+
+              <!-- Unidad Productiva (visible solo para administradores) -->
+              <div class="mb-1" *ngIf="isAdmin">
+                <ion-select
+                  label="Unidad Productiva"
+                  label-placement="floating"
+                  fill="outline"
+                  formControlName="productive_unit_id"
+                  placeholder="Selecciona la Unidad Productiva"
+                >
+                  <ion-select-option
+                    *ngFor="let item of productiveUnits"
+                    [value]="item.id"
+                    >{{ item.name }}</ion-select-option
+                  >
+                </ion-select>
+                <!-- Mensaje de error para el campo de unidad productiva -->
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('productive_unit_id')?.hasError('required') &&
+                    form.get('productive_unit_id')?.touched
+                  "
+                >
+                  Por favor, selecciona una unidad productiva.
+                </ion-text>
+              </div>
+
+              <!-- Botón Guardar Producto -->
+              <ion-button
+                type="submit"
+                expand="block"
+                mode="ios"
+                color="secondary"
+                [disabled]="!form.valid"
+              >
+                Actualizar Producto
+                <ion-icon slot="end" name="save-outline"></ion-icon>
+              </ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

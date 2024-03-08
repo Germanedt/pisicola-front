@@ -12,7 +12,7 @@ import { TaskLogService } from 'src/app/services/taskLog.service';
 @Component({
   selector: 'app-lista-rtareas',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.less'],
+  styleUrls: ['./lista.component.scss'],
 })
 export class ListaRegistroTareasComponent implements OnInit {
   listOfData: ITaskLog[] = [];
