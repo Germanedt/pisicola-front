@@ -1,4 +1,4 @@
-<h1>Agregar Tipo de producto</h1>
+<!-- <h1>Agregar Tipo de producto</h1>
 <form
   nz-form
   [formGroup]="form"
@@ -32,4 +32,73 @@
     Agregar
     <span nz-icon nzType="save"></span>
   </button>
-</form>
+</form> -->
+
+
+<ion-content class="ion-padding" color="light">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="product-type">
+          <ion-card-header>
+            <ion-card-title class="product-type__title">
+              Agregar Tipo de producto
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form [formGroup]="form" (ngSubmit)="submitForm()">
+              <div class="mx-1">
+                <ion-input
+                  label="Nombre del tipo de producto"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Nombre del tipo de producto"
+                  formControlName="name"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('name')?.hasError('required') &&
+                    form.get('name')?.touched
+                  "
+                >
+                  <p>Por favor ingrese el nombre del tipo de producto</p>
+                </ion-text>
+              </div>
+              <div class="mx-1">
+                <ion-textarea
+                  label="Descripción del tipo de producto"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Descripción del tipo de producto"
+                  formControlName="description"
+                ></ion-textarea>
+                <!-- Mensaje de error para el campo de descripción -->
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('description')?.hasError('required') &&
+                    form.get('description')?.touched
+                  "
+                >
+                  Por favor ingrese la descripción del tipo de producto
+                </ion-text>
+              </div>
+
+              <ion-button
+                type="submit"
+                expand="block"
+                mode="ios"
+                color="secondary"
+                [disabled]="!form.valid"
+                >Guardar
+                <ion-icon slot="end" name="save-outline"></ion-icon
+              ></ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

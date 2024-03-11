@@ -1,4 +1,4 @@
-<h1>Modificar Empleado</h1>
+<!-- <h1>Modificar Empleado</h1>
 <form
   nz-form
   [formGroup]="form"
@@ -73,4 +73,134 @@
     Guardar
     <span nz-icon nzType="save"></span>
   </button>
-</form>
+</form> -->
+<ion-content class="ion-padding" color="light">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="employees-box">
+          <ion-card-header>
+            <ion-card-title class="employees-box__title">
+              Modificar Empleado
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form
+              [formGroup]="form"
+              class="employee-form"
+              (ngSubmit)="submitForm()"
+            >
+              <!-- Tipo de Documento -->
+
+              <div class="mx-1">
+                <ion-select
+                  label="Tipo de Documento"
+                  label-placement="floating"
+                  fill="outline"
+                  formControlName="identifier_type"
+                >
+                  <ion-select-option value="cc"
+                    >Cedula de ciudadanía</ion-select-option
+                  >
+                </ion-select>
+                <ion-text
+                  *ngIf="
+                    form.get('identifier_type')?.hasError('required') &&
+                    form.get('identifier_type')?.touched
+                  "
+                  color="danger"
+                  >Por favor, selecciona el tipo de documento.</ion-text
+                >
+              </div>
+
+              <!-- Número de Identificación y Teléfono -->
+              <div class="mb-1">
+                <ion-input
+                  label="Número de identificación"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Número de identificación"
+                  formControlName="identifier"
+                ></ion-input>
+                <ion-text
+                  *ngIf="
+                    form.get('identifier')?.hasError('required') &&
+                    form.get('identifier')?.touched
+                  "
+                  color="danger"
+                  >Por favor, ingresa el número de identificación.</ion-text
+                >
+              </div>
+
+              <div class="mb-1">
+                <ion-input
+                  label="Número de teléfono"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Número de teléfono"
+                  formControlName="phone"
+                ></ion-input>
+                <ion-text
+                  *ngIf="
+                    form.get('phone')?.hasError('required') &&
+                    form.get('phone')?.touched
+                  "
+                  color="danger"
+                  >Por favor, ingresa el número de teléfono.</ion-text
+                >
+              </div>
+
+              <!-- Nombre Completo y Ocupación -->
+              <div class="mb-1">
+                <ion-input
+                  label="Nombre completo"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Nombre completo"
+                  formControlName="full_name"
+                ></ion-input>
+                <ion-text
+                  *ngIf="
+                    form.get('full_name')?.hasError('required') &&
+                    form.get('full_name')?.touched
+                  "
+                  color="danger"
+                  >Por favor, ingresa el nombre completo del empleado.</ion-text
+                >
+              </div>
+
+              <div class="mb-1">
+                <ion-input
+                  label="Ocupación"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Ocupación"
+                  formControlName="occupation"
+                ></ion-input>
+                <ion-text
+                  *ngIf="
+                    form.get('occupation')?.hasError('required') &&
+                    form.get('occupation')?.touched
+                  "
+                  color="danger"
+                  >Por favor, ingresa la ocupación del empleado.</ion-text
+                >
+              </div>
+
+              <!-- Botón Agregar -->
+              <ion-button
+                type="submit"
+                expand="block"
+                mode="ios"
+                color="secondary"
+                [disabled]="!form.valid"
+                >Modificar Empleado
+                <ion-icon slot="end" name="save-outline"></ion-icon
+              ></ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

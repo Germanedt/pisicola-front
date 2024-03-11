@@ -7,7 +7,7 @@ import { ProductTypeService } from 'src/app/services/productType.service';
 @Component({
   selector: 'app-agregar-tproducto',
   templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.less'],
+  styleUrls: ['./agregar.component.scss'],
 })
 export class AgregarTipoProductoComponent implements OnInit {
   form: FormGroup = this.fb.group({

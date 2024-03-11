@@ -11,7 +11,7 @@ import { SessionDataService } from 'src/app/services/session-data.service';
 @Component({
   selector: 'app-lista-unidades',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.less'],
+  styleUrls: ['./lista.component.scss'],
 })
 export class ListaUnidadesComponent implements OnInit {
   listOfData: IProductiveUnit[] = [];
