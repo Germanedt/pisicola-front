@@ -10,7 +10,7 @@ import { StatService } from 'src/app/services/stats.service';
 @Component({
   selector: 'app-modificar-parametro',
   templateUrl: './modificar.component.html',
-  styleUrls: ['./modificar.component.less'],
+  styleUrls: ['./modificar.component.scss'],
 })
 export class ModificarParametroComponent implements OnInit {
   form: FormGroup = this.fb.group({

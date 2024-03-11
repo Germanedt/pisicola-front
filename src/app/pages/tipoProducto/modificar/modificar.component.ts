@@ -7,7 +7,7 @@ import { ProductTypeService } from 'src/app/services/productType.service';
 @Component({
   selector: 'app-modificar-tproducto',
   templateUrl: './modificar.component.html',
-  styleUrls: ['./modificar.component.less']
+  styleUrls: ['./modificar.component.scss']
 })
 export class ModificarTipoProductoComponent implements OnInit {
   productType: IProductType = {

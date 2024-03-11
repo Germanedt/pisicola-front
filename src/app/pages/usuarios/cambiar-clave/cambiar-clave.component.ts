@@ -11,7 +11,7 @@ import { UsersService } from 'src/app/services/users.service';
 @Component({
   selector: 'app-cambiar-clave-usuario',
   templateUrl: './cambiar-clave.component.html',
-  styleUrls: ['./cambiar-clave.component.less'],
+  styleUrls: ['./cambiar-clave.component.scss'],
 })
 export class CambiarClaveUsuarioComponent implements OnInit {
   user: IUser = {

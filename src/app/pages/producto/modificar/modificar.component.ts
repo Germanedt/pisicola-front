@@ -12,7 +12,7 @@ import { ProductiveUnitService } from 'src/app/services/productiveUnits.service'
 @Component({
   selector: 'app-modificar-eproducto',
   templateUrl: './modificar.component.html',
-  styleUrls: ['./modificar.component.less']
+  styleUrls: ['./modificar.component.scss']
 })
 export class ModificarProductoComponent implements OnInit {
   productTypes: IProductType[] = [];

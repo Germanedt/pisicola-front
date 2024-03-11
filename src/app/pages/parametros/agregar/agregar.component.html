@@ -1,4 +1,4 @@
-<h1>Agregar Parametro</h1>
+<!-- <h1>Agregar Parametro</h1>
 <form
   nz-form
   [formGroup]="form"
@@ -25,7 +25,7 @@
       </nz-input-group>
     </nz-form-control>
     <nz-form-control
-      nzErrorTip="Por favor ingrese la calve del parametro"
+      nzErrorTip="Por favor ingrese la clave del parametro"
     >
       <nz-input-group>
         <input
@@ -99,4 +99,171 @@
     Agregar
     <span nz-icon nzType="save"></span>
   </button>
-</form>
+</form> -->
+<ion-content class="ion-padding" color="light">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="parameters-box">
+          <ion-card-header>
+            <ion-card-title class="parameters-box__title">
+              Agregar Parametro
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form
+              [formGroup]="form"
+              class="product-form"
+              (ngSubmit)="submitForm()"
+            >
+              <!-- Select Producto -->
+              <div class="mb-1">
+                <ion-select
+                  label="Producto"
+                  label-placement="floating"
+                  fill="outline"
+                  formControlName="fish_step_id"
+                  placeholder="Selecciona un producto"
+                >
+                  <ion-select-option
+                    *ngFor="let item of products"
+                    [value]="item.id"
+                    >{{ item.name }}</ion-select-option
+                  >
+                </ion-select>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('fish_step_id')?.hasError('required') &&
+                    form.get('fish_step_id')?.touched
+                  "
+                >
+                  Por favor, seleccione el producto.
+                </ion-text>
+              </div>
+
+              <!-- Clave del parametro -->
+              <div class="mx-1">
+                <ion-input
+                  label="Clave del parametro"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Ingrese la clave del parametro"
+                  type="text"
+                  formControlName="key"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('key')?.hasError('required') &&
+                    form.get('key')?.touched
+                  "
+                >
+                 Por favor ingrese la clave del parametro
+                </ion-text>
+              </div>
+              
+              <!-- Nombre del parametro -->
+              <div class="mx-1">
+                <ion-input
+                  label="Nombre del parametro"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Nombre del parametro"
+                  type="text"
+                  formControlName="name"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('name')?.hasError('required') &&
+                    form.get('name')?.touched
+                  "
+                >
+                  Por favor, ingresa el valor minimo del parametro
+                </ion-text>
+              </div>
+
+              <!-- Valor minimo del parametro -->
+              <div class="mx-1">
+                <ion-input
+                  label="Valor minimo del parametro"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Ingrese el valor minimo del parametro"
+                  type="text"
+                  formControlName="value_minimum"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('value_minimum')?.hasError('required') &&
+                    form.get('value_minimum')?.touched
+                  "
+                >
+                  Por favor, ingresa el valor minimo del parametro
+                </ion-text>
+              </div>
+
+
+              <!-- Valor maximo del parametro -->
+              <div class="mx-1">
+                <ion-input
+                  label="Valor maximo del parametro"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Ingrese el valor maximo del parametro"
+                  type="text"
+                  formControlName="value_maximum"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('value_maximum')?.hasError('required') &&
+                    form.get('value_maximum')?.touched
+                  "
+                >
+                  Por favor, ingresa el valor maximo del parametro
+                </ion-text>
+              </div>
+
+      |      <!-- escripccion de tipo Producto -->
+              <div class="mb-1">
+                <ion-textarea
+                  label="Descripción tipo de producto"
+                  labelPlacement="floating"
+                  fill="outline"
+                  placeholder="Ingresa una descripción detallada del tipo producto"
+                  formControlName="description"
+                  rows="8"
+                ></ion-textarea>
+                <!-- Mensaje de error para el campo de descripción -->
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('description')?.hasError('required') &&
+                    form.get('description')?.touched
+                  "
+                >
+                  Por favor, ingresa una descripción para el tipo de producto.
+                </ion-text>
+              </div>
+
+              <!-- Botón Guardar Producto -->
+              <ion-button
+                type="submit"
+                expand="block"
+                mode="ios"
+                color="secondary"
+                [disabled]="!form.valid"
+              >
+                Guardar tipo de producto
+                <ion-icon slot="end" name="save-outline"></ion-icon>
+              </ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

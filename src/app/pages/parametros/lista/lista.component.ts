@@ -7,7 +7,7 @@ import { StatService } from 'src/app/services/stats.service';
 @Component({
   selector: 'app-lista-tproducto',
   templateUrl: './lista.component.html',
-  styleUrls: ['./lista.component.less'],
+  styleUrls: ['./lista.component.scss'],
 })
 export class ListaParametrosComponent implements OnInit {
   listOfData: IStat[] = [];

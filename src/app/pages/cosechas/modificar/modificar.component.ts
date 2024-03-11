@@ -13,7 +13,7 @@ import { SowingService } from 'src/app/services/sowing.service';
 @Component({
   selector: 'app-modificar-cosecha',
   templateUrl: './modificar.component.html',
-  styleUrls: ['./modificar.component.less'],
+  styleUrls: ['./modificar.component.scss'],
 })
 export class ModificarCosechaComponent implements OnInit {
   form: FormGroup = this.fb.group({
