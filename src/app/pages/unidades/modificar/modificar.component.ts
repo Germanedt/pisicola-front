@@ -13,7 +13,7 @@ import { ProductiveUnitService } from 'src/app/services/productiveUnits.service'
 @Component({
   selector: 'app-modificar-unidad',
   templateUrl: './modificar.component.html',
-  styleUrls: ['./modificar.component.less'],
+  styleUrls: ['./modificar.component.scss'],
 })
 export class ModificarUnidadComponent implements OnInit {
   productiveUnit: IProductiveUnit = {

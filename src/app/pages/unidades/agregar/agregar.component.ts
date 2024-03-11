@@ -8,7 +8,7 @@ import { SessionDataService } from 'src/app/services/session-data.service';
 @Component({
   selector: 'app-agregar-unidad',
   templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.less'],
+  styleUrls: ['./agregar.component.scss'],
 })
 export class AgregarUnidadComponent implements OnInit {
   form: FormGroup = this.fb.group({

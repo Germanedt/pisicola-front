@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import {
   IListProductiveUnitRequest,
   IListProductiveUnitResponse,
@@ -18,14 +19,30 @@ export class ListaUnidadesComponent implements OnInit {
   constructor(
     public dataService: SessionDataService,
     private service: ProductiveUnitService,
-    private router: Router
+    private router: Router,
+    private alertController: AlertController 
   ) {}
-  public handlerConfirmDelete(userId: number) {
-    this.service.deleteProductiveUnit(userId).subscribe((response: any) => {
-      if (response) {
-        window.location.reload;
-      }
+  public async handlerConfirmDelete(userId: number) {
+    const alert = await this.alertController.create({
+      header: '¿Seguro desea eliminar la unidad productiva?', 
+      buttons: [
+        {
+          text: 'Ok', 
+          handler: () => {
+            this.service.deleteProductiveUnit(userId).subscribe((response: any) => {
+              if (response) {
+                window.location.reload;
+              }
+            });
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel', 
+        },
+      ], 
     });
+    await alert.present();
   }
   public goToShow(productiveUnit: IProductiveUnit) {
     this.dataService.setProductiveUnit(productiveUnit);
@@ -35,7 +52,9 @@ export class ListaUnidadesComponent implements OnInit {
     const state = { productiveUnit };
     this.router.navigate(['/modificarUnidad'], { state });
   }
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  
+  ionViewWillEnter(): void {
     const params: IListProductiveUnitRequest = {
       page: 1,
       perPage: 10,

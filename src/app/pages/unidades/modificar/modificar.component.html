@@ -1,4 +1,4 @@
-<h1>Agregar Unidad productiva</h1>
+<!-- <h1>Agregar Unidad productiva</h1>
 <form
   nz-form
   [formGroup]="form"
@@ -42,4 +42,98 @@
     Guardar Cambios
     <span nz-icon nzType="save"></span>
   </button>
-</form>
+</form> -->
+<ion-content class="ion-padding" color="light">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="production-unit">
+          <ion-card-header>
+            <ion-card-title class="production-unit__title">
+              Modificar Unidad productiva
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form
+              [formGroup]="form"
+              class="product-form"
+              (ngSubmit)="submitForm()"
+            >
+              <div class="mx-1">
+                <ion-input
+                  label="Nombre de la unidad productiva"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Ingrese el nombre de la unidad productiva"
+                  type="text"
+                  formControlName="name"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('name')?.hasError('required') &&
+                    form.get('name')?.touched
+                  "
+                >
+                Por favor ingrese el nombre de la unidad productiva.
+                </ion-text>
+              </div>
+
+              <div class="mx-1">
+                <ion-input
+                  label="Dirección de la unidad productiva"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Ingrese dirección de la unidad productiva"
+                  type="text"
+                  formControlName="address"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('address')?.hasError('required') &&
+                    form.get('address')?.touched
+                  "
+                >
+                Por favor ingrese la dirección de la unidad productiva.
+                </ion-text>
+              </div>
+
+              <div class="mb-1">
+                <ion-textarea
+                  label="Descripción de la unidad productiva"
+                  labelPlacement="floating"
+                  fill="outline"
+                  placeholder="Ingresa una descripción detallada de la unidad productiva."
+                  formControlName="description"
+                  rows="8"
+                ></ion-textarea>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('description')?.hasError('required') &&
+                    form.get('description')?.touched
+                  "
+                >
+                Por favor ingrese la descripción de la unidad productiva
+                </ion-text>
+              </div>
+
+              <!-- Botón Guardar Unidad Productiva -->
+              <ion-button
+                type="submit"
+                expand="block"
+                mode="ios"
+                color="secondary"
+                [disabled]="!form.valid"
+              >
+                Actualizar Unidad Productiva
+                <ion-icon slot="end" name="save-outline"></ion-icon>
+              </ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
