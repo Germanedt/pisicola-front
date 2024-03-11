@@ -1,4 +1,4 @@
-<h1>Modificar concepto de pago</h1>
+<!-- <h1>Modificar concepto de pago</h1>
 <form
   nz-form
   [formGroup]="form"
@@ -51,4 +51,84 @@
     Guardar
     <span nz-icon nzType="save"></span>
   </button>
-</form>
+</form> -->
+
+<ion-content class="ion-padding" color="light">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="payment-concept-box">
+          <ion-card-header>
+            <ion-card-title class="payment-concept-box__title">
+              Agregar Concepto de Pago
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form
+              [formGroup]="form"
+              class="payment-concept-form"
+              (ngSubmit)="submitForm()"
+            >
+              <div class="mx-1">
+                <ion-input
+                  label="Nombre del concepto de pago"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Nombre del concepto de pago"
+                  formControlName="name"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('name')?.hasError('required') &&
+                    form.get('name')?.touched
+                  "
+                >
+                  <p>Por favor, ingrese el nombre del concepto de pago.</p>
+                </ion-text>
+              </div>
+
+              <div class="mb-1">
+                <ion-textarea
+                  label="Descripción del concepto de pago"
+                  labelPlacement="floating"
+                  fill="outline"
+                  placeholder="Descripción del concepto de pago"
+                  formControlName="description"
+                  rows="8"
+                ></ion-textarea>
+                <!-- Mensaje de error para el campo de descripción -->
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('description')?.hasError('required') &&
+                    form.get('description')?.touched
+                  "
+                >
+                  Por favor, ingrese la descripción del concepto de pago.
+                </ion-text>
+              </div>
+
+              <div class="mb-1">
+                <ion-toggle formControlName="requiredTasks"
+                  >¿Requiere tareas?
+                </ion-toggle>
+              </div>
+
+              <!-- Botón de Agregar -->
+              <ion-button
+                type="submit"
+                expand="block"
+                mode="ios"
+                color="secondary"
+                [disabled]="!form.valid"
+                >Guardar Concepto Pago
+                <ion-icon slot="end" name="save-outline"></ion-icon
+              ></ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -11,7 +11,7 @@ import { PaymentConceptService } from 'src/app/services/paymentConcept.service';
 @Component({
   selector: 'app-modificar-tproducto',
   templateUrl: './modificar.component.html',
-  styleUrls: ['./modificar.component.less'],
+  styleUrls: ['./modificar.component.scss'],
 })
 export class ModificarConceptoPagoComponent implements OnInit {
   form: FormGroup = this.fb.group({

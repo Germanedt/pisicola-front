@@ -8,7 +8,7 @@ import { PaymentConceptService } from 'src/app/services/paymentConcept.service';
 @Component({
   selector: 'app-agregar-payment-concept',
   templateUrl: './agregar.component.html',
-  styleUrls: ['./agregar.component.less'],
+  styleUrls: ['./agregar.component.scss'],
 })
 export class AgregarConceptoPagoComponent implements OnInit {
   form: FormGroup = this.fb.group({

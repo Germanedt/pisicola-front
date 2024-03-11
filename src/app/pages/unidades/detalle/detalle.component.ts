@@ -6,6 +6,7 @@ import { ExpensesService } from 'src/app/services/Expenses.service';
 import { SessionDataService } from 'src/app/services/session-data.service';
 import { SowingService } from 'src/app/services/sowing.service';
 import * as moment from 'moment';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalle-unidad',
@@ -20,7 +21,8 @@ export class DetalleUnidadComponent implements OnInit {
     public router: Router,
     public dataService: SessionDataService,
     public sowingService: SowingService,
-    public expensesService: ExpensesService
+    public expensesService: ExpensesService,
+    public alertController: AlertController
   ) {}
   public goTo(route: string) {
     this.router.navigate([route]);
@@ -33,6 +35,7 @@ export class DetalleUnidadComponent implements OnInit {
     this.sowingService
       .listSowings(params, this.dataService.productiveUnit.id)
       .subscribe((response) => {
+        console.log('Cosechas', response.data);
         this.sowings = response.data;
       });
   }
@@ -44,6 +47,7 @@ export class DetalleUnidadComponent implements OnInit {
     this.expensesService
       .listExpenses(params, this.dataService.productiveUnit.id)
       .subscribe((response) => {
+        console.log('Gastos', response.data);
         this.expensesList = response.data;
       });
   }
@@ -64,5 +68,93 @@ export class DetalleUnidadComponent implements OnInit {
   ngOnInit(): void {
     this.loadDataSowings();
     this.loadExpenses();
+  }
+
+  /** Eventos de las cosechas */
+  public async handlerConfirmDeleteHarvest(id: number) {
+    const alert = await this.alertController.create({
+      header: '¿Seguro desea eliminar la cosecha?',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.sowingService.deleteSowing(id).subscribe((response) => {
+              if (response) {
+                this.loadDataSowings();
+              }
+            });
+          },
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+  public gotToHarvest(sowing: ISowing) {
+    const state = { sowing };
+    this.router.navigate(['/detallesCosecha'], { state });
+  }
+  public goToEditHarvest(sowing: ISowing) {
+    const state = {
+      productiveUnit: this.dataService.productiveUnit,
+      sowing,
+    };
+    this.router.navigate(['/modificarCosecha'], { state });
+  }
+  public async handlerConfirmCloseHarvest(sowingId: number) {
+    const alert = await this.alertController.create({
+      header: '¿Seguro desea cerrar la cosecha?',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.sowingService.closeSowing(sowingId).subscribe((response) => {
+              if (response) {
+                this.loadDataSowings();
+              }
+            });
+          },
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  /** Eventos de los gastos */
+  public async handlerConfirmDeleteExpense(id: number) {
+    const alert = await this.alertController.create({
+      header: '¿Seguro desea eliminar el gasto?',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.expensesService.deleteExpense(id).subscribe((response) => {
+              if (response) {
+                this.loadExpenses();
+              }
+            });
+          },
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+  public goToEditExpense(expense: IExpense) {
+    const state = { expense };
+    this.router.navigate(['modificarGasto'], { state });
   }
 }

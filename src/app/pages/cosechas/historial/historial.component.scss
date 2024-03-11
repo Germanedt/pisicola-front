@@ -1,0 +1,80 @@
+ion-modal {
+  // --height: 50%;
+  // --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+ion-modal::part(backdrop) {
+  background: rgba(209, 213, 219);
+  opacity: 1;
+}
+
+ion-modal ion-toolbar {
+  --background: var(--ion-color-secondary);
+  --color: white;
+}
+
+.harvest-history-page {
+  &__heading-1 {
+    font-family: PassionOneRegular;
+    font-size: 2.25rem;
+    margin-inline: 20px;
+  }
+
+  &__title {
+    font-family: PassionOneRegular;
+    font-size: 1.85rem;
+  }
+
+  &__sub-heading-1 {
+    margin: 0 20px;
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+
+    border-bottom: 1px solid var(--ion-color-light);
+  }
+
+  &__card-title {
+    flex: 1;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-weight: 600;
+  }
+
+  &__not-data {
+    color: var(--ion-color-medium);
+    margin-inline: 20px;
+    margin-bottom: 1rem;
+    ion-icon {
+      font-size: 4rem;
+    }
+    ion-text p {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.align-items-center {
+  align-items: center;
+}
+.justify-content-end {
+  justify-content: end;
+}
+.justify-content-center {
+  justify-content: center;
+}

@@ -1,4 +1,4 @@
-<h1>Agregar Registro de tarea</h1>
+<!-- <h1>Agregar Registro de tarea</h1>
 <form
   nz-form
   [formGroup]="form"
@@ -73,4 +73,169 @@
     Agregar
     <span nz-icon nzType="save"></span>
   </button>
-</form>
+</form> -->
+
+<ion-content class="ion-padding" color="light">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="task-register-box">
+          <ion-card-header>
+            <ion-card-title class="task-register-box__title">
+              Agregar Registro de Tarea
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form
+              [formGroup]="form"
+              class="task-log-form"
+              (ngSubmit)="submitForm()"
+            >
+              <div class="mb-1">
+                <ion-input
+                  label="Fecha inicial"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Fecha inicial"
+                  formControlName="started_at"
+                  id="task-register-started-open-add-modal"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('started_at')?.hasError('required') &&
+                    form.get('started_at')?.touched
+                  "
+                >
+                  Por favor, ingrese una fecha válida.
+                </ion-text>
+              </div>
+
+              <div class="mb-1">
+                <ion-input
+                  label="Fecha de finalización"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Fecha de finalización"
+                  formControlName="finished_at"
+                  id="task-register-finished-open-add-modal"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('finished_at')?.hasError('required') &&
+                    form.get('finished_at')?.touched
+                  "
+                >
+                  Por favor, ingrese una fecha válida.
+                </ion-text>
+              </div>
+
+              <div class="mb-1">
+                <ion-select
+                  label="Selecciona una tarea"
+                  label-placement="floating"
+                  fill="outline"
+                  formControlName="task_id"
+                  placeholder="Selecciona una tarea"
+                >
+                  <ion-select-option
+                    *ngFor="let item of tasks"
+                    [value]="item.id"
+                    >{{ item.name }}</ion-select-option
+                  >
+                </ion-select>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('task_id')?.hasError('required') &&
+                    form.get('task_id')?.touched
+                  "
+                >
+                  Por favor, seleccione una tarea.
+                </ion-text>
+              </div>
+
+              <div class="mb-1">
+                <ion-select
+                  label="Selecciona un empleado"
+                  label-placement="floating"
+                  fill="outline"
+                  formControlName="employee_id"
+                  placeholder="Selecciona un empleado"
+                >
+                  <ion-select-option
+                    *ngFor="let item of employees"
+                    [value]="item.id"
+                    >{{ item.full_name }}</ion-select-option
+                  >
+                </ion-select>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('employee_id')?.hasError('required') &&
+                    form.get('employee_id')?.touched
+                  "
+                >
+                  Por favor, seleccione un empleado.
+                </ion-text>
+              </div>
+
+              <ion-button
+                type="submit"
+                expand="block"
+                mode="ios"
+                color="secondary"
+                [disabled]="!form.valid"
+                >Guardar Tarea
+                <ion-icon slot="end" name="save-outline"></ion-icon
+              ></ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- DateTime - Started -->
+  <ion-modal trigger="task-register-started-open-add-modal">
+    <ng-template>
+      <ion-content>
+        <ion-toolbar>
+          <ion-title>Fecha y Hora</ion-title>
+        </ion-toolbar>
+        <ion-datetime
+          locale="es-ES"
+          size="cover"
+          [showDefaultButtons]="true"
+          doneText="Confirmar"
+          cancelText="Cancelar"
+          [(ngModel)]="datetimeStarted"
+          (ionChange)="onChangeDateTimeStarted()"
+        >
+          <span slot="time-label">Hora</span>
+        </ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <!-- DateTime - Finished -->
+  <ion-modal trigger="task-register-finished-open-add-modal">
+    <ng-template>
+      <ion-content>
+        <ion-toolbar>
+          <ion-title>Fecha y Hora</ion-title>
+        </ion-toolbar>
+        <ion-datetime
+          locale="es-ES"
+          size="cover"
+          [showDefaultButtons]="true"
+          doneText="Confirmar"
+          cancelText="Cancelar"
+          [(ngModel)]="datetimeFinished"
+          (ionChange)="onChangeDateTimeFinished()"
+        >
+          <span slot="time-label">Hora</span>
+        </ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

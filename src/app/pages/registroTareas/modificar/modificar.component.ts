@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
-import { IEmployees, IListEmployeesRequest } from 'src/app/models/Employee.model';
+import {
+  IEmployees,
+  IListEmployeesRequest,
+} from 'src/app/models/Employee.model';
 import { IProductiveUnit } from 'src/app/models/ProductiveUnit.model';
 import { IListTaskRequest, ITask } from 'src/app/models/Task.model';
 import { IModifyTaskLogRequest, ITaskLog } from 'src/app/models/TaskLog.model';
@@ -13,9 +16,11 @@ import { TaskLogService } from 'src/app/services/taskLog.service';
 @Component({
   selector: 'app-modificar-tproducto',
   templateUrl: './modificar.component.html',
-  styleUrls: ['./modificar.component.less'],
+  styleUrls: ['./modificar.component.scss'],
 })
 export class ModificarRegistroTareaComponent implements OnInit {
+  public datetimeFinished: any;
+  public datetimeStarted: any;
   form: FormGroup = this.fb.group({
     task_id: [0, [Validators.required]],
     employee_id: [0, [Validators.required]],
@@ -87,8 +92,12 @@ export class ModificarRegistroTareaComponent implements OnInit {
       this.form.setValue({
         task_id: this.taskLog.task_id,
         employee_id: this.taskLog.employee_id,
-        started_at: this.taskLog.started_at,
-        finished_at: this.taskLog.finished_at,
+        started_at: moment(this.taskLog.started_at).format(
+          'YYYY-MM-DD HH:mm:ss'
+        ),
+        finished_at: moment(this.taskLog.finished_at).format(
+          'YYYY-MM-DD HH:mm:ss'
+        ),
       });
     }
   }
@@ -117,5 +126,23 @@ export class ModificarRegistroTareaComponent implements OnInit {
   ngOnInit(): void {
     this.getTaskList();
     this.getEmployeesList();
+  }
+
+  /**
+   * @method onChangeDateTimeStarted
+   */
+  onChangeDateTimeStarted() {
+    this.form.patchValue({
+      started_at: moment(this.datetimeFinished).format('YYYY-MM-DD HH:mm:ss'),
+    });
+  }
+
+  /**
+   * @method onChangeDateTimeFinished
+   */
+  onChangeDateTimeFinished() {
+    this.form.patchValue({
+      finished_at: moment(this.datetimeFinished).format('YYYY-MM-DD HH:mm:ss'),
+    });
   }
 }

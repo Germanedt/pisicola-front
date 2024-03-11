@@ -12,6 +12,7 @@ import * as moment from 'moment';
   styleUrls: ['./agregar.component.scss'],
 })
 export class AgregarGastoComponent implements OnInit {
+  public datetime: any;
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
     value: [0, [Validators.required]],
@@ -53,4 +54,13 @@ export class AgregarGastoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  /**
+   * @method onChangeDateTime
+   */
+  onChangeDateTime() {
+    this.form.patchValue({
+      manual_created_at: moment(this.datetime).format('YYYY-MM-DD HH:mm:ss'),
+    });
+  }
 }

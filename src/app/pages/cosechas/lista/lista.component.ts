@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular'; 
+import { AlertController } from '@ionic/angular';
 import {
   IListSowingRequest,
   IListSowingResponse,
@@ -21,9 +21,8 @@ export class ListaCosechaComponent {
     public router: Router,
     public service: SowingService,
     public dataService: SessionDataService,
-    private alertController: AlertController
-  ) {
-  }
+    public alertController: AlertController
+  ) {}
 
   public loadData() {
     const params: IListSowingRequest = {
@@ -38,9 +37,8 @@ export class ListaCosechaComponent {
       });
   }
   public async handlerConfirmDelete(id: number) {
-
     const alert = await this.alertController.create({
-      header: '¿Seguro desea eliminar la cosecha?', 
+      header: '¿Seguro desea eliminar la cosecha?',
       buttons: [
         {
           text: 'Ok',
@@ -53,11 +51,12 @@ export class ListaCosechaComponent {
           },
         },
         {
-          text: 'Cancelar', 
-          role: 'cancel', 
+          text: 'Cancelar',
+          role: 'cancel',
         },
-      ]
+      ],
     });
+
     await alert.present();
   }
   public gotTo(sowing: ISowing) {
@@ -71,13 +70,29 @@ export class ListaCosechaComponent {
     };
     this.router.navigate(['/modificarCosecha'], { state });
   }
-  public handlerConfirmClose(sowingId: number) {
-    this.service.closeSowing(sowingId).subscribe((response) => {
-      if (response) {
-        console.log(response);
-        this.loadData();
-      }
+  public async handlerConfirmClose(sowingId: number) {
+    const alert = await this.alertController.create({
+      header: '¿Seguro desea cerrar la cosecha?',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.service.closeSowing(sowingId).subscribe((response) => {
+              if (response) {
+                console.log(response);
+                this.loadData();
+              }
+            });
+          },
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+      ],
     });
+
+    await alert.present();
   }
   ngOnInit(): void {}
   ionViewWillEnter(): void {

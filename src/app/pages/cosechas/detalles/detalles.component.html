@@ -1,4 +1,4 @@
-<h1>{{ sowing.fish_step?.fish?.name }}</h1>
+<!-- <h1>{{ sowing.fish_step?.fish?.name }}</h1>
 <nz-card nzTitle="Información general" class="card-header-light">
   <nz-row nzJustify="space-between">
     <nz-col>Estanque</nz-col>
@@ -33,7 +33,7 @@
 <nz-card nzTitle="Mediciónes" class="card-header-light">
   <nz-row nzJustify="center">
     <nz-col class="container-update nz-mb-2">
-      <p>Última actualización: {{lastUpdate | date:'medium'}}</p>
+      <p>Última actualización: {{ lastUpdate | date : "medium" }}</p>
       <label class="nz-mr-1">
         <a (click)="loadData()">Actualizar</a>
       </label>
@@ -55,4 +55,84 @@
       <app-sensor-chart [sowingStat]="item"></app-sensor-chart>
     </nz-col>
   </nz-row>
-</nz-card>
+</nz-card> -->
+
+<ion-content color="light">
+  <div class="unit-details-page">
+    <ion-text>
+      <h1 class="unit-details-page__heading-1">
+        {{ sowing.fish_step?.fish?.name }}
+      </h1>
+    </ion-text>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Información general</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>
+                <ion-text color="primary">Estanque:</ion-text>
+                {{ sowing.pond?.name }}
+              </p>
+              <p>
+                <ion-text color="primary">Etapa:</ion-text>
+                {{ sowing.fish_step?.name }}
+              </p>
+              <p>
+                <ion-text color="primary">Fecha:</ion-text>
+                {{ sowing.created_at | date }}
+              </p>
+              <p>
+                <ion-text color="primary">N° de peces:</ion-text>
+                {{ sowing.total_fish }}
+              </p>
+            </ion-card-content>
+            <div class="d-flex justify-content-end">
+              <ion-button fill="clear">Alimento</ion-button>
+              <ion-button fill="clear">Medicamento</ion-button>
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-text>
+      <h1 class="unit-details-page__heading-1">Mediciónes</h1>
+    </ion-text>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-content>
+              <ion-text>
+                <p class="ion-text-center">
+                  Última actualización: {{ lastUpdate | date : "medium" }}
+                </p>
+              </ion-text>
+              <div class="d-flex justify-content-center">
+                <ion-button fill="clear" (click)="loadData()"
+                  >Actualizar</ion-button
+                >
+                <ion-button fill="clear" (click)="gotToHistory()"
+                  >Ver Historico</ion-button
+                >
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ng-container *ngFor="let item of listOfData">
+          <ion-col size="12" size-lg="6" size-xl="4">
+            <ion-card>
+              <app-sensor-chart [sowingStat]="item"></app-sensor-chart>
+            </ion-card>
+          </ion-col>
+        </ng-container>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

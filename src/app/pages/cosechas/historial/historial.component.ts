@@ -14,9 +14,11 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-historial-cosechas',
   templateUrl: './historial.component.html',
-  styleUrls: ['./historial.component.less'],
+  styleUrls: ['./historial.component.scss'],
 })
 export class HistorialCosechaComponent implements OnInit {
+  public datetimeStarted: any;
+  public datetimeFinished: any;
   public listOfData: ISowinStatRecord[] = [];
   sowing: ISowing = {
     id: 0,
@@ -30,8 +32,12 @@ export class HistorialCosechaComponent implements OnInit {
     deleted_at: '',
   };
   keys: string[] = [];
-  endDate: Date = new Date();
-  startDate: Date = new Date(new Date().setDate(this.endDate.getDate() - 7));
+  // endDate: any = new Date();
+  endDate: any = moment(new Date()).format('YYYY-MM-DD');
+  // startDate: any = new Date(new Date().setDate(this.endDate.getDate() - 7));
+  startDate: any = moment(this.endDate, 'YYYY-MM-DD')
+    .subtract(7, 'days')
+    .format('YYYY-MM-DD');
   showError = false;
   constructor(public router: Router, public service: SowingService) {
     const data = this.router.getCurrentNavigation()?.extras.state;
@@ -40,9 +46,8 @@ export class HistorialCosechaComponent implements OnInit {
       this.keys = data['keys'];
     }
   }
-  ngOnInit(): void {
-    this.loadData();
-  }
+  ngOnInit(): void {}
+
   public onChangeStartDate() {
     this.showError = false;
   }
@@ -81,5 +86,23 @@ export class HistorialCosechaComponent implements OnInit {
         };
       });
     });
+  }
+
+  ionViewWillEnter(): void {
+    this.loadData();
+  }
+
+  /**
+   * @method onChangeDateTimeStarted
+   */
+  onChangeDateTimeStarted() {
+    this.startDate = moment(this.datetimeStarted).format('YYYY-MM-DD');
+  }
+
+  /**
+   * @method onChangeDateTimeFinished
+   */
+  onChangeDateTimeFinished() {
+    this.endDate = moment(this.datetimeFinished).format('YYYY-MM-DD');
   }
 }

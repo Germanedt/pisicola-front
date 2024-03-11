@@ -125,6 +125,26 @@
               </div>
 
               <div class="mb-1">
+                <ion-input
+                  label="Fecha del Gasto"
+                  label-placement="floating"
+                  fill="outline"
+                  placeholder="Fecha del Gasto"
+                  formControlName="manual_created_at"
+                  id="bills-open-add-modal"
+                ></ion-input>
+                <ion-text
+                  color="danger"
+                  *ngIf="
+                    form.get('manual_created_at')?.hasError('required') &&
+                    form.get('manual_created_at')?.touched
+                  "
+                >
+                  Por favor, ingrese el valor del gasto.
+                </ion-text>
+              </div>
+
+              <div class="mb-1">
                 <ion-textarea
                   label="Descripción del gasto"
                   labelPlacement="floating"
@@ -159,4 +179,25 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <!-- DateTime -->
+  <ion-modal trigger="bills-open-add-modal">
+    <ng-template>
+      <ion-content>
+        <ion-toolbar>
+          <ion-title>Fecha y Hora</ion-title>
+        </ion-toolbar>
+        <ion-datetime
+          locale="es-ES"
+          size="cover"
+          [showDefaultButtons]="true"
+          doneText="Confirmar"
+          cancelText="Cancelar"
+          [(ngModel)]="datetime"
+          (ionChange)="onChangeDateTime()"
+        >
+          <span slot="time-label">Hora</span>
+        </ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

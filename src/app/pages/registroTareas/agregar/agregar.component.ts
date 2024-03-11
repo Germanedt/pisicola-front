@@ -19,6 +19,8 @@ import { TaskLogService } from 'src/app/services/taskLog.service';
   styleUrls: ['./agregar.component.scss'],
 })
 export class AgregarRegistroTareaComponent implements OnInit {
+  public datetimeFinished: any;
+  public datetimeStarted: any;
   form: FormGroup = this.fb.group({
     task_id: [0, [Validators.required]],
     employee_id: [0, [Validators.required]],
@@ -100,5 +102,23 @@ export class AgregarRegistroTareaComponent implements OnInit {
   ngOnInit(): void {
     this.getTaskList();
     this.getEmployeesList();
+  }
+
+  /**
+   * @method onChangeDateTimeStarted
+   */
+  onChangeDateTimeStarted() {
+    this.form.patchValue({
+      started_at: moment(this.datetimeFinished).format('YYYY-MM-DD HH:mm:ss'),
+    });
+  }
+
+  /**
+   * @method onChangeDateTimeFinished
+   */
+  onChangeDateTimeFinished() {
+    this.form.patchValue({
+      finished_at: moment(this.datetimeFinished).format('YYYY-MM-DD HH:mm:ss'),
+    });
   }
 }

@@ -148,7 +148,7 @@ registerLocaleData(es);
     ModificarRegistroTareaComponent,
     ListaConceptosPagoComponent,
     AgregarConceptoPagoComponent,
-    ModificarConceptoPagoComponent
+    ModificarConceptoPagoComponent,
   ],
   imports: [
     ReactiveFormsModule,

@@ -6,7 +6,7 @@ import { SowingService } from 'src/app/services/sowing.service';
 @Component({
   selector: 'app-detalles',
   templateUrl: './detalles.component.html',
-  styleUrls: ['./detalles.component.less'],
+  styleUrls: ['./detalles.component.scss'],
 })
 export class DetallesCosechaComponent implements OnInit {
   public listOfData: ISowingStat[] = [];
@@ -40,7 +40,9 @@ export class DetallesCosechaComponent implements OnInit {
     const state = { sowing: this.sowing, keys };
     this.router.navigate(['/historialCosecha'], { state });
   }
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ionViewWillEnter(): void {
     this.loadData();
   }
 }
