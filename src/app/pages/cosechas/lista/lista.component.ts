@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular'; 
 import {
   IListSowingRequest,
   IListSowingResponse,
@@ -19,7 +20,8 @@ export class ListaCosechaComponent {
   constructor(
     public router: Router,
     public service: SowingService,
-    public dataService: SessionDataService
+    public dataService: SessionDataService,
+    private alertController: AlertController
   ) {
   }
 
@@ -35,12 +37,28 @@ export class ListaCosechaComponent {
         this.listOfData = response.data;
       });
   }
-  public handlerConfirmDelete(id: number) {
-    this.service.deleteSowing(id).subscribe((response) => {
-      if (response) {
-        this.loadData();
-      }
+  public async handlerConfirmDelete(id: number) {
+
+    const alert = await this.alertController.create({
+      header: '¿Seguro desea eliminar la cosecha?', 
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.service.deleteSowing(id).subscribe((response) => {
+              if (response) {
+                this.loadData();
+              }
+            });
+          },
+        },
+        {
+          text: 'Cancelar', 
+          role: 'cancel', 
+        },
+      ]
     });
+    await alert.present();
   }
   public gotTo(sowing: ISowing) {
     const state = { sowing };
@@ -61,7 +79,8 @@ export class ListaCosechaComponent {
       }
     });
   }
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  ionViewWillEnter(): void {
     this.loadData();
   }
   public getJSON(item: ISowing) {
